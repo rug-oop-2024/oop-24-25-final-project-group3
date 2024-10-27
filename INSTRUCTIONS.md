@@ -26,6 +26,26 @@ The `id` of an asset is derived as follows:
 ```
 id={base64(asset_path)}:{version}
 ```
+This maintains the referential identity since an artifact refers to an asset stored in a certain location using the `asset_path`.- **Artifact**: an abstract object refering to a asset which is stored and includes information about this specific asset (e.g., datasets, models, pipeline outputs, etc.).
+```json
+{
+    "asset_path": "users/mo-assaf/models/yolov8.pth",
+    "version": "1.0.2", 
+    "data": b"binary_state_data",
+    "metadata": {
+        "experiment_id": "exp-123fbdiashdb",
+        "run_id": "run-12378yufdh89afd",
+    },
+    "type": "model:torch",
+    "tags": ["computer_vision", "object_detection"]
+}
+```
+such artifacts can describe models as seen above, or pipeline objects needed by pipelines such as parameters used in preprocessing (e.g., auto scalers, one-hot encoders, text encoders.). These are also files that can be versioned or contain information such as input mappings. 
+
+The `id` of an asset is derived as follows:
+```
+id={base64(asset_path)}:{version}
+```
 This maintains the referential identity since an artifact refers to an asset stored in a certain location using the `asset_path`.
 
 - **Metric**: a function that maps $(\text{observations}, \text{groundtruth}) \implies \cal{R}$ a real number. Typically averaged over all point-wise comparisons.
