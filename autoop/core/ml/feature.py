@@ -2,10 +2,16 @@ from pydantic import BaseModel, Field, field_validator
 from typing import Literal, Optional
 import numpy as np
 
+
 class Feature(BaseModel):
     name: str = Field(..., description="The name of the feature.")
-    type: Literal["numerical", "categorical"] = Field(..., description="The type of the feature, either numerical or categorical.")
-    values: Optional[np.ndarray] = Field(default_factory=lambda: np.array([]), description="The values for the feature.")
+    type: Literal["numerical", "categorical"] = Field(..., description="The "
+                                                      "type of the feature, "
+                                                      "either numerical or "
+                                                      "categorical.")
+    values: Optional[np.ndarray] = Field(default_factory=lambda: np.array([]),
+                                         description="The values for the "
+                                                     "feature.")
 
     @field_validator("values", mode="before")
     def convert_to_array(cls, v):

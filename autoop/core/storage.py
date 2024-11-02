@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 import os
-from typing import List, Union
+from typing import List
 from glob import glob
+
 
 class NotFoundError(Exception):
     def __init__(self, path):
         super().__init__(f"Path not found: {path}")
+
 
 class Storage(ABC):
 
@@ -53,7 +55,7 @@ class Storage(ABC):
 
 class LocalStorage(Storage):
 
-    def __init__(self, base_path: str="./assets"):
+    def __init__(self, base_path: str = "./assets"):
         self._base_path = base_path
         if not os.path.exists(self._base_path):
             os.makedirs(self._base_path)
@@ -71,7 +73,7 @@ class LocalStorage(Storage):
         with open(path, 'rb') as f:
             return f.read()
 
-    def delete(self, key: str="/"):
+    def delete(self, key: str = "/"):
         self._assert_path_exists(self._join_path(key))
         path = self._join_path(key)
         os.remove(path)
