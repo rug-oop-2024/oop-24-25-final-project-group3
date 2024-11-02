@@ -2,11 +2,13 @@ from autoop.core.ml.artifact import Artifact
 import pandas as pd
 import io
 
-
 class Dataset(Artifact):
-    """A class to represent an ML dataset"""
-    def __init__(self, *args, **kwargs):
-        super().__init__(type="dataset", *args, **kwargs)
+    def __init__(self, *args, metadata=None, tags=None, id=None, **kwargs):
+        # Set default values for missing fields
+        metadata = metadata or {}
+        tags = tags or []
+        id = id or f"{kwargs.get('name', '')}-{kwargs.get('version', '1.0.0')}"
+        super().__init__(type="dataset", metadata=metadata, tags=tags, id=id, *args, **kwargs)
 
     @staticmethod
     def from_dataframe(data: pd.DataFrame, name: str,
