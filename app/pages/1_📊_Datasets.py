@@ -15,8 +15,7 @@ if 'refresh_datasets' not in st.session_state:
 # Page title
 st.title("📊 Datasets")
 
-st.write("Use this page to upload, view, and manage datasets in the AutoML "
-         "system.")
+st.write("Use this page to upload, view, manage, and delete datasets in the AutoML system.")
 
 # Section: Display Existing Datasets
 st.header("Available Datasets")
@@ -30,12 +29,10 @@ else:
 
 if datasets:
     dataset_names = [dataset.name for dataset in datasets]
-    selected_dataset_name = st.selectbox("Select a dataset to view",
-                                         dataset_names)
+    selected_dataset_name = st.selectbox("Select a dataset to view", dataset_names)
 
     # Find selected dataset and display details
-    selected_dataset = next(dataset for dataset in datasets if
-                            dataset.name == selected_dataset_name)
+    selected_dataset = next(dataset for dataset in datasets if dataset.name == selected_dataset_name)
     st.write(f"**Name:** {selected_dataset.name}")
     st.write(f"**Path:** {selected_dataset.asset_path}")
     st.write(f"**Version:** {selected_dataset.version}")
@@ -51,6 +48,19 @@ if datasets:
         st.write(df.head())
     except Exception as e:
         st.error(f"Error reading dataset: {e}")
+
+    # Delete Dataset Button
+    if st.button("Delete Dataset"):
+        try:
+            # Ensure dataset ID is valid before deletion
+            if selected_dataset.id:
+                automl.registry.delete(selected_dataset.id)
+                st.success(f"Dataset '{selected_dataset.name}' deleted successfully!")
+                st.session_state.refresh_datasets = True  # Trigger dataset list refresh
+            else:
+                st.error("Dataset ID is missing. Unable to delete.")
+        except Exception as e:
+            st.error(f"Failed to delete dataset: {e}")
 else:
     st.write("No datasets available.")
 
@@ -65,16 +75,15 @@ if uploaded_file:
     st.write(data.head())
 
     # Dataset details
-    dataset_name = st.text_input("Enter a name for the dataset",
-                                 value="dataset")
+    dataset_name = st.text_input("Enter a name for the dataset", value="dataset")
     dataset_version = st.text_input("Enter dataset version", value="1.0.0")
     metadata = st.text_area("Metadata (JSON format)", value="{}")
     tags = st.text_input("Tags (comma-separated)", value="")
 
     # Button to save dataset
     if st.button("Save Dataset"):
-        # Parse metadata and tags
         try:
+            # Parse metadata and tags
             metadata_dict = eval(metadata)
             tags_list = [tag.strip() for tag in tags.split(",") if tag.strip()]
 
@@ -82,7 +91,7 @@ if uploaded_file:
             dataset = Dataset.from_dataframe(
                 data=data,
                 name=dataset_name,
-                asset_path=f"{dataset_name}.csv",
+                asset_path=f"datasets/{dataset_name}.csv",
                 version=dataset_version
             )
             dataset.metadata = metadata_dict
