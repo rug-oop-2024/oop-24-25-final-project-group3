@@ -49,8 +49,6 @@ Pipeline(
 
     @property
     def artifacts(self) -> List[Artifact]:
-        """Used to get the artifacts generated during the pipeline execution to be saved
-        """
         artifacts = []
         for name, artifact in self._artifacts.items():
             artifact_type = artifact.get("type")
@@ -80,12 +78,10 @@ Pipeline(
         input_results = preprocess_features(self._input_features, self._dataset)
         for (feature_name, data, artifact) in input_results:
             self._register_artifact(feature_name, artifact)
-        # Get the input vectors and output vector, sort by feature name for consistency
         self._output_vector = target_data
         self._input_vectors = [data for (feature_name, data, artifact) in input_results]
 
     def _split_data(self):
-        # Split the data into training and testing sets
         split = self._split
         self._train_X = [vector[:int(split * len(vector))] for vector in self._input_vectors]
         self._test_X = [vector[int(split * len(vector)):] for vector in self._input_vectors]
@@ -106,7 +102,7 @@ Pipeline(
         self._metrics_results = []
         predictions = self._model.predict(X)
         for metric in self._metrics:
-            result = metric.evaluate(predictions, Y)
+            result = metric(predictions, Y)  # Use __call__ directly
             self._metrics_results.append((metric, result))
         self._predictions = predictions
 
