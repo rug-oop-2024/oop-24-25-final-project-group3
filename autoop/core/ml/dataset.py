@@ -1,12 +1,14 @@
 from autoop.core.ml.artifact import Artifact
-from abc import ABC, abstractmethod
 import pandas as pd
 import io
 
 class Dataset(Artifact):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(type="dataset", *args, **kwargs)
+    def __init__(self, *args, metadata=None, tags=None, id=None, **kwargs):
+        # Set default values for missing fields
+        metadata = metadata or {}
+        tags = tags or []
+        id = id or f"{kwargs.get('name', '')}-{kwargs.get('version', '1.0.0')}"
+        super().__init__(type="dataset", metadata=metadata, tags=tags, id=id, *args, **kwargs)
 
     @staticmethod
     def from_dataframe(data: pd.DataFrame, name: str, asset_path: str, version: str="1.0.0"):
@@ -15,6 +17,9 @@ class Dataset(Artifact):
             asset_path=asset_path,
             data=data.to_csv(index=False).encode(),
             version=version,
+            metadata={},   # Default empty metadata
+            tags=[],       # Default empty tags list
+            id=f"{name}-{version}"  # Default id generation
         )
         
     def read(self) -> pd.DataFrame:
@@ -25,4 +30,3 @@ class Dataset(Artifact):
     def save(self, data: pd.DataFrame) -> bytes:
         bytes = data.to_csv(index=False).encode()
         return super().save(bytes)
-    

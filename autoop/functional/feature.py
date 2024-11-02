@@ -2,25 +2,19 @@ from typing import List
 from autoop.core.ml.dataset import Dataset
 from autoop.core.ml.feature import Feature
 import pandas as pd
+from pandas.api.types import CategoricalDtype
 
 def detect_feature_types(dataset: Dataset) -> List[Feature]:
     """Detects feature types (categorical or numerical) in a dataset.
-    
+
     Args:
         dataset (Dataset): The dataset to analyze.
-        
-    Raises:
-        ValueError: If the dataset contains any NaN values.
-        
+
     Returns:
         List[Feature]: A list of features with detected types.
     """
-    # Extract the DataFrame from the dataset
-    df = dataset.to_dataframe()
-
-    # Check for any NaN values in the dataset
-    if df.isnull().any().any():
-        raise ValueError("Dataset contains NaN values, which is not allowed.")
+    # Extract the DataFrame from the dataset using `read`
+    df = dataset.read()
 
     # Initialize an empty list to store the feature objects
     features = []
@@ -30,12 +24,12 @@ def detect_feature_types(dataset: Dataset) -> List[Feature]:
         # Determine the type of feature
         if pd.api.types.is_numeric_dtype(df[column]):
             feature_type = "numerical"
-        elif pd.api.types.is_categorical_dtype(df[column]) or pd.api.types.is_object_dtype(df[column]):
+        elif isinstance(df[column].dtype, CategoricalDtype) or pd.api.types.is_object_dtype(df[column]):
             feature_type = "categorical"
         else:
             raise ValueError(f"Unknown data type for column {column}")
 
-        # Create a Feature object and append it to the list
-        features.append(Feature(name=column, type=feature_type))
+        # Create a Feature object with values and append it to the list
+        features.append(Feature(name=column, type=feature_type, values=df[column].values))
 
     return features
