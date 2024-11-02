@@ -61,8 +61,9 @@ class ArtifactRegistry():
         # Retrieve artifact metadata to get the asset path
         data = self._database.get("artifacts", artifact_id)
         if data is None:
-            raise ValueError(f"Artifact with ID '{artifact_id}' does not exist.")
-        
+            raise ValueError(f"Artifact with ID '{artifact_id}' does not "
+                             "exist.")
+
         asset_path = data["asset_path"]
         try:
             # Attempt to delete the artifact's data from storage
@@ -71,11 +72,11 @@ class ArtifactRegistry():
 
             # Delete metadata from the database
             self._database.delete("artifacts", artifact_id)
-            print(f"Deleted artifact metadata with ID '{artifact_id}' from database.")
+            print(f"Deleted artifact metadata with ID '{artifact_id}' from "
+                  "database.")
 
         except Exception as e:
             raise ValueError(f"Failed to delete artifact: {e}")
-
 
 
 class AutoMLSystem:
