@@ -4,12 +4,11 @@ import io
 
 
 class Dataset(Artifact):
-    def __init__(self, *args, metadata=None, tags=None, id=None, **kwargs):
+    def __init__(self, *args, metadata=None, tags=None, **kwargs):
         # Set default values for missing fields
         metadata = metadata or {}
         tags = tags or []
-        id = id or f"{kwargs.get('name', '')}-{kwargs.get('version', '1.0.0')}"
-        super().__init__(type="dataset", metadata=metadata, tags=tags, id=id,
+        super().__init__(type="dataset", metadata=metadata, tags=tags,
                          *args, **kwargs)
 
     @staticmethod
@@ -22,7 +21,6 @@ class Dataset(Artifact):
             version=version,
             metadata={},   # Default empty metadata
             tags=[],       # Default empty tags list
-            id=f"{name}-{version}"  # Default id generation
         )
 
     def read(self) -> pd.DataFrame:

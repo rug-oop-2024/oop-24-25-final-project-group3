@@ -82,7 +82,7 @@ class Database():
                 self._storage.save(json.dumps(item).encode(),
                                    f"{collection}/{id}")
 
-        # for things that were deleted, we need to remove them from the storage
+        # for things that were deleted, we need to remove them from storage
         keys = self._storage.list("")
         for key in keys:
             collection, id = key.split("/")[-2:]
