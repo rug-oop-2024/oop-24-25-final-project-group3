@@ -13,6 +13,7 @@ from autoop.core.ml.dataset import Dataset  # noqa : E402
 from autoop.core.ml.feature import Feature  # noqa : E402
 from autoop.functional.feature import detect_feature_types  # noqa : E402
 
+
 class TestFeatures(unittest.TestCase):
 
     def setUp(self) -> None:
