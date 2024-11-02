@@ -123,6 +123,11 @@ Pipeline(
         self._preprocess_features()
         self._split_data()
         self._train()
+        
+        if self.model.trained == False:
+            print("KURWA")
+        else:
+            print("YASS")
 
         # Evaluate on training set
         train_X = self._compact_vectors(self._train_X)
@@ -148,4 +153,5 @@ Pipeline(
             "train_metrics": train_metrics_results,    # Training metrics
             "test_predictions": test_predictions,      # Test predictions
             "train_predictions": train_predictions,    # Training predictions
+            "trained_model": self._model,  # Return the trained model
         }
