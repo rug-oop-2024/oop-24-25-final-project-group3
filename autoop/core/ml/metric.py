@@ -1,13 +1,16 @@
 from abc import ABC, abstractmethod
 import numpy as np
 
-METRICS = [
+REGRESSION_METRICS = [
     "mean_squared_error",
+    "mean_absolute_error",
+    "r_squared",
+]
+
+CLASSIFICATION_METRICS = [
     "accuracy",
     "precision",
     "recall",
-    "mean_absolute_error",
-    "r_squared",
 ]
 
 

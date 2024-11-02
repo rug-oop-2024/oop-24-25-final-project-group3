@@ -7,7 +7,7 @@ from typing import List
 
 
 class ArtifactRegistry():
-    def __init__(self, 
+    def __init__(self,
                  database: Database,
                  storage: Storage):
         self._database = database
@@ -25,7 +25,7 @@ class ArtifactRegistry():
             "metadata": artifact.metadata,
             "type": artifact.type,
         }
-        self._database.set(f"artifacts", artifact.id, entry)
+        self._database.set("artifacts", artifact.id, entry)
 
     def list(self, type: str = None) -> List[Artifact]:
         entries = self._database.list("artifacts")
