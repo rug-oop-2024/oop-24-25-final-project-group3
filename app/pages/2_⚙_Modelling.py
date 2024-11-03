@@ -86,6 +86,15 @@ if datasets:
     selected_metrics = st.multiselect("Choose metrics", available_metrics)
     metric_objects = [get_metric(metric_name) for metric_name in selected_metrics]
 
+    # Check if all required fields are complete
+    is_ready_to_train = all([
+        selected_dataset_name,  # Dataset selected
+        selected_target_feature,  # Target feature selected
+        selected_input_features,  # At least one input feature selected
+        selected_model_name,  # Model selected
+        selected_metrics  # At least one metric selected
+    ])
+
     # Display Pipeline Summary
     st.header("6. Pipeline Summary")
     st.write("### Configuration Summary")
@@ -96,12 +105,16 @@ if datasets:
     st.write(f"**Training Split:** {train_split}% | **Testing Split:** {test_split}%")
     st.write(f"**Selected Metrics:** {', '.join(selected_metrics)}")
 
+    # Display warning if required fields are missing
+    if not is_ready_to_train:
+        st.warning("Please complete all selections (dataset, target feature, input features, model, and metrics) to enable training.")
+
     # Train Model Button
-    if st.button("Train Model"):
+    if st.button("Train Model", disabled=not is_ready_to_train):
         st.session_state.train_button_flag = True
-        
+
     # Check if training is complete and show metrics/results
-    if st.session_state.train_button_flag:
+    if st.session_state.train_button_flag and is_ready_to_train:
         # Initialize the pipeline with the wrapped dataset
         pipeline = Pipeline(
             metrics=metric_objects,
@@ -114,7 +127,12 @@ if datasets:
 
         results = pipeline.execute()
         trained_model = results["trained_model"]
-        st.success("Model training completed!")
+
+        # Verify model is trained
+        if not getattr(trained_model, "trained", False):
+            st.warning("Model training failed.")
+        else:
+            st.success("Model training completed!")
 
         # Display Training Metrics
         training_metrics = results.get("train_metrics", [])
@@ -133,12 +151,6 @@ if datasets:
                 st.write(f"{metric_name}: {metric_value}")
         else:
             st.write("No evaluation metrics available.")
-
-        # Verify model is trained
-        if not getattr(trained_model, "trained", False):
-            st.warning("Model training did not set 'trained' attribute correctly.")
-        else:
-            st.write("Model training set 'trained' attribute successfully.")
 
         # Pipeline saving section
         st.header("7. Save Pipeline")
