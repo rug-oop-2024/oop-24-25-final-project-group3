@@ -66,15 +66,9 @@ class ArtifactRegistry():
 
         asset_path = data["asset_path"]
         try:
-            # Attempt to delete the artifact's data from storage
             self._storage.delete(asset_path)
-            print(f"Deleted artifact data at {asset_path} from storage.")
-
             # Delete metadata from the database
             self._database.delete("artifacts", artifact_id)
-            print(f"Deleted artifact metadata with ID '{artifact_id}' from "
-                  "database.")
-
         except Exception as e:
             raise ValueError(f"Failed to delete artifact: {e}")
 

@@ -123,11 +123,6 @@ Pipeline(
         self._preprocess_features()
         self._split_data()
         self._train()
-        
-        if self.model.trained == False:
-            print("KURWA")
-        else:
-            print("YASS")
 
         # Evaluate on training set
         train_X = self._compact_vectors(self._train_X)
