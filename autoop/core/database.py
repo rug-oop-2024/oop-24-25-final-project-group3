@@ -43,8 +43,22 @@ class Database():
             return None
         return self._data[collection].get(id, None)
 
+    # def delete(self, collection: str, id: str):
+    #     """Delete a key from the database
+    #     Args:
+    #         collection (str): The collection to delete the data from
+    #         id (str): The id of the data
+    #     Returns:
+    #         None
+    #     """
+    #     if not self._data.get(collection, None):
+    #         return
+    #     if self._data[collection].get(id, None):
+    #         del self._data[collection][id]
+    #     self._persist()
+    
     def delete(self, collection: str, id: str):
-        """Delete a key from the database
+        """Delete a key from the database with debug logging
         Args:
             collection (str): The collection to delete the data from
             id (str): The id of the data
@@ -53,9 +67,11 @@ class Database():
         """
         if not self._data.get(collection, None):
             return
-        if self._data[collection].get(id, None):
-            del self._data[collection][id]
+        if not self._data[collection].get(id, None):
+            return
+        del self._data[collection][id]
         self._persist()
+
 
     def list(self, collection: str) -> List[Tuple[str, dict]]:
         """Lists all data in a collection
@@ -73,21 +89,51 @@ class Database():
         """Refresh the database by loading the data from storage"""
         self._load()
 
+    # def _persist(self):
+    #     """Persist the data to storage"""
+    #     for collection, data in self._data.items():
+    #         if not data:
+    #             continue
+    #         for id, item in data.items():
+    #             self._storage.save(json.dumps(item).encode(),
+    #                                f"{collection}/{id}")
+
+    #     # for things that were deleted, we need to remove them from storage
+    #     keys = self._storage.list("")
+    #     for key in keys:
+    #         collection, id = key.split("/")[-2:]
+    #         if not self._data.get(collection, id):
+    #             self._storage.delete(f"{collection}/{id}")
+    #             print(f"Deleted file {collection}/{id} from storage.")
+
     def _persist(self):
-        """Persist the data to storage"""
+        """Persist the data to storage."""
         for collection, data in self._data.items():
             if not data:
                 continue
             for id, item in data.items():
-                self._storage.save(json.dumps(item).encode(),
-                                   f"{collection}/{id}")
+                # Save data to storage if it exists in memory
+                self._storage.save(
+                    json.dumps(item).encode(), f"{collection}/{id}")
 
-        # for things that were deleted, we need to remove them from storage
-        keys = self._storage.list("")
+        # Check for items in storage that are no longer in memory
+        keys = self._storage.list("")  # List all files in storage
         for key in keys:
             collection, id = key.split("/")[-2:]
-            if not self._data.get(collection, id):
+            # Remove from storage if not in the in-memory database
+            if not self._data.get(collection, {}).get(id):
                 self._storage.delete(f"{collection}/{id}")
+
+    # def _load(self):
+    #     """Load the data from storage"""
+    #     self._data = {}
+    #     for key in self._storage.list(""):
+    #         collection, id = key.split("/")[-2:]
+    #         data = self._storage.load(f"{collection}/{id}")
+    #         # Ensure the collection exists in the dictionary
+    #         if collection not in self._data:
+    #             self._data[collection] = {}
+    #         self._data[collection][id] = json.loads(data.decode())
 
     def _load(self):
         """Load the data from storage"""
@@ -95,7 +141,6 @@ class Database():
         for key in self._storage.list(""):
             collection, id = key.split("/")[-2:]
             data = self._storage.load(f"{collection}/{id}")
-            # Ensure the collection exists in the dictionary
             if collection not in self._data:
                 self._data[collection] = {}
             self._data[collection][id] = json.loads(data.decode())
