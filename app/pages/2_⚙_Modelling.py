@@ -28,9 +28,11 @@ if 'train_button_flag' not in st.session_state:
 if 'save_button_flag' not in st.session_state:
     st.session_state.save_button_flag = False
 
+
 # Helper function for styling text
 def write_helper_text(text: str):
     st.write(f"<p style=\"color: #888;\">{text}</p>", unsafe_allow_html=True)
+
 
 # Wrapper for DataFrame to mimic Dataset with a read method
 class DatasetWrapper:
@@ -40,8 +42,10 @@ class DatasetWrapper:
     def read(self):
         return self._data_frame
 
+
 st.write("# ⚙ Modelling")
-write_helper_text("Design a machine learning pipeline to train a model on a dataset.")
+write_helper_text("Design a machine learning pipeline to train a model on a "
+                  "dataset.")
 
 if datasets:
     # Dataset Selection
