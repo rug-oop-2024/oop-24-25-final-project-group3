@@ -36,7 +36,6 @@ if datasets:
     st.write(f"**Name:** {selected_dataset.name}")
     st.write(f"**Path:** {selected_dataset.asset_path}")
     st.write(f"**Version:** {selected_dataset.version}")
-    st.write(f"**Metadata:** {selected_dataset.metadata}")
     st.write(f"**Tags:** {', '.join(selected_dataset.tags)}")
 
     # Display dataset preview
@@ -77,14 +76,12 @@ if uploaded_file:
     # Dataset details
     dataset_name = st.text_input("Enter a name for the dataset", value="dataset")
     dataset_version = st.text_input("Enter dataset version", value="1.0.0")
-    metadata = st.text_area("Metadata (JSON format)", value="{}")
     tags = st.text_input("Tags (comma-separated)", value="")
 
     # Button to save dataset
     if st.button("Save Dataset"):
         try:
-            # Parse metadata and tags
-            metadata_dict = eval(metadata)
+            # Parse and tags
             tags_list = [tag.strip() for tag in tags.split(",") if tag.strip()]
 
             # Create Dataset object using from_dataframe
@@ -94,7 +91,6 @@ if uploaded_file:
                 asset_path=f"datasets/{dataset_name}.csv",
                 version=dataset_version
             )
-            dataset.metadata = metadata_dict
             dataset.tags = tags_list
 
             # Register dataset in the artifact registry

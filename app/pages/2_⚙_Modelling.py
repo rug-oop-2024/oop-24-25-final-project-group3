@@ -187,7 +187,6 @@ if datasets:
             data=pickle.dumps(pipeline_data),
             version=pipeline_version,
             type="pipeline",
-            metadata={"task_type": task_type},
             tags=["pipeline", task_type],
         )
 

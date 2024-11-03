@@ -30,7 +30,6 @@ if pipelines:
 
     st.write(f"**Pipeline Name:** {selected_pipeline.name}")
     st.write(f"**Version:** {selected_pipeline.version}")
-    st.write(f"**Metadata:** {selected_pipeline.metadata}")
     st.write(f"**Tags:** {', '.join(selected_pipeline.tags)}")
 
     # Delete Dataset Button
