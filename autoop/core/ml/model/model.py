@@ -23,7 +23,6 @@ class Model(ABC):
             y (np.ndarray): Target values.
         """
         self.trained = True  # Set to True when model is trained
-        print("YASSSSSSS")
 
     @abstractmethod
     def predict(self, X: np.ndarray) -> np.ndarray:

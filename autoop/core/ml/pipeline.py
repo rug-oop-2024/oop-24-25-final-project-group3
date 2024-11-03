@@ -90,9 +90,6 @@ Pipeline(
         self._input_vectors = [data for (feature_name, data, artifact)
                                in input_results]
 
-        # Debug print to verify input vectors
-        print("Input Vectors after Preprocessing:", self._input_vectors)
-
     def _split_data(self):
         split = self._split
         self._train_X = [vector[:int(split * len(vector))] for vector in
@@ -103,12 +100,6 @@ Pipeline(
                         :int(split * len(self._output_vector))]
         self._test_y = self._output_vector[
                         int(split * len(self._output_vector)):]
-
-        # Debug print to verify training data
-        print("Train X after splitting:", self._train_X)
-        print("Test X after splitting:", self._test_X)
-        print("Train y after splitting:", self._train_y)
-        print("Test y after splitting:", self._test_y)
 
     def _compact_vectors(self, vectors: List[np.array]) -> np.array:
         return np.concatenate(vectors, axis=1)
@@ -135,6 +126,7 @@ Pipeline(
 
         # Evaluate on training set
         train_X = self._compact_vectors(self._train_X)
+
         train_Y = self._train_y
         train_metrics_results = []
         train_predictions = self._model.predict(train_X)
