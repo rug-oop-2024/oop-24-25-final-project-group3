@@ -4,13 +4,12 @@ import pickle
 import io
 
 from app.core.system import AutoMLSystem
-from autoop.core.ml.dataset import Dataset  # noqa: F401
 from autoop.functional.feature import detect_feature_types
 from autoop.functional.preprocessing import check_multicollinearity
 from autoop.core.ml.model import (get_model, REGRESSION_MODELS,
                                   CLASSIFICATION_MODELS)
 from autoop.core.ml.metric import (REGRESSION_METRICS, CLASSIFICATION_METRICS,
-                                   get_metric)
+                                   LOG_CLASSIFICATION_METRICS, get_metric)
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.pipeline import Pipeline
 
@@ -80,37 +79,96 @@ if datasets:
 
     target_feature = next((f for f in features if
                            f.name == selected_target_feature), None)
-    task_type = ("Classification" if target_feature and
-                 target_feature.type == "categorical" else "Regression")
+    task_type = ("classification" if target_feature and
+                 target_feature.type == "categorical" else "regression")
     st.write(f"**Detected Task Type:** {task_type}")
 
     # Model and metric selection
     st.header("3. Select a Model")
-    if task_type == "Classification":
+    if task_type == "classification":
         ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS
-        # Check if the target feature is binary (i.e., contains only 2 unique values)
-        if len(set(selected_target_feature)) != 2:
+        # Check if the target feature contains only 2 unique values
+        if len(set(dataset_df[selected_target_feature])) != 2:
             # Remove logistic regression from the classification models
-            ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS.remove(
-                "logistic_regression")  # remove incompatible "logistic_regression" 
-            st.warning("Logistic Regression requires a binary target feature. It has been removed from the model options.")
+            ALT_CLASSIFICATION_MODELS = [model for model in
+                                         CLASSIFICATION_MODELS if model !=
+                                         "LogisticRegression"]
+            st.info("Logistic Regression requires a binary target feature. "
+                    "It has been removed from the model options.")
     else:
+        REG_MODELS = REGRESSION_MODELS
         # Check for multicollinearity
         subsection_df = dataset_df[selected_input_features]
         if len(selected_input_features) < 2:
-            st.warning("Please select more than one feature to proceed with modeling.")
+            st.warning("Please select more than one feature to proceed with "
+                       "modeling.")
         else:
-            if check_multicollinearity(subsection_df):  # Implement this function to assess multicollinearity
-                # Use Ridge regression instead of multiple linear regression in case of multicollinearity
-                st.info("Multicollinearity detected. Ridge regression is recommended over multiple linear regression.")
+            if check_multicollinearity(subsection_df):
+                # Use Ridge regression instead of multiple linear regression
+                # in case of multicollinearity
+                REG_MODELS = [model for model in REG_MODELS if model !=
+                              "MultipleLinearRegression"]
+                st.info("Multicollinearity detected. Ridge regression is "
+                        "recommended over multiple linear regression.")
             else:
-                st.info("No multicollinearity detected. Multiple linear regression is recommended over ridge regression.")
-    model_choices = (REGRESSION_MODELS if task_type == "Regression"
+                REG_MODELS = [model for model in REG_MODELS if model !=
+                              "RidgeRegression"]
+                st.info("No multicollinearity detected. Multiple linear "
+                        "regression is recommended over ridge regression.")
+    model_choices = (REG_MODELS if task_type == "regression"
                      else ALT_CLASSIFICATION_MODELS)
     selected_model_name = st.selectbox("Choose a model", model_choices)
+    # te ify chyba powinny być tutaj?
     selected_model = get_model(selected_model_name)
 
-    # statement2
+    if selected_model != "MultipleLinearRegression":
+
+        st.header("3.5 Select parameters for the ML model:")
+
+        # Define parameter selection based on the selected model
+        if selected_model == "KNearestNeighbors":
+            # Allow the user to choose the value of k for K-Nearest Neighbors
+            k = st.number_input("Select value of k:", min_value=1, step=1)
+            st.write("You selected k =", k)
+            # Pass k to your function as needed here
+
+        elif selected_model == "RidgeRegression":
+            # Allow the user to choose alpha for Ridge Regression
+            alpha = st.number_input("Select alpha value:", min_value=0.01,
+                                    step=0.01)
+            st.write("You selected alpha =", alpha)
+            # Pass alpha to your function as needed here
+
+        elif selected_model == "LogisticRegression":
+            # Check if params_from_last_col is an integer and between 0 and 1
+            params_from_last_col = st.text_input("Enter a parameter value (0"
+                                                 " or 1):", value="0")
+            if not (params_from_last_col.isdigit() and
+                    int(params_from_last_col) in [0, 1]):
+                st.warning("Please enter 0 or 1.")
+                choose_label_btn = st.button("Choose labels (0 and 1)")
+                if choose_label_btn:
+                    st.write("Label selection button clicked.")
+                    # we have to sub for all values here and pass the changed
+                    # values into the later parts of the code
+
+            # Allow the user to choose learning rate and number of iterations
+            learning_rate = st.number_input("Select learning rate:",
+                                            min_value=0.0001, max_value=1.0,
+                                            step=0.0001, format="%.4f")
+            n_iterations = st.number_input("Select number of iterations:",
+                                           min_value=1, step=1)
+            st.write(f"You selected learning rate = {learning_rate} and "
+                     f"iterations = {n_iterations}")
+            # Pass learning_rate and n_iterations to your function here
+
+        elif selected_model in ["DecisionTreeRegression",
+                                "DecisionTreeClassification"]:
+            # Allow the user to choose max_depth for Tree-based models
+            max_depth = st.number_input("Select max depth:", min_value=1,
+                                        step=1)
+            st.write("You selected max_depth =", max_depth)
+            # Pass max_depth to your function as needed here
 
     st.header("4. Select Dataset Split")
     train_split = st.slider("Training Set Split (%)", min_value=50,
@@ -118,8 +176,14 @@ if datasets:
     test_split = 100 - train_split
 
     st.header("5. Select Metrics")
-    available_metrics = (REGRESSION_METRICS if task_type == "Regression" else
-                         CLASSIFICATION_METRICS)
+
+    if selected_model_name == "LogisticRegression":
+        available_metrics = LOG_CLASSIFICATION_METRICS
+    elif task_type == "regression":
+        available_metrics = REGRESSION_METRICS
+    else:
+        available_metrics = CLASSIFICATION_METRICS
+
     selected_metrics = st.multiselect("Choose metrics", available_metrics)
     metric_objects = [get_metric(metric_name) for metric_name in
                       selected_metrics]
@@ -169,21 +233,14 @@ if datasets:
 
         results = pipeline.execute()
         trained_model = results["trained_model"]
+        # Assuming this retrieves true train labels
+        train_Y = results.get("train_Y")
 
         # Verify model is trained
         if not getattr(trained_model, "trained", False):
             st.warning("Model training failed.")
         else:
             st.success("Model training completed!")
-
-        # # Display Training Metrics
-        # training_metrics = results.get("train_metrics", [])
-        # if training_metrics:
-        #     st.write("### Training Metrics")
-        #     for metric_name, metric_value in training_metrics:
-        #         st.write(f"{metric_name}: {metric_value}")
-        # else:
-        #     st.write("No training metrics available.")
 
         # Display Evaluation Metrics
         evaluation_metrics = results.get("metrics", [])

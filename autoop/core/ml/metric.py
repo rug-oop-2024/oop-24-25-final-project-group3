@@ -13,6 +13,12 @@ CLASSIFICATION_METRICS = [
     "recall",
 ]
 
+LOG_CLASSIFICATION_METRICS = [
+    "logistic_accuracy",
+    "logistic_precision",
+    "logistic_recall"
+]
+
 
 def get_metric(name: str):
     """Factory function to get a metric by name."""
@@ -24,6 +30,12 @@ def get_metric(name: str):
         return Precision()
     elif name == "recall":
         return Recall()
+    elif name == "logistic_accuracy":
+        return LogisticAccuracy()
+    elif name == "logistic_precision":
+        return LogisticPrecision()
+    elif name == "logistic_recall":
+        return LogisticRecall()
     elif name == "mean_absolute_error":
         return MeanAbsoluteError()
     elif name == "r_squared":
@@ -82,7 +94,52 @@ class RSquared(Metric):
         return "RSquared"
 
 
-# Classification Metrics
+class LogisticAccuracy(Metric):
+    """Accuracy metric for classification."""
+
+    def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        # Convert one-hot predictions to class labels if necessary
+        if y_pred.ndim > 1:
+            y_pred = np.argmax(y_pred, axis=1)
+        return float(np.mean(y_true == y_pred))
+
+    def __str__(self):
+        return "LogisticAccuracy"
+
+
+class LogisticPrecision(Metric):
+    """Precision metric for classification."""
+
+    def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        # Convert one-hot predictions to class labels if necessary
+        if y_pred.ndim > 1:
+            y_pred = np.argmax(y_pred, axis=1)
+        true_positives = np.sum((y_pred == 1) & (y_true == 1))
+        predicted_positives = np.sum(y_pred == 1)
+        return (true_positives / predicted_positives
+                if predicted_positives != 0 else 0.0)
+
+    def __str__(self):
+        return "LogisticPrecision"
+
+
+class LogisticRecall(Metric):
+    """Recall metric for classification."""
+
+    def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        # Convert one-hot predictions to class labels if necessary
+        if y_pred.ndim > 1:
+            y_pred = np.argmax(y_pred, axis=1)
+        true_positives = np.sum((y_pred == 1) & (y_true == 1))
+        actual_positives = np.sum(y_true == 1)
+        return (true_positives / actual_positives
+                if actual_positives != 0 else 0.0)
+
+    def __str__(self):
+        return "LogisticRecall"
+
+
+# OLD Classification Metrics
 class Accuracy(Metric):
     """Accuracy metric for classification."""
 
@@ -90,7 +147,7 @@ class Accuracy(Metric):
         return float(np.mean(y_true == y_pred))
 
     def __str__(self):
-        return "Accuracy"
+        return "LogisticAccuracy"
 
 
 class Precision(Metric):

@@ -58,7 +58,7 @@ def check_multicollinearity(data, threshold=5.0) -> bool:
 
     # Ensure the data contains only numeric columns
     numerical_data = data.select_dtypes(include=[float, int])
-    
+
     # Calculate VIF for each feature
     vif_data = pd.DataFrame()
     vif_data["feature"] = numerical_data.columns
@@ -68,8 +68,4 @@ def check_multicollinearity(data, threshold=5.0) -> bool:
     # Identify features with VIF greater than the threshold
     collinear_features = vif_data[vif_data["VIF"] > threshold]["feature"
                                                                ].tolist()
-
-    if collinear_features:
-        return True
-    else:
-        return False
+    return True if collinear_features else False

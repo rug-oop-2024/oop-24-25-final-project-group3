@@ -24,9 +24,11 @@ y = (2 * X["feature_1"] + 3 * X["feature_2"] +
      1.5 * X["feature_3"] - 0.5 * X["feature_4"] +
      np.random.normal(0, 10, n_samples))
 
+y_classify = np.random.randint(0, 2, n_samples)
+
 # Add the target variable to the training dataset
 train_df = X.copy()
-train_df["target"] = y
+train_df["target"] = y_classify
 
 # Generate a separate dataset for predictions (without the target column)
 # Using a different number of samples to avoid leaking information from
