@@ -87,8 +87,9 @@ if datasets:
     st.header("3. Select a Model")
     if task_type == "classification":
         ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS
+        unique_values = dataset_df[selected_target_feature].unique()
         # Check if the target feature contains only 2 unique values
-        if len(set(dataset_df[selected_target_feature])) != 2:
+        if len(unique_values) != 2:
             # Remove logistic regression from the classification models
             ALT_CLASSIFICATION_MODELS = [model for model in
                                          CLASSIFICATION_MODELS if model !=
@@ -121,54 +122,20 @@ if datasets:
     # te ify chyba powinny być tutaj?
     selected_model = get_model(selected_model_name)
 
-    if selected_model != "MultipleLinearRegression":
+    # Handling Logistic Regression binary label assignment
+    if selected_model_name == "LogisticRegression" and not pd.api.types.is_numeric_dtype(dataset_df[selected_target_feature]):
+        st.subheader("Assign Binary Labels")
+        st.write("Logistic Regression requires numeric binary labels. Please assign labels to the unique values in the target feature.")
 
-        st.header("3.5 Select parameters for the ML model:")
+        # Assign each unique value to either 0 or 1
+        label_mapping = {}
+        option_1, option_2 = unique_values[0], unique_values[1]
+        label_mapping[option_1] = st.radio(f"Assign label to {option_1}:", (0, 1), index=0)
+        label_mapping[option_2] = 1 - label_mapping[option_1]
+        st.info(f"**Assigned labels:** \n {option_1}: {label_mapping[option_1]} \n {option_2}: {label_mapping[option_2]}")
 
-        # Define parameter selection based on the selected model
-        if selected_model == "KNearestNeighbors":
-            # Allow the user to choose the value of k for K-Nearest Neighbors
-            k = st.number_input("Select value of k:", min_value=1, step=1)
-            st.write("You selected k =", k)
-            # Pass k to your function as needed here
-
-        elif selected_model == "RidgeRegression":
-            # Allow the user to choose alpha for Ridge Regression
-            alpha = st.number_input("Select alpha value:", min_value=0.01,
-                                    step=0.01)
-            st.write("You selected alpha =", alpha)
-            # Pass alpha to your function as needed here
-
-        elif selected_model == "LogisticRegression":
-            # Check if params_from_last_col is an integer and between 0 and 1
-            params_from_last_col = st.text_input("Enter a parameter value (0"
-                                                 " or 1):", value="0")
-            if not (params_from_last_col.isdigit() and
-                    int(params_from_last_col) in [0, 1]):
-                st.warning("Please enter 0 or 1.")
-                choose_label_btn = st.button("Choose labels (0 and 1)")
-                if choose_label_btn:
-                    st.write("Label selection button clicked.")
-                    # we have to sub for all values here and pass the changed
-                    # values into the later parts of the code
-
-            # Allow the user to choose learning rate and number of iterations
-            learning_rate = st.number_input("Select learning rate:",
-                                            min_value=0.0001, max_value=1.0,
-                                            step=0.0001, format="%.4f")
-            n_iterations = st.number_input("Select number of iterations:",
-                                           min_value=1, step=1)
-            st.write(f"You selected learning rate = {learning_rate} and "
-                     f"iterations = {n_iterations}")
-            # Pass learning_rate and n_iterations to your function here
-
-        elif selected_model in ["DecisionTreeRegression",
-                                "DecisionTreeClassification"]:
-            # Allow the user to choose max_depth for Tree-based models
-            max_depth = st.number_input("Select max depth:", min_value=1,
-                                        step=1)
-            st.write("You selected max_depth =", max_depth)
-            # Pass max_depth to your function as needed here
+        # Apply the mapping to transform the target feature
+        dataset_df[selected_target_feature] = dataset_df[selected_target_feature].map(label_mapping)
 
     st.header("4. Select Dataset Split")
     train_split = st.slider("Training Set Split (%)", min_value=50,
