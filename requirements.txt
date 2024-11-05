@@ -3,3 +3,6 @@ pydantic
 pandas
 numpy
 scikit-learn
+fpdf
+matplotlib
+statmodels

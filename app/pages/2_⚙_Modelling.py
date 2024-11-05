@@ -4,7 +4,7 @@ import pickle
 import io
 
 from app.core.system import AutoMLSystem
-from autoop.core.ml.dataset import Dataset
+from autoop.core.ml.dataset import Dataset  # noqa: F401
 from autoop.functional.feature import detect_feature_types
 from autoop.core.ml.model import (get_model, REGRESSION_MODELS,
                                   CLASSIFICATION_MODELS)
@@ -84,10 +84,13 @@ if datasets:
 
     # Model and metric selection
     st.header("3. Select a Model")
+    # statement1
     model_choices = (REGRESSION_MODELS if task_type == "Regression"
                      else CLASSIFICATION_MODELS)
     selected_model_name = st.selectbox("Choose a model", model_choices)
     selected_model = get_model(selected_model_name)
+
+    # statement2
 
     st.header("4. Select Dataset Split")
     train_split = st.slider("Training Set Split (%)", min_value=50,
@@ -124,7 +127,7 @@ if datasets:
 
     # Display warning if required fields are missing
     if not is_ready_to_train:
-        st.warning("Please complete all selections (dataset, target feature",
+        st.warning("Please complete all selections (dataset, target feature, "
                    "input features, model, and metrics) to enable training.")
 
     # Train Model Button
@@ -153,14 +156,14 @@ if datasets:
         else:
             st.success("Model training completed!")
 
-        # Display Training Metrics
-        training_metrics = results.get("train_metrics", [])
-        if training_metrics:
-            st.write("### Training Metrics")
-            for metric_name, metric_value in training_metrics:
-                st.write(f"{metric_name}: {metric_value}")
-        else:
-            st.write("No training metrics available.")
+        # # Display Training Metrics
+        # training_metrics = results.get("train_metrics", [])
+        # if training_metrics:
+        #     st.write("### Training Metrics")
+        #     for metric_name, metric_value in training_metrics:
+        #         st.write(f"{metric_name}: {metric_value}")
+        # else:
+        #     st.write("No training metrics available.")
 
         # Display Evaluation Metrics
         evaluation_metrics = results.get("metrics", [])
@@ -171,9 +174,13 @@ if datasets:
         else:
             st.write("No evaluation metrics available.")
 
+        metrics_with_values = {metric_name: metric_value for metric_name,
+                               metric_value in evaluation_metrics}
+
         # Pipeline saving section
         st.header("7. Save Pipeline")
-        pipeline_name = st.text_input("Enter a name for the pipeline")
+        pipeline_name = st.text_input("Enter a name for the pipeline",
+                                      value="Pipeline")
         pipeline_version = st.text_input("Enter pipeline version",
                                          value="1.0.0")
 
@@ -194,10 +201,11 @@ if datasets:
         # Prepare pipeline data for serialization
         pipeline_data = {
             "model": pickle.dumps(trained_model),  # Serialize trained model
-            "metrics": selected_metrics,
+            "metrics": metrics_with_values,
             "input_features": selected_input_features,
             "target_feature": selected_target_feature,
             "train_split": train_split / 100,
+            "dataset_name": selected_dataset_name,
         }
 
         # Create artifact for pipeline

@@ -20,14 +20,32 @@ automl = AutoMLSystem.get_instance()
 if 'refresh_pipelines' not in st.session_state:
     st.session_state.refresh_pipelines = False
 
-# Retrieve available pipelines
+# Retrieve saved pipelines
 pipelines = automl.registry.list(type="pipeline")
 
 if pipelines:
-    # Display each pipeline
+    # Select pipeline to load
     pipeline_names = [pipeline.name for pipeline in pipelines]
-    selected_pipeline_name = st.selectbox("Select a pipeline to view",
-                                          pipeline_names)
+    selected_pipeline_name = st.selectbox("Select a pipeline", pipeline_names)
+    selected_pipeline = next(p for p in pipelines if
+                             p.name == selected_pipeline_name)
+
+    # Load pipeline data
+    pipeline_data = pickle.loads(selected_pipeline.data)
+    model = pickle.loads(pipeline_data["model"])
+
+    # Retrieve the dataset used during training
+    dataset_name = pipeline_data["dataset_name"]
+    target_feature = pipeline_data["target_feature"]
+
+    # Load the original dataset
+    selected_dataset = next(d for d in automl.registry.list(type="dataset")
+                            if d.name == dataset_name)
+    dataset_data_bytes = selected_dataset.read()
+    original_data = pd.read_csv(io.StringIO(dataset_data_bytes.decode()))
+
+    # Get training values from the original dataset
+    training_values = original_data[target_feature].values
 
     # Find and display selected pipeline details
     selected_pipeline = next(pipeline for pipeline in pipelines if
@@ -62,116 +80,125 @@ if pipelines:
     st.write("**Model Type:**", type(model).__name__)
     st.write("**Training Status:**", "Trained" if is_trained else
              "Not Trained")
-
-    # Display Model Attributes
-    if hasattr(model, "parameters") and model.parameters:
-        st.write("**Model Parameters:**", model.parameters)
-    else:
-        st.write("**Model Attributes:**")
-        model_attributes = {k: v for k, v in model.__dict__.items() if not
-                            k.startswith('_')}
-        for key, value in model_attributes.items():
-            st.write(f"{key}: {value}")
-
-    # Display other pipeline configurations
-    st.write("**Metrics:**", ", ".join(pipeline_data["metrics"]))
+    st.write("**Original Dataset:**", dataset_name)
+    st.write("**Metrics:**")
+    for metric_name, metric_value in pipeline_data["metrics"].items():
+        st.write(f"- {metric_name}: {metric_value}")
+    st.write("**Parameters:**")
     st.write("**Input Features:**", ", ".join(pipeline_data["input_features"]))
     st.write("**Target Feature:**", pipeline_data["target_feature"])
     st.write("**Training Split:**", f"{pipeline_data['train_split'] * 100}%")
 
-    # Prediction Section
+    # # Display Model Attributes
+    # if hasattr(model, "parameters") and model.parameters:
+    #     st.write("**Model Parameters:**", model.parameters)
+    # else:
+    #     st.write("**Model Attributes:**")
+    #     model_attributes = {k: v for k, v in model.__dict__.items() if not
+    #                         k.startswith('_')}
+    #     for key, value in model_attributes.items():
+    #         st.write(f"{key}: {value}")
+
+    # Prediction section
     st.header("Run Predictions")
     uploaded_file = st.file_uploader("Upload a CSV file for predictions",
                                      type="csv")
 
     if uploaded_file:
-        # Read CSV data
+        # Prepare data for predictions
         input_data = pd.read_csv(uploaded_file)
+        input_features = pipeline_data["input_features"]
+        required_features = [f for f in input_features if f in
+                             input_data.columns]
 
-        # Ensure input data has the correct features
-        required_features = pipeline_data["input_features"]
-        missing_features = [f for f in required_features if f not in
-                            input_data.columns]
-        if missing_features:
+        if len(required_features) < len(input_features):
+            missing_features = set(input_features) - set(input_data.columns)
             st.error(f"Uploaded data is missing required features: {', '.join(
                 missing_features)}")
         else:
             # Select the input columns needed for prediction
             input_features_data = input_data[required_features]
 
-            # Run predictions
+            # Generate predictions
             predictions = model.predict(input_features_data.values)
             input_data["Predictions"] = predictions
-            st.write("### Prediction Results")
 
-            # Combine predictions with input data for download
-            prediction_df = input_data.copy()
-            prediction_df["Prediction"] = predictions
-            st.write(prediction_df)
-
-            # Plotting the predictions
-            st.write("### Prediction Plot")
-            fig, ax = plt.subplots()
-            ax.plot(prediction_df.index, prediction_df["Prediction"],
-                    label="Predictions")
+            # Plot training vs predicted values
+            fig, ax = plt.subplots(figsize=(10, 5))
+            ax.plot(range(len(training_values)), training_values,
+                    label='Training',
+                    marker='o', color='blue')
+            ax.plot(range(len(predictions)), predictions, label='Predictions',
+                    marker='x', color='red')
             ax.set_xlabel("Index")
-            ax.set_ylabel("Prediction Value")
+            ax.set_ylabel("Value")
+            ax.set_title("Training vs. Predicted Values")
             ax.legend()
             st.pyplot(fig)
 
             # Provide download link for predictions as CSV
-            csv = prediction_df.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="Download Predictions as CSV",
-                data=csv,
-                file_name="predictions.csv",
-                mime="text/csv"
-            )
+            csv = input_data.to_csv(index=False).encode('utf-8')
+            st.download_button("Download Predictions as CSV", data=csv,
+                               file_name="predictions.csv", mime="text/csv")
 
-            # Save the plot as a temporary image file
+            # Save plot as image for the PDF report
             temp_image_path = "/tmp/predictions_plot.png"
             fig.savefig(temp_image_path)
 
             # Generate PDF report
             pdf = FPDF()
             pdf.add_page()
-            pdf.set_font("Arial", "B", 16)
+
+            pdf.add_font("ComicSans", "", "./assets/fonts/ComicSans.ttf",
+                         uni=True)
+
+            pdf.set_font("ComicSans", "", 16)
             pdf.cell(200, 10, txt="Model Prediction Report", ln=True,
                      align="C")
 
             # Add pipeline details
-            pdf.set_font("Arial", size=12)
+            pdf.set_font("ComicSans", size=11)
             pdf.cell(200, 10, txt=f"Pipeline: {selected_pipeline.name}",
                      ln=True)
             pdf.cell(200, 10, txt=f"Version: {selected_pipeline.version}",
                      ln=True)
+            pdf.cell(200, 10, txt=f"Tags: {selected_pipeline.tags}",
+                     ln=True)
+            pdf.cell(200, 10, txt=f"Model type: {type(model).__name__}",
+                     ln=True)
+            pdf.cell(200, 10, txt=f"Original dataset: {dataset_name}",
+                     ln=True)
 
             # Add metrics if available
-            if "metrics" in pipeline_data:
-                pdf.cell(200, 10, txt="Metrics:", ln=True)
-                for metric in pipeline_data["metrics"]:
-                    pdf.cell(200, 10, txt=f"{metric}", ln=True)
+            pdf.cell(200, 10, txt="Metrics:", ln=True)
+            for metric_name, metric_value in pipeline_data["metrics"].items():
+                pdf.cell(200, 10, txt=f"- {metric_name}: {metric_value}",
+                         ln=True)
 
-            # Embed plot
+            pdf.cell(200, 10, txt=f"Input Features: {', '.join(pipeline_data[
+                'input_features'])}", ln=True)
+            pdf.cell(200, 10, txt=f"Target Feature: {pipeline_data[
+                'target_feature']}", ln=True)
+            pdf.cell(200, 10, txt=f"Training Split: {pipeline_data[
+                'train_split'] * 100}%", ln=True)
+
+            # Embed plot in PDF
             pdf.cell(200, 10, txt="Prediction plot:", ln=True)
             pdf.image(temp_image_path, x=10, y=pdf.get_y(), w=180)
 
             # Output PDF to BytesIO
             pdf_output = io.BytesIO()
-            # Get the PDF content as bytes
-            pdf_content = pdf.output(dest='S').encode('latin1')
+            pdf_content = pdf.output(dest="S").encode("latin1")
             pdf_output.write(pdf_content)
             pdf_output.seek(0)
 
-            # Remove the temporary image file
+            # Clean up temp image file
             os.remove(temp_image_path)
 
             # Download PDF
-            st.download_button(
-                label="Download PDF Report",
-                data=pdf_output,
-                file_name="model_report.pdf",
-                mime="application/pdf"
-            )
+            st.download_button("Download PDF Report", data=pdf_output,
+                               file_name="model_report.pdf",
+                               mime="application/pdf")
+
 else:
     st.write("No saved pipelines available.")
