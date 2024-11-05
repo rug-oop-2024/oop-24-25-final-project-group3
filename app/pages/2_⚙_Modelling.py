@@ -51,10 +51,12 @@ if datasets:
     # Dataset Selection
     st.header("1. Select a Dataset")
     dataset_names = [dataset.name for dataset in datasets]
-    selected_dataset_name = st.selectbox("Choose a dataset for training", dataset_names)
+    selected_dataset_name = st.selectbox("Choose a dataset for training",
+                                         dataset_names)
 
     # Retrieve selected dataset and convert from bytes to DataFrame
-    selected_dataset = next(dataset for dataset in datasets if dataset.name == selected_dataset_name)
+    selected_dataset = next(dataset for dataset in datasets if
+                            dataset.name == selected_dataset_name)
     dataset_data_bytes = selected_dataset.read()
     dataset_df = pd.read_csv(io.StringIO(dataset_data_bytes.decode()))
     st.write("### Dataset Preview")
@@ -67,28 +69,37 @@ if datasets:
     st.header("2. Select Features")
     features = detect_feature_types(dataset_df)
     feature_names = [feature.name for feature in features]
-    selected_target_feature = st.selectbox("Select target feature", feature_names)
-    available_input_features = [name for name in feature_names if name != selected_target_feature]
-    selected_input_features = st.multiselect("Select input features", available_input_features)
+    selected_target_feature = st.selectbox("Select target feature",
+                                           feature_names)
+    available_input_features = [name for name in feature_names if
+                                name != selected_target_feature]
+    selected_input_features = st.multiselect("Select input features",
+                                             available_input_features)
 
-    target_feature = next((f for f in features if f.name == selected_target_feature), None)
-    task_type = "Classification" if target_feature and target_feature.type == "categorical" else "Regression"
+    target_feature = next((f for f in features if
+                           f.name == selected_target_feature), None)
+    task_type = ("Classification" if target_feature and
+                 target_feature.type == "categorical" else "Regression")
     st.write(f"**Detected Task Type:** {task_type}")
 
     # Model and metric selection
     st.header("3. Select a Model")
-    model_choices = REGRESSION_MODELS if task_type == "Regression" else CLASSIFICATION_MODELS
+    model_choices = (REGRESSION_MODELS if task_type == "Regression"
+                     else CLASSIFICATION_MODELS)
     selected_model_name = st.selectbox("Choose a model", model_choices)
     selected_model = get_model(selected_model_name)
 
     st.header("4. Select Dataset Split")
-    train_split = st.slider("Training Set Split (%)", min_value=50, max_value=90, value=80, step=5)
+    train_split = st.slider("Training Set Split (%)", min_value=50,
+                            max_value=90, value=80, step=5)
     test_split = 100 - train_split
 
     st.header("5. Select Metrics")
-    available_metrics = REGRESSION_METRICS if task_type == "Regression" else CLASSIFICATION_METRICS
+    available_metrics = (REGRESSION_METRICS if task_type == "Regression" else
+                         CLASSIFICATION_METRICS)
     selected_metrics = st.multiselect("Choose metrics", available_metrics)
-    metric_objects = [get_metric(metric_name) for metric_name in selected_metrics]
+    metric_objects = [get_metric(metric_name) for metric_name in
+                      selected_metrics]
 
     # Check if all required fields are complete
     is_ready_to_train = all([
@@ -104,14 +115,17 @@ if datasets:
     st.write("### Configuration Summary")
     st.write(f"**Selected Dataset:** {selected_dataset_name}")
     st.write(f"**Selected Target Feature:** {selected_target_feature}")
-    st.write(f"**Selected Input Features:** {', '.join(selected_input_features)}")
+    st.write(f"**Selected Input Features:** {', '.join(
+        selected_input_features)}")
     st.write(f"**Selected Model:** {selected_model_name}")
-    st.write(f"**Training Split:** {train_split}% | **Testing Split:** {test_split}%")
+    st.write(f"**Training Split:** {train_split}% | **Testing Split:** "
+             f"{test_split}%")
     st.write(f"**Selected Metrics:** {', '.join(selected_metrics)}")
 
     # Display warning if required fields are missing
     if not is_ready_to_train:
-        st.warning("Please complete all selections (dataset, target feature, input features, model, and metrics) to enable training.")
+        st.warning("Please complete all selections (dataset, target feature",
+                   "input features, model, and metrics) to enable training.")
 
     # Train Model Button
     if st.button("Train Model", disabled=not is_ready_to_train):
@@ -124,7 +138,8 @@ if datasets:
             metrics=metric_objects,
             dataset=dataset_wrapped,  # Use wrapped dataset
             model=selected_model,
-            input_features=[f for f in features if f.name in selected_input_features],
+            input_features=[f for f in features if f.name in
+                            selected_input_features],
             target_feature=target_feature,
             split=train_split / 100
         )
@@ -159,7 +174,8 @@ if datasets:
         # Pipeline saving section
         st.header("7. Save Pipeline")
         pipeline_name = st.text_input("Enter a name for the pipeline")
-        pipeline_version = st.text_input("Enter pipeline version", value="1.0.0")
+        pipeline_version = st.text_input("Enter pipeline version",
+                                         value="1.0.0")
 
         # Check if the pipeline configuration is complete
         is_ready = all([
@@ -196,7 +212,8 @@ if datasets:
 
         # Register the pipeline in the artifact registry
         automl.registry.register(pipeline_artifact)
-        st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved successfully!")
+        st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved "
+                   "successfully!")
         st.session_state.train_button_flag = False  # Reset after save
         st.session_state.save_button_flag = False
 else:

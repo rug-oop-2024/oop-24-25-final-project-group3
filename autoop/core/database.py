@@ -56,7 +56,7 @@ class Database():
     #     if self._data[collection].get(id, None):
     #         del self._data[collection][id]
     #     self._persist()
-    
+
     def delete(self, collection: str, id: str):
         """Delete a key from the database with debug logging
         Args:
@@ -71,7 +71,6 @@ class Database():
             return
         del self._data[collection][id]
         self._persist()
-
 
     def list(self, collection: str) -> List[Tuple[str, dict]]:
         """Lists all data in a collection

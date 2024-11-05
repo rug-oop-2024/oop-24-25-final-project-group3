@@ -3,6 +3,9 @@ from app.core.system import AutoMLSystem
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
+from fpdf import FPDF
+import io
+import os
 
 # Streamlit page configuration
 st.set_page_config(page_title="Deployment", page_icon="🚀")
@@ -38,8 +41,10 @@ if pipelines:
             # Ensure dataset ID is valid before deletion
             if selected_pipeline.id:
                 automl.registry.delete(selected_pipeline.id)
-                st.success(f"Pipeline '{selected_pipeline.name}' deleted successfully!")
-                st.session_state.refresh_pipeline = True  # Trigger pipeline list refresh
+                st.success(f"Pipeline '{selected_pipeline.name}' deleted "
+                           "successfully!")
+                # Trigger pipeline list refresh
+                st.session_state.refresh_pipeline = True
             else:
                 st.error("Pipeline ID is missing. Unable to delete.")
         except Exception as e:
@@ -53,14 +58,16 @@ if pipelines:
     model = pickle.loads(pipeline_data["model"])
     is_trained = getattr(model, "trained", False)
     st.write("**Model Type:**", type(model).__name__)
-    st.write("**Training Status:**", "Trained" if is_trained else "Not Trained")
+    st.write("**Training Status:**", "Trained" if is_trained else
+             "Not Trained")
 
     # Display Model Attributes
     if hasattr(model, "parameters") and model.parameters:
         st.write("**Model Parameters:**", model.parameters)
     else:
         st.write("**Model Attributes:**")
-        model_attributes = {k: v for k, v in model.__dict__.items() if not k.startswith('_')}
+        model_attributes = {k: v for k, v in model.__dict__.items() if not
+                            k.startswith('_')}
         for key, value in model_attributes.items():
             st.write(f"{key}: {value}")
 
@@ -89,6 +96,7 @@ if pipelines:
 
             # Run predictions
             predictions = model.predict(input_features_data.values)
+            input_data["Predictions"] = predictions
             st.write("### Prediction Results")
 
             # Combine predictions with input data for download
@@ -99,7 +107,8 @@ if pipelines:
             # Plotting the predictions
             st.write("### Prediction Plot")
             fig, ax = plt.subplots()
-            ax.plot(prediction_df.index, prediction_df["Prediction"], label="Predictions")
+            ax.plot(prediction_df.index, prediction_df["Prediction"],
+                    label="Predictions")
             ax.set_xlabel("Index")
             ax.set_ylabel("Prediction Value")
             ax.legend()
@@ -112,6 +121,48 @@ if pipelines:
                 data=csv,
                 file_name="predictions.csv",
                 mime="text/csv"
+            )
+
+            # Save the plot as a temporary image file
+            temp_image_path = "/tmp/predictions_plot.png"
+            fig.savefig(temp_image_path)
+
+            # Generate PDF report
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font("Arial", "B", 16)
+            pdf.cell(200, 10, txt="Model Prediction Report", ln=True, align="C")
+
+            # Add pipeline details
+            pdf.set_font("Arial", size=12)
+            pdf.cell(200, 10, txt=f"Pipeline: {selected_pipeline.name}", ln=True)
+            pdf.cell(200, 10, txt=f"Version: {selected_pipeline.version}", ln=True)
+
+            # Add metrics if available
+            if "metrics" in pipeline_data:
+                pdf.cell(200, 10, txt="Metrics:", ln=True)
+                for metric in pipeline_data["metrics"]:
+                    pdf.cell(200, 10, txt=f"{metric}", ln=True)
+
+            # Embed plot
+            pdf.cell(200, 10, txt="Prediction plot:", ln=True)
+            pdf.image(temp_image_path, x=10, y=pdf.get_y(), w=180)
+
+            # Output PDF to BytesIO
+            pdf_output = io.BytesIO()
+            pdf_content = pdf.output(dest='S').encode('latin1')  # Get the PDF content as bytes
+            pdf_output.write(pdf_content)
+            pdf_output.seek(0)
+
+            # Remove the temporary image file
+            os.remove(temp_image_path)
+
+            # Download PDF
+            st.download_button(
+                label="Download PDF Report",
+                data=pdf_output,
+                file_name="model_report.pdf",
+                mime="application/pdf"
             )
 else:
     st.write("No saved pipelines available.")
