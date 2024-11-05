@@ -6,12 +6,14 @@ import io
 from app.core.system import AutoMLSystem
 from autoop.core.ml.dataset import Dataset  # noqa: F401
 from autoop.functional.feature import detect_feature_types
+from autoop.functional.preprocessing import check_multicollinearity
 from autoop.core.ml.model import (get_model, REGRESSION_MODELS,
                                   CLASSIFICATION_MODELS)
 from autoop.core.ml.metric import (REGRESSION_METRICS, CLASSIFICATION_METRICS,
                                    get_metric)
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.pipeline import Pipeline
+
 
 # Streamlit page configuration
 st.set_page_config(page_title="Modelling", page_icon="📈")
@@ -84,9 +86,27 @@ if datasets:
 
     # Model and metric selection
     st.header("3. Select a Model")
-    # statement1
+    if task_type == "Classification":
+        ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS
+        # Check if the target feature is binary (i.e., contains only 2 unique values)
+        if len(set(selected_target_feature)) != 2:
+            # Remove logistic regression from the classification models
+            ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS.remove(
+                "logistic_regression")  # remove incompatible "logistic_regression" 
+            st.warning("Logistic Regression requires a binary target feature. It has been removed from the model options.")
+    else:
+        # Check for multicollinearity
+        subsection_df = dataset_df[selected_input_features]
+        if len(selected_input_features) < 2:
+            st.warning("Please select more than one feature to proceed with modeling.")
+        else:
+            if check_multicollinearity(subsection_df):  # Implement this function to assess multicollinearity
+                # Use Ridge regression instead of multiple linear regression in case of multicollinearity
+                st.info("Multicollinearity detected. Ridge regression is recommended over multiple linear regression.")
+            else:
+                st.info("No multicollinearity detected. Multiple linear regression is recommended over ridge regression.")
     model_choices = (REGRESSION_MODELS if task_type == "Regression"
-                     else CLASSIFICATION_MODELS)
+                     else ALT_CLASSIFICATION_MODELS)
     selected_model_name = st.selectbox("Choose a model", model_choices)
     selected_model = get_model(selected_model_name)
 

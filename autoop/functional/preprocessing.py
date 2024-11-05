@@ -3,6 +3,8 @@ from autoop.core.ml.feature import Feature
 from autoop.core.ml.dataset import Dataset
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+import pandas as pd
 
 
 def preprocess_features(
@@ -37,3 +39,37 @@ def preprocess_features(
     # Sort for consistency
     results = list(sorted(results, key=lambda x: x[0]))
     return results
+
+
+def check_multicollinearity(data, threshold=5.0) -> bool:
+    """
+    Checks for multicollinearity in the given DataFrame using Variance
+    Inflation Factor (VIF).
+
+    Parameters:
+    - data: pd.DataFrame - The dataset with features to check for
+      multicollinearity.
+    - threshold: float - VIF threshold above which a feature is considered
+      highly collinear.
+
+    Returns:
+    - True if there are any features with VIF exceeding the threshold.
+    """
+
+    # Ensure the data contains only numeric columns
+    numerical_data = data.select_dtypes(include=[float, int])
+    
+    # Calculate VIF for each feature
+    vif_data = pd.DataFrame()
+    vif_data["feature"] = numerical_data.columns
+    vif_data["VIF"] = [variance_inflation_factor(numerical_data.values, i) for
+                       i in range(len(numerical_data.columns))]
+
+    # Identify features with VIF greater than the threshold
+    collinear_features = vif_data[vif_data["VIF"] > threshold]["feature"
+                                                               ].tolist()
+
+    if collinear_features:
+        return True
+    else:
+        return False
