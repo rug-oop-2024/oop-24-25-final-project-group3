@@ -26,10 +26,12 @@ pipelines = automl.registry.list(type="pipeline")
 if pipelines:
     # Display each pipeline
     pipeline_names = [pipeline.name for pipeline in pipelines]
-    selected_pipeline_name = st.selectbox("Select a pipeline to view", pipeline_names)
+    selected_pipeline_name = st.selectbox("Select a pipeline to view",
+                                          pipeline_names)
 
     # Find and display selected pipeline details
-    selected_pipeline = next(pipeline for pipeline in pipelines if pipeline.name == selected_pipeline_name)
+    selected_pipeline = next(pipeline for pipeline in pipelines if
+                             pipeline.name == selected_pipeline_name)
 
     st.write(f"**Pipeline Name:** {selected_pipeline.name}")
     st.write(f"**Version:** {selected_pipeline.version}")
@@ -79,7 +81,8 @@ if pipelines:
 
     # Prediction Section
     st.header("Run Predictions")
-    uploaded_file = st.file_uploader("Upload a CSV file for predictions", type="csv")
+    uploaded_file = st.file_uploader("Upload a CSV file for predictions",
+                                     type="csv")
 
     if uploaded_file:
         # Read CSV data
@@ -87,9 +90,11 @@ if pipelines:
 
         # Ensure input data has the correct features
         required_features = pipeline_data["input_features"]
-        missing_features = [f for f in required_features if f not in input_data.columns]
+        missing_features = [f for f in required_features if f not in
+                            input_data.columns]
         if missing_features:
-            st.error(f"Uploaded data is missing required features: {', '.join(missing_features)}")
+            st.error(f"Uploaded data is missing required features: {', '.join(
+                missing_features)}")
         else:
             # Select the input columns needed for prediction
             input_features_data = input_data[required_features]
@@ -131,12 +136,15 @@ if pipelines:
             pdf = FPDF()
             pdf.add_page()
             pdf.set_font("Arial", "B", 16)
-            pdf.cell(200, 10, txt="Model Prediction Report", ln=True, align="C")
+            pdf.cell(200, 10, txt="Model Prediction Report", ln=True,
+                     align="C")
 
             # Add pipeline details
             pdf.set_font("Arial", size=12)
-            pdf.cell(200, 10, txt=f"Pipeline: {selected_pipeline.name}", ln=True)
-            pdf.cell(200, 10, txt=f"Version: {selected_pipeline.version}", ln=True)
+            pdf.cell(200, 10, txt=f"Pipeline: {selected_pipeline.name}",
+                     ln=True)
+            pdf.cell(200, 10, txt=f"Version: {selected_pipeline.version}",
+                     ln=True)
 
             # Add metrics if available
             if "metrics" in pipeline_data:
@@ -150,7 +158,8 @@ if pipelines:
 
             # Output PDF to BytesIO
             pdf_output = io.BytesIO()
-            pdf_content = pdf.output(dest='S').encode('latin1')  # Get the PDF content as bytes
+            # Get the PDF content as bytes
+            pdf_content = pdf.output(dest='S').encode('latin1')
             pdf_output.write(pdf_content)
             pdf_output.seek(0)
 

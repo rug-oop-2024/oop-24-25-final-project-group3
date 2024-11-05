@@ -37,7 +37,7 @@ Regression models:
 - multiple linreg:
     - we just assume params are independent
 - treereg:
-    - LGTM
+    - LGTM, just allow the user to choose max_depth
 - ridge:
     - when a data set contains a higher number of predictor variables than the
       number of observations. The second-best scenario is when
