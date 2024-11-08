@@ -5,9 +5,14 @@ import pydoc  # noqa: F401
 
 
 class MultipleLinearRegression(Model):
-    def __init__(self):
+    """
+    Wrapper for multiple linear regression using scikit-learn's
+    implementation.
+    """
+    def __init__(self) -> None:
         """
-        Initialize the Multiple Linear Regression model.
+        Initialize the Ridge Regression model with a specified alpha
+        (regularization strength).
         """
         super().__init__(model_type="regression")
         self.model = LinearRegression()

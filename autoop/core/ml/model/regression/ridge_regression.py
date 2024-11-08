@@ -5,6 +5,7 @@ import pydoc  # noqa: F401
 
 
 class RidgeRegression(Model):
+    """Wrapper for ridge regression using scikit-learn's implementation."""
     def __init__(self, alpha: float = 1.0) -> None:
         """
         Initialize the Ridge Regression model with a specified alpha
