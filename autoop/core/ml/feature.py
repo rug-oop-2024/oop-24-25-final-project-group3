@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, field_validator
 from typing import Any, Literal, Optional
 import numpy as np
-import pydoc
+import pydoc  # noqa: F401
 
 
 class Feature(BaseModel):

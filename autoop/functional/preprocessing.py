@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import pandas as pd
-import pydoc
+import pydoc  # noqa: F401
 
 
 def preprocess_features(features: List[Feature], dataset: Dataset) -> List[

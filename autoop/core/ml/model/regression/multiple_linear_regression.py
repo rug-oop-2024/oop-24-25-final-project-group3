@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import LinearRegression
-import pydoc
+import pydoc  # noqa: F401
 
 
 class MultipleLinearRegression(Model):

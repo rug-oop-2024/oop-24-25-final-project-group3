@@ -7,6 +7,7 @@ import pandas as pd
 import pickle
 import io
 import os
+import numpy as np
 
 # Streamlit page configuration
 st.set_page_config(page_title="Deployment", page_icon="🚀")
@@ -30,7 +31,8 @@ if pipelines:
     selected_pipeline_name = st.selectbox("Select a pipeline", pipeline_names)
     selected_pipeline = next(p for p in pipelines if
                              p.name == selected_pipeline_name)
-    training_plot_path = f"./assets/plots/{selected_pipeline.name}_training_loss_plot.png"
+    training_plot_path = (f"./assets/plots/{selected_pipeline.name}_training_"
+                          "loss_plot.png")
 
     # Load pipeline data
     pipeline_data = pickle.loads(selected_pipeline.data)
@@ -111,6 +113,11 @@ if pipelines:
 
             # Generate predictions
             predictions = model.predict(input_features_data.values)
+
+            # Assuming `predictions` is a 2D array, get the column with the
+            # highest value (predicted class)
+            if predictions.ndim == 2 and predictions.shape[1] > 1:
+                predictions = np.argmax(predictions, axis=1)
             input_data["Predictions"] = predictions
 
             # Load the label mapping from the pipeline data
@@ -121,7 +128,8 @@ if pipelines:
                 reverse_mapping = {v: k for k, v in label_mapping.items()}
 
                 # Replace numeric predictions with original labels
-                input_data["Predictions"] = input_data["Predictions"].map(reverse_mapping)
+                input_data["Predictions"] = input_data["Predictions"].map(
+                    reverse_mapping)
 
             results_df = input_features_data.copy()
             results_df[pipeline_data["target_feature"] + "_predictions"
@@ -134,9 +142,6 @@ if pipelines:
 
             prediction_plot_path = generate_training_prediction_plot(
                 training_values, input_data["Predictions"])
-
-            st.image(f"./assets/plots/{selected_pipeline.name}_training_loss_plot.png"
-                     )
 
             # Provide download link for predictions as CSV
             csv = input_data.to_csv(index=False).encode('utf-8')

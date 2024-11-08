@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Dict, List, Optional
 import base64
-import pydoc
+import pydoc  # noqa: F401
 
 
 class Artifact(BaseModel):

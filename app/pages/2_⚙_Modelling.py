@@ -70,14 +70,20 @@ if datasets:
 
     # Feature selection and task type detection
     st.header("2. Select Features")
+
     features = detect_feature_types(dataset_df)
     feature_names = [feature.name for feature in features]
+    input_feature_names = [feature.name for feature in features if
+                           feature.type != "categorical"]
     selected_target_feature = st.selectbox("Select target feature",
                                            feature_names)
-    available_input_features = [name for name in feature_names if
+    available_input_features = [name for name in input_feature_names if
                                 name != selected_target_feature]
     selected_input_features = st.multiselect("Select input features",
                                              available_input_features)
+    if (len(selected_input_features) != 0 and
+       len(available_input_features) < len(feature_names) - 1):
+        st.warning("All colums with categorical features were deleted.")
 
     target_feature = next((f for f in features if
                            f.name == selected_target_feature), None)
@@ -87,6 +93,7 @@ if datasets:
 
     # Model and metric selection
     st.header("3. Select a Model")
+
     if task_type == "classification":
         ALT_CLASSIFICATION_MODELS = CLASSIFICATION_MODELS
         unique_values = dataset_df[selected_target_feature].unique()
@@ -257,17 +264,20 @@ if datasets:
 
         # Check if Save Pipeline is triggered and complete saving
     if st.session_state.save_button_flag and is_ready:
-        with st.spinner("Training model, please wait..."):
+        with st.spinner("Saving model, please wait..."):
 
             # Prepare pipeline data for serialization
             pipeline_data = {
-                "model": pickle.dumps(trained_model),  # Serialize trained model
+                # Serialize trained model
+                "model": pickle.dumps(trained_model),
                 "metrics": metrics_with_values,
                 "input_features": selected_input_features,
                 "target_feature": selected_target_feature,
                 "train_split": train_split / 100,
                 "dataset_name": selected_dataset_name,
-                "label_mapping": label_mapping if selected_model_name == "LogisticRegression" else None,
+                "label_mapping": (label_mapping if
+                                  selected_model_name == "LogisticRegression"
+                                  else None),
             }
 
             # Create artifact for pipeline
@@ -288,11 +298,12 @@ if datasets:
                     selected_input_features, train_X, train_Y)
 
             # Save the plot for the future report
-            plot_path = f"./assets/plots/{pipeline_name}_training_loss_plot.png"
+            plot_path = (f"./assets/plots/{pipeline_name}_training_loss_plot"
+                         ".png")
             plt.savefig(plot_path)
 
-            st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved "
-                       "successfully!")
+            st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version})"
+                       " saved successfully!")
             st.session_state.train_button_flag = False  # Reset after save
             st.session_state.save_button_flag = False
 else:

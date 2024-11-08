@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import os
 from typing import List
 from glob import glob
-import pydoc
+import pydoc  # noqa: F401
 
 
 class NotFoundError(Exception):

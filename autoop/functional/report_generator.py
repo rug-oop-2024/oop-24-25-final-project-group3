@@ -2,6 +2,7 @@ from fpdf import FPDF
 from typing import Any, Dict
 import os
 import io
+import pydoc  # noqa: F401
 
 
 def generate_pdf_report(selected_pipeline: Any, model: Any,

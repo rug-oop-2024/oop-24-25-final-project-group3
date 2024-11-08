@@ -3,7 +3,7 @@ from autoop.core.ml.artifact import Artifact
 import numpy as np
 from copy import deepcopy
 from typing import Literal, Optional
-import pydoc
+import pydoc  # noqa: F401
 
 
 class Model(ABC):
@@ -76,4 +76,4 @@ class Model(ABC):
         return (f"Model(type={self.type}, trained={self.trained} parameters={
                 self.parameters})")
 
-#pydoc.writedoc('model')
+# pydoc.writedoc('model')

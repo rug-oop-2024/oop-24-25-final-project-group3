@@ -4,7 +4,7 @@ import unittest
 from autoop.core.storage import LocalStorage, NotFoundError
 import random
 import tempfile
-import pydoc
+import pydoc  # noqa: F401
 
 
 class TestStorage(unittest.TestCase):

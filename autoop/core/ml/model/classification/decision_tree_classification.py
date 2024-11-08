@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.tree import DecisionTreeClassifier
-import pydoc
+import pydoc  # noqa: F401
 
 
 class DecisionTreeClassification(Model):

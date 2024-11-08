@@ -1,5 +1,4 @@
 # TODO:
-# - fix log predict/train
 # - documentation
 
 """

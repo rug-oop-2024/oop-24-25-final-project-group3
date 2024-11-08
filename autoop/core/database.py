@@ -1,6 +1,6 @@
 import json
 from typing import Tuple, List, Union
-import pydoc
+import pydoc  # noqa: F401
 
 from autoop.core.storage import Storage
 

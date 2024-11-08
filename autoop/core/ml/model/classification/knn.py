@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.neighbors import KNeighborsClassifier
-import pydoc
+import pydoc  # noqa: F401
 
 
 class KNearestNeighbors(Model):

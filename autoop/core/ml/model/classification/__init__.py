@@ -1,4 +1,4 @@
-import pydoc
+import pydoc  # noqa: F401
 from .logistic_regression import LogisticRegression
 from .knn import KNearestNeighbors
 from .decision_tree_classification import DecisionTreeClassification

@@ -5,8 +5,8 @@ from keras.optimizers import Adam
 from keras.utils import plot_model
 import numpy as np
 from typing import Dict, List, Tuple
-import io
-import pydoc
+import io  # noqa: F401
+import pydoc  # noqa: F401
 
 
 def visualise_pipeline(input_features: List[str], X_train: np.ndarray,

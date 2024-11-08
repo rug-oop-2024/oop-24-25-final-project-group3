@@ -1,7 +1,7 @@
 from autoop.core.ml.artifact import Artifact
 import pandas as pd
 import io
-import pydoc
+import pydoc  # noqa: F401
 
 
 class Dataset(Artifact):

@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 import pickle
-import pydoc
+import pydoc  # noqa: F401
 
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.dataset import Dataset

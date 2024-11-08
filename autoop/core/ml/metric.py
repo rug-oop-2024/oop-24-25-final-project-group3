@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np
 from typing import Union
-import pydoc
+import pydoc  # noqa: F401
 
 REGRESSION_METRICS = [
     "mean_squared_error",
