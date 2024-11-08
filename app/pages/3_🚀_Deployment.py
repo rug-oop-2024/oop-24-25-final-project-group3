@@ -5,8 +5,6 @@ from autoop.functional.pipeline_graphing import (
 from autoop.functional.report_generator import generate_pdf_report
 import pandas as pd
 import pickle
-import matplotlib.pyplot as plt
-from fpdf import FPDF
 import io
 import os
 
@@ -52,9 +50,7 @@ if pipelines:
     # Get training values from the original dataset
     training_values = original_data[target_feature].values
 
-    # selected_pipeline = next(pipeline for pipeline in pipelines if
-    #                          pipeline.name == selected_pipeline_name)
-
+    # Display pipeline info
     st.write(f"**Pipeline Name:** {selected_pipeline.name}")
     st.write(f"**Version:** {selected_pipeline.version}")
     st.write(f"**Tags:** {', '.join(selected_pipeline.tags)}")
@@ -89,7 +85,6 @@ if pipelines:
     st.write("**Metrics:**")
     for metric_name, metric_value in pipeline_data["metrics"].items():
         st.write(f"- {metric_name}: {metric_value}")
-    st.write("**Parameters:**")
     st.write("**Input Features:**", ", ".join(pipeline_data["input_features"]))
     st.write("**Target Feature:**", pipeline_data["target_feature"])
     st.write("**Training Split:**", f"{pipeline_data['train_split'] * 100}%")
@@ -118,9 +113,19 @@ if pipelines:
             predictions = model.predict(input_features_data.values)
             input_data["Predictions"] = predictions
 
+            # Load the label mapping from the pipeline data
+            label_mapping = pipeline_data.get("label_mapping")
+
+            if label_mapping:
+                # Reverse the mapping for prediction replacement
+                reverse_mapping = {v: k for k, v in label_mapping.items()}
+
+                # Replace numeric predictions with original labels
+                input_data["Predictions"] = input_data["Predictions"].map(reverse_mapping)
+
             results_df = input_features_data.copy()
             results_df[pipeline_data["target_feature"] + "_predictions"
-                       ] = predictions
+                       ] = input_data["Predictions"]
             st.write("### Prediction Results with Features")
             st.write(results_df)
 
@@ -128,7 +133,10 @@ if pipelines:
             pipeline_model_plot_path = create_pipeline_model(input_features)
 
             prediction_plot_path = generate_training_prediction_plot(
-                training_values, predictions)
+                training_values, input_data["Predictions"])
+
+            st.image(f"./assets/plots/{selected_pipeline.name}_training_loss_plot.png"
+                     )
 
             # Provide download link for predictions as CSV
             csv = input_data.to_csv(index=False).encode('utf-8')
@@ -149,8 +157,8 @@ if pipelines:
 
                 # Download PDF
                 st.download_button("Download PDF Report", data=pdf_output,
-                                file_name="model_report.pdf",
-                                mime="application/pdf")
+                                   file_name="model_report.pdf",
+                                   mime="application/pdf")
 
 else:
     st.write("No saved pipelines available.")

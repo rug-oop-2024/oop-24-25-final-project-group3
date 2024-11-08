@@ -28,7 +28,7 @@ y_classify = np.random.randint(0, 2, n_samples)
 
 # Add the target variable to the training dataset
 train_df = X.copy()
-train_df["target"] = y_classify
+train_df["target"] = y
 
 # Generate a separate dataset for predictions (without the target column)
 # Using a different number of samples to avoid leaking information from

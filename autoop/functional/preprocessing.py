@@ -8,9 +8,7 @@ import pandas as pd
 import pydoc
 
 
-def preprocess_features(
-    features: List[Feature],
-    dataset: Dataset) -> List[
+def preprocess_features(features: List[Feature], dataset: Dataset) -> List[
         Tuple[str, np.ndarray, dict]]:
     """Preprocess features.
     Args:
@@ -42,7 +40,7 @@ def preprocess_features(
     return results
 
 
-def check_multicollinearity(data, threshold=5.0) -> bool:
+def check_multicollinearity(data: pd.DataFrame, threshold=5.0) -> bool:
     """
     Checks for multicollinearity in the given DataFrame using Variance
     Inflation Factor (VIF).
@@ -71,4 +69,4 @@ def check_multicollinearity(data, threshold=5.0) -> bool:
                                                                ].tolist()
     return True if collinear_features else False
 
-#pydoc.writedoc('preprocessing')
+# pydoc.writedoc('preprocessing')

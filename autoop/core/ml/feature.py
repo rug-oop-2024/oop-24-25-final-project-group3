@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, field_validator
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 import numpy as np
 import pydoc
 
@@ -15,11 +15,11 @@ class Feature(BaseModel):
                                                      "feature.")
 
     @field_validator("values", mode="before")
-    def convert_to_array(cls, v):
+    def convert_to_array(cls, v: Any) -> np.ndarray:
         """Ensures values are stored as a NumPy array for consistency."""
         return np.array(v) if v is not None else np.array([])
 
-    def __str__(self):
+    def __str__(self) -> str:
         """String representation for Feature."""
         return f"{self.name} (Type: {self.type})"
 
@@ -29,4 +29,4 @@ class Feature(BaseModel):
         "arbitrary_types_allowed": True,
     }
 
-#pydoc.writedoc('feature')
+# pydoc.writedoc('feature')

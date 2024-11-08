@@ -3,12 +3,16 @@ from keras.models import Model
 from keras.layers import Input, Dense, concatenate
 from keras.optimizers import Adam
 from keras.utils import plot_model
+import numpy as np
+from typing import Dict, List, Tuple
 import io
 import pydoc
 
 
-def visualise_pipeline(input_features, X_train, y_train, epochs=50,
-                       batch_size=32):
+def visualise_pipeline(input_features: List[str], X_train: np.ndarray,
+                       y_train: np.ndarray, epochs: int = 50,
+                       batch_size: int = 32) -> Tuple[Model, Dict[
+                           str, List[float]]]:
     inputs = []
     input_dict = {}
 
@@ -26,7 +30,8 @@ def visualise_pipeline(input_features, X_train, y_train, epochs=50,
         concatenated = inputs[0]  # Single input case
 
     # Example processing layer
-    processed = Dense(4, activation='relu', name="processing_layer")(concatenated)
+    processed = Dense(4, activation='relu', name="processing_layer")(
+        concatenated)
     output = Dense(1, activation='linear', name="output_layer")(processed)
 
     model = Model(inputs=inputs, outputs=output, name="pipeline_model")
@@ -49,9 +54,8 @@ def visualise_pipeline(input_features, X_train, y_train, epochs=50,
     return model, history
 
 
-
-
-def create_pipeline_model(input_features, hidden_units=4):
+def create_pipeline_model(input_features: List[str], hidden_units: int = 4
+                          ) -> str:
     """
     Creates a Keras model to visualize the data flow through the pipeline.
 
@@ -76,7 +80,8 @@ def create_pipeline_model(input_features, hidden_units=4):
         concatenated = inputs[0]  # Single input case
 
     # Add a dense processing layer and output layer
-    processed = Dense(hidden_units, activation='relu', name="processing_layer")(concatenated)
+    processed = Dense(hidden_units, activation='relu', name="processing_layer"
+                      )(concatenated)
     output = Dense(1, activation='linear', name="output_layer")(processed)
 
     # Create the model
@@ -84,13 +89,15 @@ def create_pipeline_model(input_features, hidden_units=4):
 
     # Save the model plot to a file
     plot_path = "/tmp/pipeline_model_plot.png"
-    plot_model(model, to_file=plot_path, show_shapes=True, show_layer_names=True, dpi=150)
+    plot_model(model, to_file=plot_path, show_shapes=True,
+               show_layer_names=True, dpi=150)
 
     # Return the path of the generated plot image
     return plot_path
 
 
-def generate_training_prediction_plot(training_values, predictions):
+def generate_training_prediction_plot(training_values: np.ndarray,
+                                      predictions: np.ndarray) -> str:
     """
     Generate a plot comparing training values and predicted values.
 
@@ -121,4 +128,4 @@ def generate_training_prediction_plot(training_values, predictions):
     # Return the path of the generated plot image
     return plot_path
 
-#pydoc.writedoc('pipeline_graphing')
+# pydoc.writedoc('pipeline_graphing')

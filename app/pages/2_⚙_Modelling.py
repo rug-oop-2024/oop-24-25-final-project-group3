@@ -33,16 +33,16 @@ if 'save_button_flag' not in st.session_state:
 
 
 # Helper function for styling text
-def write_helper_text(text: str):
+def write_helper_text(text: str) -> str:
     st.write(f"<p style=\"color: #888;\">{text}</p>", unsafe_allow_html=True)
 
 
 # Wrapper for DataFrame to mimic Dataset with a read method
 class DatasetWrapper:
-    def __init__(self, data_frame):
+    def __init__(self, data_frame: pd.DataFrame) -> None:
         self._data_frame = data_frame
 
-    def read(self):
+    def read(self) -> pd.DataFrame:
         return self._data_frame
 
 
@@ -121,7 +121,6 @@ if datasets:
     model_choices = (REG_MODELS if task_type == "regression"
                      else ALT_CLASSIFICATION_MODELS)
     selected_model_name = st.selectbox("Choose a model", model_choices)
-    # te ify chyba powinny być tutaj?
     selected_model = get_model(selected_model_name)
 
     # Handling Logistic Regression binary label assignment
@@ -199,100 +198,102 @@ if datasets:
     if st.button("Train Model", disabled=not is_ready_to_train):
         st.session_state.train_button_flag = True
 
-    # Check if training is complete and show metrics/results
-    if st.session_state.train_button_flag and is_ready_to_train:
-        # Initialize the pipeline with the wrapped dataset
-        pipeline = Pipeline(
-            metrics=metric_objects,
-            dataset=dataset_wrapped,  # Use wrapped dataset
-            model=selected_model,
-            input_features=[f for f in features if f.name in
-                            selected_input_features],
-            target_feature=target_feature,
-            split=train_split / 100
-        )
+    with st.spinner("Training model, please wait..."):
+        # Check if training is complete and show metrics/results
+        if st.session_state.train_button_flag and is_ready_to_train:
+            # Initialize the pipeline with the wrapped dataset
+            pipeline = Pipeline(
+                metrics=metric_objects,
+                dataset=dataset_wrapped,  # Use wrapped dataset
+                model=selected_model,
+                input_features=[f for f in features if f.name in
+                                selected_input_features],
+                target_feature=target_feature,
+                split=train_split / 100
+            )
 
-        results = pipeline.execute()
-        trained_model = results["trained_model"]
-        # Assuming this retrieves true train labels
-        train_X = results.get("train_X")
-        train_Y = results.get("train_Y")
+            results = pipeline.execute()
+            trained_model = results["trained_model"]
+            # Assuming this retrieves true train labels
+            train_X = results.get("train_X")
+            train_Y = results.get("train_Y")
 
-        # Verify model is trained
-        if not getattr(trained_model, "trained", False):
-            st.warning("Model training failed.")
-        else:
-            st.success("Model training completed!")
+            # Verify model is trained
+            if not getattr(trained_model, "trained", False):
+                st.warning("Model training failed.")
+            else:
+                st.success("Model training completed!")
 
-        if train_X is not None and train_Y is not None:
-            keras_model, history = visualise_pipeline(selected_input_features,
-                                                      train_X, train_Y)
-            # Display the training loss plot in Streamlit
-            st.pyplot(plt)
+            # Display Evaluation Metrics
+            evaluation_metrics = results.get("metrics", [])
+            if evaluation_metrics:
+                st.write("### Evaluation Metrics")
+                for metric_name, metric_value in evaluation_metrics:
+                    st.write(f"{metric_name}: {metric_value}")
+            else:
+                st.write("No evaluation metrics available.")
 
-        # Display Evaluation Metrics
-        evaluation_metrics = results.get("metrics", [])
-        if evaluation_metrics:
-            st.write("### Evaluation Metrics")
-            for metric_name, metric_value in evaluation_metrics:
-                st.write(f"{metric_name}: {metric_value}")
-        else:
-            st.write("No evaluation metrics available.")
+            metrics_with_values = {metric_name: metric_value for metric_name,
+                                   metric_value in evaluation_metrics}
 
-        metrics_with_values = {metric_name: metric_value for metric_name,
-                               metric_value in evaluation_metrics}
+            # Pipeline saving section
+            st.header("7. Save Pipeline")
+            pipeline_name = st.text_input("Enter a name for the pipeline",
+                                          value="Pipeline")
+            pipeline_version = st.text_input("Enter pipeline version",
+                                             value="1.0.0")
 
-        # Pipeline saving section
-        st.header("7. Save Pipeline")
-        pipeline_name = st.text_input("Enter a name for the pipeline",
-                                      value="Pipeline")
-        pipeline_version = st.text_input("Enter pipeline version",
-                                         value="1.0.0")
+            # Check if the pipeline configuration is complete
+            is_ready = all([
+                selected_input_features,
+                selected_target_feature,
+                selected_metrics,
+                pipeline_name
+            ])
 
-        # Check if the pipeline configuration is complete
-        is_ready = all([
-            selected_input_features,
-            selected_target_feature,
-            selected_metrics,
-            pipeline_name
-        ])
+            # Save Pipeline button
+            if st.button("Save Pipeline", disabled=not is_ready):
+                st.session_state.save_button_flag = True
 
-        # Save Pipeline button
-        if st.button("Save Pipeline", disabled=not is_ready):
-            st.session_state.save_button_flag = True
-
-    # Check if Save Pipeline is triggered and complete saving
+        # Check if Save Pipeline is triggered and complete saving
     if st.session_state.save_button_flag and is_ready:
-        # Prepare pipeline data for serialization
-        pipeline_data = {
-            "model": pickle.dumps(trained_model),  # Serialize trained model
-            "metrics": metrics_with_values,
-            "input_features": selected_input_features,
-            "target_feature": selected_target_feature,
-            "train_split": train_split / 100,
-            "dataset_name": selected_dataset_name,
-        }
+        with st.spinner("Training model, please wait..."):
 
-        # Create artifact for pipeline
-        pipeline_artifact = Artifact(
-            name=pipeline_name,
-            asset_path=f"pipelines/{pipeline_name}.pkl",
-            data=pickle.dumps(pipeline_data),
-            version=pipeline_version,
-            type="pipeline",
-            tags=["pipeline", task_type],
-        )
+            # Prepare pipeline data for serialization
+            pipeline_data = {
+                "model": pickle.dumps(trained_model),  # Serialize trained model
+                "metrics": metrics_with_values,
+                "input_features": selected_input_features,
+                "target_feature": selected_target_feature,
+                "train_split": train_split / 100,
+                "dataset_name": selected_dataset_name,
+                "label_mapping": label_mapping if selected_model_name == "LogisticRegression" else None,
+            }
 
-        # Register the pipeline in the artifact registry
-        automl.registry.register(pipeline_artifact)
+            # Create artifact for pipeline
+            pipeline_artifact = Artifact(
+                name=pipeline_name,
+                asset_path=f"pipelines/{pipeline_name}.pkl",
+                data=pickle.dumps(pipeline_data),
+                version=pipeline_version,
+                type="pipeline",
+                tags=["pipeline", task_type],
+            )
 
-        # Save the plot for the future report
-        plot_path = f"./assets/plots/{pipeline_name}_training_loss_plot.png"
-        plt.savefig(plot_path)
+            # Register the pipeline in the artifact registry
+            automl.registry.register(pipeline_artifact)
 
-        st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved "
-                   "successfully!")
-        st.session_state.train_button_flag = False  # Reset after save
-        st.session_state.save_button_flag = False
+            if train_X is not None and train_Y is not None:
+                keras_model, history = visualise_pipeline(
+                    selected_input_features, train_X, train_Y)
+
+            # Save the plot for the future report
+            plot_path = f"./assets/plots/{pipeline_name}_training_loss_plot.png"
+            plt.savefig(plot_path)
+
+            st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved "
+                       "successfully!")
+            st.session_state.train_button_flag = False  # Reset after save
+            st.session_state.save_button_flag = False
 else:
     st.write("No datasets available.")

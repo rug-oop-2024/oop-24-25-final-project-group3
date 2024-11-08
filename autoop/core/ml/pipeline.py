@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, Dict, List
 import pickle
 import pydoc
 
@@ -13,14 +13,9 @@ import numpy as np
 
 class Pipeline():
 
-    def __init__(self,
-                 metrics: List[Metric],
-                 dataset: Dataset,
-                 model: Model,
-                 input_features: List[Feature],
-                 target_feature: Feature,
-                 split=0.8,
-                 ):
+    def __init__(self, metrics: List[Metric], dataset: Dataset, model: Model,
+                 input_features: List[Feature], target_feature: Feature,
+                 split=0.8) -> None:
         self._dataset = dataset
         self._model = model
         self._input_features = input_features
@@ -36,7 +31,7 @@ class Pipeline():
             raise ValueError("Model type must be regression for continuous "
                              "target feature")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"""
 Pipeline(
     model={self._model.type},
@@ -75,10 +70,10 @@ Pipeline(
                          name=f"pipeline_model_{self._model.type}"))
         return artifacts
 
-    def _register_artifact(self, name: str, artifact):
+    def _register_artifact(self, name: str, artifact) -> None:
         self._artifacts[name] = artifact
 
-    def _preprocess_features(self):
+    def _preprocess_features(self) -> None:
         (target_feature_name, target_data, artifact) = preprocess_features(
                                                         [self._target_feature],
                                                         self._dataset)[0]
@@ -91,7 +86,7 @@ Pipeline(
         self._input_vectors = [data for (feature_name, data, artifact)
                                in input_results]
 
-    def _split_data(self):
+    def _split_data(self) -> None:
         split = self._split
         self._train_X = [vector[:int(split * len(vector))] for vector in
                          self._input_vectors]
@@ -105,12 +100,12 @@ Pipeline(
     def _compact_vectors(self, vectors: List[np.array]) -> np.array:
         return np.concatenate(vectors, axis=1)
 
-    def _train(self):
+    def _train(self) -> None:
         X = self._compact_vectors(self._train_X)
         Y = self._train_y
         self._model.fit(X, Y)
 
-    def _evaluate(self):
+    def _evaluate(self) -> None:
         X = self._compact_vectors(self._test_X)
         Y = self._test_y
         self._metrics_results = []
@@ -120,7 +115,7 @@ Pipeline(
             self._metrics_results.append((metric, result))
         self._predictions = predictions
 
-    def execute(self):
+    def execute(self) -> Dict[str, Any]:
         self._preprocess_features()
         self._split_data()
         self._train()
@@ -155,4 +150,4 @@ Pipeline(
             "train_Y": train_Y,
         }
 
-#pydoc.writedoc('pipeline')
+# pydoc.writedoc('pipeline')

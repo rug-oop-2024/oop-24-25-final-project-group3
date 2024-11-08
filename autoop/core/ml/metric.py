@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import numpy as np
+from typing import Union
 import pydoc
 
 REGRESSION_METRICS = [
@@ -21,7 +22,10 @@ LOG_CLASSIFICATION_METRICS = [
 ]
 
 
-def get_metric(name: str):
+def get_metric(name: str) -> Union['MeanSquaredError', 'Accuracy', 'Precision',
+                                   'Recall', 'LogisticAccuracy',
+                                   'LogisticPrecision', 'LogisticRecall',
+                                   'MeanAbsoluteError', 'RSquared']:
     """Factory function to get a metric by name."""
     if name == "mean_squared_error":
         return MeanSquaredError()
@@ -69,7 +73,7 @@ class MeanSquaredError(Metric):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return float(np.mean((y_true - y_pred) ** 2))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "MeanSquaredError"
 
 
@@ -79,7 +83,7 @@ class MeanAbsoluteError(Metric):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return float(np.mean(np.abs(y_true - y_pred)))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "MeanAbsoluteError"
 
 
@@ -91,7 +95,7 @@ class RSquared(Metric):
         ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
         return 1 - ss_res / ss_tot if ss_tot != 0 else float('nan')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "RSquared"
 
 
@@ -104,7 +108,7 @@ class LogisticAccuracy(Metric):
             y_pred = np.argmax(y_pred, axis=1)
         return float(np.mean(y_true == y_pred))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "LogisticAccuracy"
 
 
@@ -120,7 +124,7 @@ class LogisticPrecision(Metric):
         return (true_positives / predicted_positives
                 if predicted_positives != 0 else 0.0)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "LogisticPrecision"
 
 
@@ -136,7 +140,7 @@ class LogisticRecall(Metric):
         return (true_positives / actual_positives
                 if actual_positives != 0 else 0.0)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "LogisticRecall"
 
 
@@ -160,7 +164,7 @@ class Precision(Metric):
         return (true_positives / predicted_positives if
                 predicted_positives != 0 else 0.0)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Precision"
 
 
@@ -173,7 +177,7 @@ class Recall(Metric):
         return (true_positives / actual_positives
                 if actual_positives != 0 else 0.0)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Recall"
 
-#pydoc.writedoc('metric')
+# pydoc.writedoc('metric')

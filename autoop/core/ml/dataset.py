@@ -5,7 +5,7 @@ import pydoc
 
 
 class Dataset(Artifact):
-    def __init__(self, *args, metadata=None, tags=None, **kwargs):
+    def __init__(self, *args, metadata=None, tags=None, **kwargs) -> None:
         # Set default values for missing fields
         metadata = metadata or {}
         tags = tags or []
@@ -14,7 +14,7 @@ class Dataset(Artifact):
 
     @staticmethod
     def from_dataframe(data: pd.DataFrame, name: str, asset_path: str,
-                       version: str = "1.0.0"):
+                       version: str = "1.0.0") -> 'Dataset':
         return Dataset(
             name=name,
             asset_path=asset_path,
@@ -35,4 +35,4 @@ class Dataset(Artifact):
         bytes = data.to_csv(index=False).encode()
         return super().save(bytes)
 
-#pydoc.writedoc('dataset')
+# pydoc.writedoc('dataset')

@@ -17,7 +17,7 @@ class Artifact(BaseModel):
                             "associated with the artifact")
     id: Optional[str] = None  # This is set based on `asset_path` and `version`
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         if self.id is None:  # Generate an id if not provided
             self.id = self.generate_id()
@@ -37,7 +37,7 @@ class Artifact(BaseModel):
             raise ValueError("Data not available for this artifact")
         return self.data
 
-    def save(self, data: bytes):
+    def save(self, data: bytes) -> None:
         """
         Simulates saving data for the artifact. In practice, this would
         save to storage.
@@ -48,4 +48,4 @@ class Artifact(BaseModel):
         arbitrary_types_allowed = True
         populate_by_name = True
 
-#pydoc.writedoc('artifact')
+# pydoc.writedoc('artifact')
