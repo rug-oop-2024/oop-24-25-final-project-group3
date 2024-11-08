@@ -5,6 +5,21 @@ import pydoc  # noqa: F401
 
 
 class KNearestNeighbors(Model):
+    """
+    A K-Nearest Neighbors (KNN) classifier model that uses the specified
+    number of nearest neighbors to classify samples based on their proximity
+    to labeled data.
+
+    Attributes:
+    - n_neighbors (int): The number of neighbors to use for classification.
+    - model (KNeighborsClassifier): The underlying scikit-learn KNN classifier.
+    - trained (bool): Boolean flag indicating if the model has been trained.
+
+    Methods:
+    - fit(X, y): Trains the KNN model on the provided dataset.
+    - predict(X): Makes predictions on new data, given that the model is
+      already trained.
+    """
     def __init__(self, n_neighbors: int = 3) -> None:
         """
         Initialize the K-Nearest Neighbors model with the specified number

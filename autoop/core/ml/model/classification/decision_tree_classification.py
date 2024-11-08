@@ -5,6 +5,21 @@ import pydoc  # noqa: F401
 
 
 class DecisionTreeClassification(Model):
+    """
+    A Decision Tree classifier model that recursively splits the dataset
+    based on features to maximize the purity of each resulting node, creating
+    a hierarchical structure for classification tasks.
+
+    Attributes:
+    - model (DecisionTreeClassifier): The underlying scikit-learn Decision
+      Tree classifier.
+    - trained (bool): Boolean flag indicating if the model has been trained.
+
+    Methods:
+    - fit(X, y): Trains the Decision Tree model on the provided dataset.
+    - predict(X): Makes predictions on new data, given that the model is
+      already trained.
+    """
     def __init__(self, max_depth: int = None) -> None:
         """
         Initialize the Decision Tree Classification model with a specified

@@ -151,7 +151,7 @@ class Accuracy(Metric):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return float(np.mean(y_true == y_pred))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "LogisticAccuracy"
 
 

@@ -6,7 +6,8 @@ from sklearn.linear_model import LogisticRegression as SkLogisticRegression
 
 
 class LogisticRegression(Model):
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
+        """Initialising the LogisticRegression class"""
         super().__init__(model_type="classification")
         self.model = SkLogisticRegression(**kwargs)
 

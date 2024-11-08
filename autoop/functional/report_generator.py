@@ -1,12 +1,13 @@
 from fpdf import FPDF
-from typing import Any, Dict
+from typing import Dict, Object
 import os
 import io
 import pydoc  # noqa: F401
 
 
-def generate_pdf_report(selected_pipeline: Any, model: Any,
-                        pipeline_data: Dict[str, Any], training_plot_path: str,
+def generate_pdf_report(selected_pipeline: Object, model: Object,
+                        pipeline_data: Dict[str, str],
+                        training_plot_path: str,
                         pipeline_model_plot_path: str,
                         prediction_plot_path: str, dataset_name: str
                         ) -> io.BytesIO:
