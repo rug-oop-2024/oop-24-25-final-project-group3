@@ -6,7 +6,7 @@ import pydoc
 
 
 class NotFoundError(Exception):
-    def __init__(self, path):
+    def __init__(self, path: str):
         super().__init__(f"Path not found: {path}")
 
 
@@ -92,4 +92,4 @@ class LocalStorage(Storage):
     def _join_path(self, path: str) -> str:
         return os.path.join(self._base_path, path)
 
-#pydoc.writedoc('storage')
+# pydoc.writedoc('storage')

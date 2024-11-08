@@ -2,6 +2,7 @@ import streamlit as st
 from app.core.system import AutoMLSystem
 from autoop.functional.pipeline_graphing import (
     create_pipeline_model, generate_training_prediction_plot)
+from autoop.functional.report_generator import generate_pdf_report
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
@@ -134,73 +135,22 @@ if pipelines:
             st.download_button("Download Predictions as CSV", data=csv,
                                file_name="predictions.csv", mime="text/csv")
 
-            # Generate PDF report
-            pdf = FPDF()
-            pdf.add_page()
+            with st.spinner("Generating report, please wait..."):
+                # Call the function to generate the PDF report
+                pdf_output = generate_pdf_report(
+                    selected_pipeline=selected_pipeline,
+                    model=model,
+                    pipeline_data=pipeline_data,
+                    training_plot_path=training_plot_path,
+                    pipeline_model_plot_path=pipeline_model_plot_path,
+                    prediction_plot_path=prediction_plot_path,
+                    dataset_name=dataset_name
+                )
 
-            pdf.add_font("ComicSans", "", "./assets/fonts/ComicSans.ttf",
-                         uni=True)
-
-            pdf.set_font("ComicSans", "", 16)
-            pdf.cell(200, 10, txt="Model Prediction Report", ln=True,
-                     align="C")
-
-            # Add pipeline details
-            pdf.set_font("ComicSans", size=11)
-            pdf.cell(200, 10, txt=f"Pipeline: {selected_pipeline.name}",
-                     ln=True)
-            pdf.cell(200, 10, txt=f"Version: {selected_pipeline.version}",
-                     ln=True)
-            pdf.cell(200, 10, txt=f"Tags: {selected_pipeline.tags}",
-                     ln=True)
-            pdf.cell(200, 10, txt=f"Model type: {type(model).__name__}",
-                     ln=True)
-            pdf.cell(200, 10, txt=f"Original dataset: {dataset_name}",
-                     ln=True)
-
-            # Add metrics if available
-            pdf.cell(200, 10, txt="Metrics:", ln=True)
-            for metric_name, metric_value in pipeline_data["metrics"].items():
-                pdf.cell(200, 10, txt=f"- {metric_name}: {metric_value}",
-                         ln=True)
-
-            pdf.cell(200, 10, txt=f"Input Features: {', '.join(pipeline_data[
-                'input_features'])}", ln=True)
-            pdf.cell(200, 10, txt=f"Target Feature: {pipeline_data[
-                'target_feature']}", ln=True)
-            pdf.cell(200, 10, txt=f"Training Split: {pipeline_data[
-                'train_split'] * 100}%", ln=True)
-
-            # Embed training plot in PDF
-            pdf.cell(200, 10, txt="Training Plot:", ln=True)
-            pdf.image(training_plot_path, x=10, y=pdf.get_y(), w=180)
-
-            pdf.add_page()
-
-            # Embed training plot in PDF
-            pdf.cell(200, 10, txt="Pipeline Flow:", ln=True)
-            pdf.image(pipeline_model_plot_path, x=10, y=pdf.get_y(), w=180)
-
-            pdf.add_page()
-
-            # Embed pipeline flow plot in PDF
-            pdf.cell(200, 10, txt="Prediction Plot:", ln=True)
-            pdf.image(prediction_plot_path, x=10, y=pdf.get_y(), w=180)
-
-            # Output PDF to BytesIO
-            pdf_output = io.BytesIO()
-            pdf_content = pdf.output(dest="S").encode("latin1")
-            pdf_output.write(pdf_content)
-            pdf_output.seek(0)
-
-            # Clean up temp image file
-            os.remove(pipeline_model_plot_path)
-            os.remove(prediction_plot_path)
-
-            # Download PDF
-            st.download_button("Download PDF Report", data=pdf_output,
-                               file_name="model_report.pdf",
-                               mime="application/pdf")
+                # Download PDF
+                st.download_button("Download PDF Report", data=pdf_output,
+                                file_name="model_report.pdf",
+                                mime="application/pdf")
 
 else:
     st.write("No saved pipelines available.")
