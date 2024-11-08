@@ -1,3 +1,13 @@
+"""
+This package offers machine learning models.
+
+Modules:
+- REGRESSION_MODELS: Implements regression models.
+- CLASSIFICATION_MODELS: Implements classification models .
+
+These modules can be imported for building, training and using.
+"""
+
 from autoop.core.ml.model.model import Model
 from autoop.core.ml.model.regression import (MultipleLinearRegression,
                                              RidgeRegression,
@@ -5,7 +15,7 @@ from autoop.core.ml.model.regression import (MultipleLinearRegression,
 from autoop.core.ml.model.classification import (LogisticRegression,
                                                  KNearestNeighbors,
                                                  DecisionTreeClassification)
-import pydoc
+import pydoc  # noqa: F401
 
 REGRESSION_MODELS = ["MultipleLinearRegression", "RidgeRegression",
                      "DecisionTreeRegression"]
@@ -38,8 +48,10 @@ def get_model(model_name: str) -> Model:
 
     # Check if the model_name exists in the mapping
     if model_name not in model_mapping:
-        raise ValueError(f"Model '{model_name}' is not implemented. Available "
-                         f"models are {', '.join(REGRESSION_MODELS + CLASSIFICATION_MODELS)}")
+        raise ValueError(
+            f"Model '{model_name}' not implemented. Available models: "
+            f"{', '.join(REGRESSION_MODELS + CLASSIFICATION_MODELS)}"
+        )
 
     # Return an instance of the requested model
     return model_mapping[model_name]()

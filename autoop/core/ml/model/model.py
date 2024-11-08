@@ -10,7 +10,13 @@ class Model(ABC):
     """Base class for all machine learning models."""
 
     def __init__(self, model_type: Literal["regression", "classification"],
-                 parameters: Optional[dict] = None):
+                 parameters: Optional[dict] = None) -> None:
+        """_summary_
+            Initializing Model
+        Args:
+            model_type (Literal["regression", "classification"])
+            parameters (Optional[dict], optional) Defaults to None.
+        """
         self.type = model_type
         self.parameters = parameters if parameters is not None else {}
         self.trained = False  # Flag to indicate if the model has been trained
@@ -73,6 +79,9 @@ class Model(ABC):
                              "artifact.")
 
     def __str__(self) -> str:
+        """
+        String representation of Model.
+        """
         return (f"Model(type={self.type}, trained={self.trained},"
                 f"parameters={self.parameters})")
 

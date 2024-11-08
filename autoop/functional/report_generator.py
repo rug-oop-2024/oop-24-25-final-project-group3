@@ -50,8 +50,8 @@ def generate_pdf_report(selected_pipeline: Any, model: Any,
              f"{', '.join(pipeline_data['input_features'])}", ln=True)
     pdf.cell(200, 10, txt=f"Target Feature: {pipeline_data['target_feature']}",
              ln=True)
-    pdf.cell(200, 10, txt=f"Training Split: {pipeline_data['train_split'] *
-                                             100}%", ln=True)
+    pdf.cell(200, 10, txt="Training Split: "
+             f"{pipeline_data['train_split'] * 100}%", ln=True)
 
     # Embed training plot in PDF
     pdf.cell(200, 10, txt="Training Plot:", ln=True)

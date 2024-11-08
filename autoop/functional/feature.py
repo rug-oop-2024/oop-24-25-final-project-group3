@@ -38,8 +38,8 @@ def detect_feature_types(data: Union[Dataset, pd.DataFrame],
                 feature_type = "categorical"
             else:
                 feature_type = "numerical"
-        elif (isinstance(df[column].dtype, CategoricalDtype) or
-              pd.api.types.is_object_dtype(df[column])):
+        elif (isinstance(df[column].dtype, CategoricalDtype
+                         ) or pd.api.types.is_object_dtype(df[column])):
             feature_type = "categorical"
         else:
             raise ValueError(f"Unknown data type for column {column}")

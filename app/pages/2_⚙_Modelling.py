@@ -34,15 +34,29 @@ if 'save_button_flag' not in st.session_state:
 
 # Helper function for styling text
 def write_helper_text(text: str) -> str:
+    """writing helper text"""
     st.write(f"<p style=\"color: #888;\">{text}</p>", unsafe_allow_html=True)
 
 
 # Wrapper for DataFrame to mimic Dataset with a read method
 class DatasetWrapper:
+    """
+    DatasetWrapper class for wrapping a DataFrame and providing a read method.
+
+    Attributes:
+        _data_frame (pd.DataFrame): The DataFrame to be wrapped.
+
+    Methods:
+        read() -> pd.DataFrame:
+            Returns the stored DataFrame.
+    """
+
     def __init__(self, data_frame: pd.DataFrame) -> None:
+        """Initializing the DatasetWrapper class"""
         self._data_frame = data_frame
 
     def read(self) -> pd.DataFrame:
+        """String representation"""
         return self._data_frame
 
 
@@ -81,14 +95,15 @@ if datasets:
                                 name != selected_target_feature]
     selected_input_features = st.multiselect("Select input features",
                                              available_input_features)
-    if (len(selected_input_features) != 0 and
-       len(available_input_features) < len(feature_names) - 1):
+    if (len(selected_input_features) != 0 and len(
+       available_input_features) < len(feature_names) - 1):
         st.warning("All colums with categorical features were deleted.")
 
     target_feature = next((f for f in features if
                            f.name == selected_target_feature), None)
-    task_type = ("classification" if target_feature and
-                 target_feature.type == "categorical" else "regression")
+    task_type = ("classification" if
+                 target_feature and target_feature.type == "categorical" else
+                 "regression")
     st.write(f"**Detected Task Type:** {task_type}")
 
     # Model and metric selection
@@ -101,8 +116,8 @@ if datasets:
         if len(unique_values) != 2:
             # Remove logistic regression from the classification models
             ALT_CLASSIFICATION_MODELS = [model for model in
-                                         CLASSIFICATION_MODELS if model !=
-                                         "LogisticRegression"]
+                                         CLASSIFICATION_MODELS if
+                                         model != "LogisticRegression"]
             st.info("Logistic Regression requires a binary target feature. "
                     "It has been removed from the model options.")
     else:
@@ -116,13 +131,13 @@ if datasets:
             if check_multicollinearity(subsection_df):
                 # Use Ridge regression instead of multiple linear regression
                 # in case of multicollinearity
-                REG_MODELS = [model for model in REG_MODELS if model !=
-                              "MultipleLinearRegression"]
+                REG_MODELS = [model for model in REG_MODELS if
+                              model != "MultipleLinearRegression"]
                 st.info("Multicollinearity detected. Ridge regression is "
                         "recommended over multiple linear regression.")
             else:
-                REG_MODELS = [model for model in REG_MODELS if model !=
-                              "RidgeRegression"]
+                REG_MODELS = [model for model in REG_MODELS if
+                              model != "RidgeRegression"]
                 st.info("No multicollinearity detected. Multiple linear "
                         "regression is recommended over ridge regression.")
     model_choices = (REG_MODELS if task_type == "regression"
@@ -147,9 +162,8 @@ if datasets:
             selected_value = st.radio("Choose the value to assign as 1:",
                                       unique_values)
             # Create the mapping
-            label_mapping = {selected_value: 1, unique_values[unique_values !=
-                                                              selected_value]
-                                                             [0]: 0}
+            label_mapping = {selected_value: 1, unique_values[
+                unique_values != selected_value][0]: 0}
             st.info(f"**Assigned labels:** \n {selected_value}: 1 \n "
                     f"{unique_values[unique_values != selected_value][0]}: 0")
 
