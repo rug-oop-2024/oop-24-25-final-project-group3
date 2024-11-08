@@ -1,16 +1,18 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import Ridge
-import pydoc
+import pydoc  # noqa: F401
 
 
 class RidgeRegression(Model):
     def __init__(self, alpha: float = 1.0) -> None:
         """
-        Initialize the Ridge Regression model with a specified alpha (regularization strength).
+        Initialize the Ridge Regression model with a specified alpha
+        (regularization strength).
 
         Parameters:
-        - alpha (float): Regularization strength. Must be a positive float. Default is 1.0.
+        - alpha (float): Regularization strength. Must be a positive float.
+          Default is 1.0.
         """
         super().__init__(model_type="regression")
         self.model = Ridge(alpha=alpha)

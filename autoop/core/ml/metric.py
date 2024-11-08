@@ -26,7 +26,20 @@ def get_metric(name: str) -> Union['MeanSquaredError', 'Accuracy', 'Precision',
                                    'Recall', 'LogisticAccuracy',
                                    'LogisticPrecision', 'LogisticRecall',
                                    'MeanAbsoluteError', 'RSquared']:
-    """Factory function to get a metric by name."""
+    """
+    Factory function to get a metric instance by its name.
+
+    Args:
+        name (str): The name of the metric to retrieve.
+
+    Returns:
+        Union[MeanSquaredError, Accuracy, Precision, Recall, LogisticAccuracy,
+        LogisticPrecision, LogisticRecall, MeanAbsoluteError, RSquared]:
+        The metric instance.
+
+    Raises:
+        ValueError: If the metric name is not implemented.
+    """
     if name == "mean_squared_error":
         return MeanSquaredError()
     elif name == "accuracy":
@@ -71,9 +84,11 @@ class MeanSquaredError(Metric):
     """Mean Squared Error metric for regression."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate mean squared error."""
         return float(np.mean((y_true - y_pred) ** 2))
 
     def __str__(self) -> str:
+        """String representation"""
         return "MeanSquaredError"
 
 
@@ -81,9 +96,11 @@ class MeanAbsoluteError(Metric):
     """Mean Absolute Error metric for regression."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate mean absolute error."""
         return float(np.mean(np.abs(y_true - y_pred)))
 
     def __str__(self) -> str:
+        """String representation"""
         return "MeanAbsoluteError"
 
 
@@ -91,11 +108,13 @@ class RSquared(Metric):
     """R-squared (R²) metric for regression, measuring goodness of fit."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate R-squared."""
         ss_res = np.sum((y_true - y_pred) ** 2)
         ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
         return 1 - ss_res / ss_tot if ss_tot != 0 else float('nan')
 
     def __str__(self) -> str:
+        """String representation"""
         return "RSquared"
 
 
@@ -103,12 +122,14 @@ class LogisticAccuracy(Metric):
     """Accuracy metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate accuracy for classification."""
         # Convert one-hot predictions to class labels if necessary
         if y_pred.ndim > 1:
             y_pred = np.argmax(y_pred, axis=1)
         return float(np.mean(y_true == y_pred))
 
     def __str__(self) -> str:
+        """String representation"""
         return "LogisticAccuracy"
 
 
@@ -116,6 +137,7 @@ class LogisticPrecision(Metric):
     """Precision metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate precision for classification."""
         # Convert one-hot predictions to class labels if necessary
         if y_pred.ndim > 1:
             y_pred = np.argmax(y_pred, axis=1)
@@ -125,6 +147,7 @@ class LogisticPrecision(Metric):
                 if predicted_positives != 0 else 0.0)
 
     def __str__(self) -> str:
+        """String representation"""
         return "LogisticPrecision"
 
 
@@ -132,6 +155,7 @@ class LogisticRecall(Metric):
     """Recall metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Recall metric for logistic classification."""
         # Convert one-hot predictions to class labels if necessary
         if y_pred.ndim > 1:
             y_pred = np.argmax(y_pred, axis=1)
@@ -141,17 +165,19 @@ class LogisticRecall(Metric):
                 if actual_positives != 0 else 0.0)
 
     def __str__(self) -> str:
+        """String representation"""
         return "LogisticRecall"
 
 
-# OLD Classification Metrics
 class Accuracy(Metric):
     """Accuracy metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate accuracy."""
         return float(np.mean(y_true == y_pred))
 
     def __str__(self) -> str:
+        """String representation"""
         return "LogisticAccuracy"
 
 
@@ -159,12 +185,14 @@ class Precision(Metric):
     """Precision metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate precision."""
         true_positives = np.sum((y_pred == 1) & (y_true == 1))
         predicted_positives = np.sum(y_pred == 1)
         return (true_positives / predicted_positives if
                 predicted_positives != 0 else 0.0)
 
     def __str__(self) -> str:
+        """String representation"""
         return "Precision"
 
 
@@ -172,12 +200,14 @@ class Recall(Metric):
     """Recall metric for classification."""
 
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
+        """Calculate recall."""
         true_positives = np.sum((y_pred == 1) & (y_true == 1))
         actual_positives = np.sum(y_true == 1)
         return (true_positives / actual_positives
                 if actual_positives != 0 else 0.0)
 
     def __str__(self) -> str:
+        """String representation"""
         return "Recall"
 
 # pydoc.writedoc('metric')
