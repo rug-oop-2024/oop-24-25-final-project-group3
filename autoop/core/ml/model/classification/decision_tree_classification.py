@@ -1,6 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.tree import DecisionTreeClassifier
+import pydoc
 
 
 class DecisionTreeClassification(Model):
@@ -17,3 +18,5 @@ class DecisionTreeClassification(Model):
             raise ValueError("Model must be trained before making "
                              "predictions.")
         return self.model.predict(X)
+
+#  pydoc.write('decision_tree_classification')

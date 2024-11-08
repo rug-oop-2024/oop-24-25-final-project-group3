@@ -1,5 +1,6 @@
 import numpy as np
 from autoop.core.ml.model import Model
+import pydoc
 
 
 class LogisticRegression(Model):
@@ -48,3 +49,5 @@ class LogisticRegression(Model):
     def _sigmoid(self, x):
         """Apply sigmoid function."""
         return 1 / (1 + np.exp(-x))
+
+#  pydoc.write('logistic_regression')

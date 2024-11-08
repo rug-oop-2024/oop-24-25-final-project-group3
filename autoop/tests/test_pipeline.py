@@ -8,6 +8,7 @@ from autoop.core.ml.feature import Feature
 from autoop.functional.feature import detect_feature_types
 from autoop.core.ml.model.regression import MultipleLinearRegression
 from autoop.core.ml.metric import MeanSquaredError
+import pydoc
 
 
 class TestPipeline(unittest.TestCase):
@@ -64,3 +65,5 @@ class TestPipeline(unittest.TestCase):
         self.assertIsNotNone(self.pipeline._predictions)
         self.assertIsNotNone(self.pipeline._metrics_results)
         self.assertEqual(len(self.pipeline._metrics_results), 1)
+
+#pydoc.writedoc('test_pipeline')

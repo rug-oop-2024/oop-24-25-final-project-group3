@@ -1,5 +1,7 @@
 import streamlit as st
 from app.core.system import AutoMLSystem
+from autoop.functional.pipeline_graphing import (
+    create_pipeline_model, generate_training_prediction_plot)
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
@@ -29,6 +31,7 @@ if pipelines:
     selected_pipeline_name = st.selectbox("Select a pipeline", pipeline_names)
     selected_pipeline = next(p for p in pipelines if
                              p.name == selected_pipeline_name)
+    training_plot_path = f"./assets/plots/{selected_pipeline.name}_training_loss_plot.png"
 
     # Load pipeline data
     pipeline_data = pickle.loads(selected_pipeline.data)
@@ -37,6 +40,7 @@ if pipelines:
     # Retrieve the dataset used during training
     dataset_name = pipeline_data["dataset_name"]
     target_feature = pipeline_data["target_feature"]
+    input_features = pipeline_data["input_features"]
 
     # Load the original dataset
     selected_dataset = next(d for d in automl.registry.list(type="dataset")
@@ -47,9 +51,8 @@ if pipelines:
     # Get training values from the original dataset
     training_values = original_data[target_feature].values
 
-    # Find and display selected pipeline details
-    selected_pipeline = next(pipeline for pipeline in pipelines if
-                             pipeline.name == selected_pipeline_name)
+    # selected_pipeline = next(pipeline for pipeline in pipelines if
+    #                          pipeline.name == selected_pipeline_name)
 
     st.write(f"**Pipeline Name:** {selected_pipeline.name}")
     st.write(f"**Version:** {selected_pipeline.version}")
@@ -61,6 +64,7 @@ if pipelines:
             # Ensure dataset ID is valid before deletion
             if selected_pipeline.id:
                 automl.registry.delete(selected_pipeline.id)
+                os.remove(training_plot_path)
                 st.success(f"Pipeline '{selected_pipeline.name}' deleted "
                            "successfully!")
                 # Trigger pipeline list refresh
@@ -89,16 +93,6 @@ if pipelines:
     st.write("**Target Feature:**", pipeline_data["target_feature"])
     st.write("**Training Split:**", f"{pipeline_data['train_split'] * 100}%")
 
-    # # Display Model Attributes
-    # if hasattr(model, "parameters") and model.parameters:
-    #     st.write("**Model Parameters:**", model.parameters)
-    # else:
-    #     st.write("**Model Attributes:**")
-    #     model_attributes = {k: v for k, v in model.__dict__.items() if not
-    #                         k.startswith('_')}
-    #     for key, value in model_attributes.items():
-    #         st.write(f"{key}: {value}")
-
     # Prediction section
     st.header("Run Predictions")
     uploaded_file = st.file_uploader("Upload a CSV file for predictions",
@@ -123,27 +117,22 @@ if pipelines:
             predictions = model.predict(input_features_data.values)
             input_data["Predictions"] = predictions
 
-            # Plot training vs predicted values
-            fig, ax = plt.subplots(figsize=(10, 5))
-            ax.plot(range(len(training_values)), training_values,
-                    label='Training',
-                    marker='o', color='blue')
-            ax.plot(range(len(predictions)), predictions, label='Predictions',
-                    marker='x', color='red')
-            ax.set_xlabel("Index")
-            ax.set_ylabel("Value")
-            ax.set_title("Training vs. Predicted Values")
-            ax.legend()
-            st.pyplot(fig)
+            results_df = input_features_data.copy()
+            results_df[pipeline_data["target_feature"] + "_predictions"
+                       ] = predictions
+            st.write("### Prediction Results with Features")
+            st.write(results_df)
+
+            # Create and plot the Keras model to visualize the pipeline flow
+            pipeline_model_plot_path = create_pipeline_model(input_features)
+
+            prediction_plot_path = generate_training_prediction_plot(
+                training_values, predictions)
 
             # Provide download link for predictions as CSV
             csv = input_data.to_csv(index=False).encode('utf-8')
             st.download_button("Download Predictions as CSV", data=csv,
                                file_name="predictions.csv", mime="text/csv")
-
-            # Save plot as image for the PDF report
-            temp_image_path = "/tmp/predictions_plot.png"
-            fig.savefig(temp_image_path)
 
             # Generate PDF report
             pdf = FPDF()
@@ -182,9 +171,21 @@ if pipelines:
             pdf.cell(200, 10, txt=f"Training Split: {pipeline_data[
                 'train_split'] * 100}%", ln=True)
 
-            # Embed plot in PDF
-            pdf.cell(200, 10, txt="Prediction plot:", ln=True)
-            pdf.image(temp_image_path, x=10, y=pdf.get_y(), w=180)
+            # Embed training plot in PDF
+            pdf.cell(200, 10, txt="Training Plot:", ln=True)
+            pdf.image(training_plot_path, x=10, y=pdf.get_y(), w=180)
+
+            pdf.add_page()
+
+            # Embed training plot in PDF
+            pdf.cell(200, 10, txt="Pipeline Flow:", ln=True)
+            pdf.image(pipeline_model_plot_path, x=10, y=pdf.get_y(), w=180)
+
+            pdf.add_page()
+
+            # Embed pipeline flow plot in PDF
+            pdf.cell(200, 10, txt="Prediction Plot:", ln=True)
+            pdf.image(prediction_plot_path, x=10, y=pdf.get_y(), w=180)
 
             # Output PDF to BytesIO
             pdf_output = io.BytesIO()
@@ -193,7 +194,8 @@ if pipelines:
             pdf_output.seek(0)
 
             # Clean up temp image file
-            os.remove(temp_image_path)
+            os.remove(pipeline_model_plot_path)
+            os.remove(prediction_plot_path)
 
             # Download PDF
             st.download_button("Download PDF Report", data=pdf_output,

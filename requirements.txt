@@ -6,3 +6,7 @@ scikit-learn
 fpdf
 matplotlib
 statmodels
+keras
+tensorflow
+pydot
+pydoc

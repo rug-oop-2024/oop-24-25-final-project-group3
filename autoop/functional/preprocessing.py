@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import pandas as pd
+import pydoc
 
 
 def preprocess_features(
@@ -69,3 +70,5 @@ def check_multicollinearity(data, threshold=5.0) -> bool:
     collinear_features = vif_data[vif_data["VIF"] > threshold]["feature"
                                                                ].tolist()
     return True if collinear_features else False
+
+#pydoc.writedoc('preprocessing')

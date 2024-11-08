@@ -1,5 +1,6 @@
 from typing import List
 import pickle
+import pydoc
 
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.dataset import Dataset
@@ -150,4 +151,8 @@ Pipeline(
             "test_predictions": test_predictions,      # Test predictions
             "train_predictions": train_predictions,    # Training predictions
             "trained_model": self._model,  # Return the trained model
+            "train_X": train_X,
+            "train_Y": train_Y,
         }
+
+#pydoc.writedoc('pipeline')

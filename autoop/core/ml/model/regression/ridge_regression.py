@@ -1,6 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import Ridge
+import pydoc
 
 
 class RidgeRegression(Model):
@@ -17,3 +18,5 @@ class RidgeRegression(Model):
             raise ValueError("Model must be trained before making "
                              "predictions.")
         return self.model.predict(X)
+
+#  pydoc.writedoc('ridge_regression')

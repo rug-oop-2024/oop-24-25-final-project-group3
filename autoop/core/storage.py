@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import os
 from typing import List
 from glob import glob
+import pydoc
 
 
 class NotFoundError(Exception):
@@ -90,3 +91,5 @@ class LocalStorage(Storage):
 
     def _join_path(self, path: str) -> str:
         return os.path.join(self._base_path, path)
+
+#pydoc.writedoc('storage')

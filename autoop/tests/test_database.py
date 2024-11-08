@@ -4,6 +4,7 @@ from autoop.core.database import Database
 from autoop.core.storage import LocalStorage
 import random
 import tempfile
+import pydoc
 
 
 class TestDatabase(unittest.TestCase):
@@ -51,3 +52,5 @@ class TestDatabase(unittest.TestCase):
         self.db.set("collection", key, value)
         # collection should now contain the key
         self.assertIn((key, value), self.db.list("collection"))
+
+#pydoc.writedoc('test_database')

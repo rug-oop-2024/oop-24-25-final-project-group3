@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Dict, List, Optional
 import base64
+import pydoc
 
 
 class Artifact(BaseModel):
@@ -46,3 +47,5 @@ class Artifact(BaseModel):
     class Config:
         arbitrary_types_allowed = True
         populate_by_name = True
+
+#pydoc.writedoc('artifact')

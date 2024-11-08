@@ -1,6 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.tree import DecisionTreeRegressor
+import pydoc
 
 
 class DecisionTreeRegression(Model):
@@ -17,3 +18,5 @@ class DecisionTreeRegression(Model):
             raise ValueError("Model must be trained before making "
                              "predictions.")
         return self.model.predict(X)
+
+#pydoc.writedoc('decision_tree_regression')

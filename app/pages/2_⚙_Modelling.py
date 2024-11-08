@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import matplotlib.pyplot as plt
 import io
 
 from app.core.system import AutoMLSystem
@@ -12,6 +13,7 @@ from autoop.core.ml.metric import (REGRESSION_METRICS, CLASSIFICATION_METRICS,
                                    LOG_CLASSIFICATION_METRICS, get_metric)
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.pipeline import Pipeline
+from autoop.functional.pipeline_graphing import visualise_pipeline
 
 
 # Streamlit page configuration
@@ -123,19 +125,31 @@ if datasets:
     selected_model = get_model(selected_model_name)
 
     # Handling Logistic Regression binary label assignment
-    if selected_model_name == "LogisticRegression" and not pd.api.types.is_numeric_dtype(dataset_df[selected_target_feature]):
+    if (selected_model_name == "LogisticRegression" and not
+       pd.api.types.is_numeric_dtype(dataset_df[selected_target_feature])):
         st.subheader("Assign Binary Labels")
-        st.write("Logistic Regression requires numeric binary labels. Please assign labels to the unique values in the target feature.")
+        st.write("Logistic Regression requires numeric binary labels. Please "
+                 "assign labels to the unique values in the target feature.")
 
-        # Assign each unique value to either 0 or 1
-        label_mapping = {}
-        option_1, option_2 = unique_values[0], unique_values[1]
-        label_mapping[option_1] = st.radio(f"Assign label to {option_1}:", (0, 1), index=0)
-        label_mapping[option_2] = 1 - label_mapping[option_1]
-        st.info(f"**Assigned labels:** \n {option_1}: {label_mapping[option_1]} \n {option_2}: {label_mapping[option_2]}")
+        # Get the unique values in the target feature
+        unique_values = dataset_df[selected_target_feature].unique()
+        if len(unique_values) != 2:
+            st.error("Target feature must have exactly two unique values for "
+                     "binary classification.")
+        else:
+            # Allow user to select which value should be labeled as 1
+            selected_value = st.radio("Choose the value to assign as 1:",
+                                      unique_values)
+            # Create the mapping
+            label_mapping = {selected_value: 1, unique_values[unique_values !=
+                                                              selected_value]
+                                                             [0]: 0}
+            st.info(f"**Assigned labels:** \n {selected_value}: 1 \n "
+                    f"{unique_values[unique_values != selected_value][0]}: 0")
 
-        # Apply the mapping to transform the target feature
-        dataset_df[selected_target_feature] = dataset_df[selected_target_feature].map(label_mapping)
+            # Apply the mapping to transform the target feature
+            dataset_df[selected_target_feature] = dataset_df[
+                selected_target_feature].map(label_mapping)
 
     st.header("4. Select Dataset Split")
     train_split = st.slider("Training Set Split (%)", min_value=50,
@@ -201,6 +215,7 @@ if datasets:
         results = pipeline.execute()
         trained_model = results["trained_model"]
         # Assuming this retrieves true train labels
+        train_X = results.get("train_X")
         train_Y = results.get("train_Y")
 
         # Verify model is trained
@@ -208,6 +223,12 @@ if datasets:
             st.warning("Model training failed.")
         else:
             st.success("Model training completed!")
+
+        if train_X is not None and train_Y is not None:
+            keras_model, history = visualise_pipeline(selected_input_features,
+                                                      train_X, train_Y)
+            # Display the training loss plot in Streamlit
+            st.pyplot(plt)
 
         # Display Evaluation Metrics
         evaluation_metrics = results.get("metrics", [])
@@ -264,6 +285,11 @@ if datasets:
 
         # Register the pipeline in the artifact registry
         automl.registry.register(pipeline_artifact)
+
+        # Save the plot for the future report
+        plot_path = f"./assets/plots/{pipeline_name}_training_loss_plot.png"
+        plt.savefig(plot_path)
+
         st.success(f"Pipeline '{pipeline_name}' (v{pipeline_version}) saved "
                    "successfully!")
         st.session_state.train_button_flag = False  # Reset after save

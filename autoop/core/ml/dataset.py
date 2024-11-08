@@ -1,6 +1,7 @@
 from autoop.core.ml.artifact import Artifact
 import pandas as pd
 import io
+import pydoc
 
 
 class Dataset(Artifact):
@@ -33,3 +34,5 @@ class Dataset(Artifact):
         """ Save data to a given path """
         bytes = data.to_csv(index=False).encode()
         return super().save(bytes)
+
+#pydoc.writedoc('dataset')

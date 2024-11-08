@@ -1,15 +1,39 @@
 # TODO:
-# - ustalić co jest w grafie
+# - graph
 # - replace 1 & 0 for log in predict
 # - fix log predict
 
 # - go though instruction and checklist
 # - documentation
+# - report is being generated, please wait...
+# - plot ostatni na drugą część strony
 
-# - extra features:
-#       - fine tune existing model on a new dataset
-#       - choose parameters: show params in summary & report
-#
+
+"""
+FROM GIT
+The code should be easy to modify and extend. You should be able to add new
+features without having to rewrite the entire codebase or heavy refactoring.
+Important: We prefer that you do not use libraries or frameworks for this
+reason. We want to see how you structure your code and how you solve problems.
+Furthermore, many of the tools available may not be customisable enough for
+our needs. Hence, if you want to include a library, please make sure to
+justify it.
+
+The code should be secure. Isolate your secrets and keys from the codebase. Do
+not commit your secrets and keys to the repository. Avoid XSS and CSRF attacks.
+Enforce the principle of least privilege. Validate user input, etc.
+
+Feature column types should be automatically inferred from the data.
+Task type should be automatically inferred from the data.
+Different models should be trained in parallel to evaluate the best model.
+The code should infere wether a target column is valid for prediction given
+the capabilities of your algorithm.
+
+The code should be documented. You should be able to understand what the code
+does without having to spend a lot of time on it. Significant design decisions
+should be documented as well. Each decision should be given an ID. HTML
+documentation as in lecture 10 gives +0.5
+"""
 
 """
 What these classification models accept:

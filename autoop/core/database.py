@@ -1,5 +1,6 @@
 import json
 from typing import Tuple, List, Union
+import pydoc
 
 from autoop.core.storage import Storage
 
@@ -142,3 +143,5 @@ class Database():
             if collection not in self._data:
                 self._data[collection] = {}
             self._data[collection][id] = json.loads(data.decode())
+
+#pydoc.writedoc('database')

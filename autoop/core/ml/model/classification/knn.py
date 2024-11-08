@@ -1,6 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.neighbors import KNeighborsClassifier
+import pydoc
 
 
 class KNearestNeighbors(Model):
@@ -18,3 +19,5 @@ class KNearestNeighbors(Model):
             raise ValueError("Model must be trained before making "
                              "predictions.")
         return self.model.predict(X)
+
+#  pydoc.write('knn')

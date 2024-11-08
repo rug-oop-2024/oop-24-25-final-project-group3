@@ -5,6 +5,7 @@ from autoop.core.ml.model.regression import (MultipleLinearRegression,
 from autoop.core.ml.model.classification import (LogisticRegression,
                                                  KNearestNeighbors,
                                                  DecisionTreeClassification)
+import pydoc
 
 REGRESSION_MODELS = ["MultipleLinearRegression", "RidgeRegression",
                      "DecisionTreeRegression"]
@@ -43,3 +44,5 @@ def get_model(model_name: str) -> Model:
 
     # Return an instance of the requested model
     return model_mapping[model_name]()
+
+#  pydoc.writedoc('__init__')

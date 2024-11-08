@@ -3,6 +3,7 @@ from autoop.core.ml.artifact import Artifact
 import numpy as np
 from copy import deepcopy
 from typing import Literal, Optional
+import pydoc
 
 
 class Model(ABC):
@@ -74,3 +75,5 @@ class Model(ABC):
     def __str__(self) -> str:
         return (f"Model(type={self.type}, trained={self.trained} parameters={
                 self.parameters})")
+
+#pydoc.writedoc('model')

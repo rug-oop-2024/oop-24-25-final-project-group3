@@ -153,18 +153,18 @@ If you did not implement the feature
 
 | Requirement                           | Type (FN/NF) | Implemented by       | Implementation Completed (add X if done) | Comment |
 |-------------------------------------- |--------------|----------------------|--------------------------|---------|         
-| Up-to-date requirements.txt           | NF           |                      |         | |
-| `ML/detect-features`                  | FN           |                      |         | |
-| `ML/artifact`                         | NF           |                      |         | |
-| `ML/feature`                          | NF           |                      |         | |
-| `ML/metric`                           | NF           |                      |         | |
-| `ML/metric/extensions`                | FN           |                      |         | |
-| `ML/model`                            | NF           |                      |         | |
-| `ML/model/extensions`                 | FN           |                      |         | |
-| `ML/pipeline/evaluation`              | FN           |                      |         | | 
-| `ST/page/datasets`                    | NF           |                      |         | |
-| `ST/datasets/management/create`       | FN           |                      |         | |
-| `ST/datasets/management/save`         | FN           |                      |         | |
+| Up-to-date requirements.txt           | NF           |        both          |         | X |
+| `ML/detect-features`                  | FN           |        both          |         | X |
+| `ML/artifact`                         | NF           |        both          |         | X |
+| `ML/feature`                          | NF           |        both          |         | X |
+| `ML/metric`                           | NF           |        both          |         | X |
+| `ML/metric/extensions`                | FN           |        both          |         | X |
+| `ML/model`                            | NF           |        both          |         | X |
+| `ML/model/extensions`                 | FN           |        both          |         | X |
+| `ML/pipeline/evaluation`              | FN           |        both          |         | X | 
+| `ST/page/datasets`                    | NF           |        both          |         | X |
+| `ST/datasets/management/create`       | FN           |        both          |         | X |
+| `ST/datasets/management/save`         | FN           |        both          |         | X |
 | `ST/page/modelling`                   | NF           |                      |         | |
 | `ST/modelling/datasets/list`          | FN           |                      |         | |
 | `ST/modelling/datasets/features`      | FN           |                      |         | |
@@ -180,5 +180,10 @@ If you did not implement the feature
 
 If you add extra features, please indicate them below:
 | Requirement                           | Type (FN/NF) | Implemented by       | Implementation Completed (add X if done) | Comment |
-|-------------------------------------- |--------------|----------------------|---------|-----|
-|           |            |                      |         | |
+|-------------------------------------- |--------------|----------------------|------------------------------------------|---------|
+|'ST/datasets/management/delete'        |     FN       |        both          |                      X                   |         |
+|'generating report'                    |              |                      |                                          |         |
+|'visualising data'                     |              |                      |                                          |         |
+|                                       |              |                      |                                          |         |
+|                                       |              |                      |                                          |         |
+|                                       |              |                      |                                          |         |

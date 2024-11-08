@@ -3,6 +3,7 @@ from autoop.core.ml.dataset import Dataset
 from autoop.core.ml.feature import Feature
 import pandas as pd
 from pandas.api.types import CategoricalDtype
+import pydoc
 
 
 def detect_feature_types(data: Union[Dataset, pd.DataFrame],
@@ -48,3 +49,5 @@ def detect_feature_types(data: Union[Dataset, pd.DataFrame],
                         values=df[column].values))
 
     return features
+
+# pydoc.writedoc('feature')

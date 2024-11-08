@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import numpy as np
+import pydoc
 
 REGRESSION_METRICS = [
     "mean_squared_error",
@@ -174,3 +175,5 @@ class Recall(Metric):
 
     def __str__(self):
         return "Recall"
+
+#pydoc.writedoc('metric')

@@ -1,6 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import LinearRegression
+import pydoc
 
 
 class MultipleLinearRegression(Model):
@@ -17,3 +18,5 @@ class MultipleLinearRegression(Model):
             raise ValueError("Model must be trained before making "
                              "predictions.")
         return self.model.predict(X)
+
+#  pydoc.writedoc('multiple_linear_regression')
