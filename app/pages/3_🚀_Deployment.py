@@ -105,8 +105,8 @@ if pipelines:
 
         if len(required_features) < len(input_features):
             missing_features = set(input_features) - set(input_data.columns)
-            st.error(f"Uploaded data is missing required features: {', '.join(
-                missing_features)}")
+            st.error("Uploaded data is missing required features: "
+                     f"{', '.join(missing_features)}")
         else:
             # Select the input columns needed for prediction
             input_features_data = input_data[required_features]

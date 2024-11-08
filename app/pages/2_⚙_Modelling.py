@@ -189,8 +189,8 @@ if datasets:
     st.write("### Configuration Summary")
     st.write(f"**Selected Dataset:** {selected_dataset_name}")
     st.write(f"**Selected Target Feature:** {selected_target_feature}")
-    st.write(f"**Selected Input Features:** {', '.join(
-        selected_input_features)}")
+    st.write("**Selected Input Features:** "
+             f"{', '.join(selected_input_features)}")
     st.write(f"**Selected Model:** {selected_model_name}")
     st.write(f"**Training Split:** {train_split}% | **Testing Split:** "
              f"{test_split}%")

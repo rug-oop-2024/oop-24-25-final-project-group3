@@ -5,7 +5,6 @@ from keras.optimizers import Adam
 from keras.utils import plot_model
 import numpy as np
 from typing import Dict, List, Tuple
-import io  # noqa: F401
 import pydoc  # noqa: F401
 
 
@@ -13,6 +12,19 @@ def visualise_pipeline(input_features: List[str], X_train: np.ndarray,
                        y_train: np.ndarray, epochs: int = 50,
                        batch_size: int = 32) -> Tuple[Model, Dict[
                            str, List[float]]]:
+    """
+    This module provides functions to visualize and create Keras-based
+    pipelines and training plots.
+
+    Functions:
+    - visualise_pipeline: Trains a Keras model and plots training loss over
+      time.
+    - create_pipeline_model: Creates and visualizes a Keras model to show data
+      flow through the pipeline.
+    - generate_training_prediction_plot: Generates a plot comparing training
+    values and predictions, saving the plot to a file.
+    """
+
     inputs = []
     input_dict = {}
 

@@ -40,7 +40,7 @@ def preprocess_features(features: List[Feature], dataset: Dataset) -> List[
     return results
 
 
-def check_multicollinearity(data: pd.DataFrame, threshold=5.0) -> bool:
+def check_multicollinearity(data: pd.DataFrame, threshold: int = 5.0) -> bool:
     """
     Checks for multicollinearity in the given DataFrame using Variance
     Inflation Factor (VIF).

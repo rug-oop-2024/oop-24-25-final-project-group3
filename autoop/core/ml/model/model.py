@@ -73,7 +73,7 @@ class Model(ABC):
                              "artifact.")
 
     def __str__(self) -> str:
-        return (f"Model(type={self.type}, trained={self.trained} parameters={
-                self.parameters})")
+        return (f"Model(type={self.type}, trained={self.trained},"
+                f"parameters={self.parameters})")
 
 # pydoc.writedoc('model')

@@ -39,8 +39,7 @@ def get_model(model_name: str) -> Model:
     # Check if the model_name exists in the mapping
     if model_name not in model_mapping:
         raise ValueError(f"Model '{model_name}' is not implemented. Available "
-                         f"models are: {', '.join(REGRESSION_MODELS +
-                                        CLASSIFICATION_MODELS)}")
+                         f"models are {', '.join(REGRESSION_MODELS + CLASSIFICATION_MODELS)}")
 
     # Return an instance of the requested model
     return model_mapping[model_name]()

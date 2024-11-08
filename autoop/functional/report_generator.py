@@ -46,8 +46,8 @@ def generate_pdf_report(selected_pipeline: Any, model: Any,
     for metric_name, metric_value in pipeline_data["metrics"].items():
         pdf.cell(200, 10, txt=f"- {metric_name}: {metric_value}", ln=True)
 
-    pdf.cell(200, 10, txt=f"Input Features: {', '.join(pipeline_data[
-        'input_features'])}", ln=True)
+    pdf.cell(200, 10, txt="Input Features: "
+             f"{', '.join(pipeline_data['input_features'])}", ln=True)
     pdf.cell(200, 10, txt=f"Target Feature: {pipeline_data['target_feature']}",
              ln=True)
     pdf.cell(200, 10, txt=f"Training Split: {pipeline_data['train_split'] *

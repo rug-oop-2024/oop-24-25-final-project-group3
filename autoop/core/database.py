@@ -6,8 +6,51 @@ from autoop.core.storage import Storage
 
 
 class Database():
+    """
+    Database class for managing collections of data with storage integration.
+
+    This class provides methods for setting, getting, deleting, and listing
+    data within collections stored in memory and persisted in a specified
+    storage system. It ensures data is synchronized between in-memory
+    representation and external storage, supporting operations such as refresh,
+    persistence, and loading.
+
+    Attributes:
+        _storage (Storage): The storage backend used for persisting data.
+        _data (dict): The in-memory representation of collections and their
+                      entries.
+
+    Methods:
+        __init__(storage: Storage) -> None:
+            Initializes the Database instance with a storage backend and loads
+            data.
+
+        set(collection: str, id: str, entry: dict) -> dict:
+            Stores an entry in the specified collection with a given ID.
+
+        get(collection: str, id: str) -> Union[dict, None]:
+            Retrieves an entry from the specified collection by ID.
+
+        delete(collection: str, id: str) -> None:
+            Deletes an entry from the specified collection by ID.
+
+        list(collection: str) -> List[Tuple[str, dict]]:
+            Lists all entries in a specified collection.
+
+        refresh() -> None:
+            Reloads the in-memory database from the storage system.
+
+        _persist() -> None:
+            Persists the current state of the in-memory database to the
+            storage,
+            and deletes obsolete entries from storage.
+
+        _load() -> None:
+            Loads data from the storage into the in-memory database.
+    """
 
     def __init__(self, storage: Storage) -> None:
+        """Initialising Database"""
         self._storage = storage
         self._data = {}
         self._load()
@@ -45,7 +88,7 @@ class Database():
             return None
         return self._data[collection].get(id, None)
 
-    def delete(self, collection: str, id: str):
+    def delete(self, collection: str, id: str) -> None:
         """Delete a key from the database with debug logging
         Args:
             collection (str): The collection to delete the data from
