@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Dict, List, Object, Union
 import pickle
 import pydoc  # noqa: F401
 
@@ -19,7 +19,7 @@ class Pipeline():
 
     def __init__(self, metrics: List[Metric], dataset: Dataset, model: Model,
                  input_features: List[Feature], target_feature: Feature,
-                 split=0.8) -> None:
+                 split: float = 0.8) -> None:
         """
         Initialize a Pipeline instance.
 
@@ -66,7 +66,7 @@ Pipeline(
 """
 
     @property
-    def model(self):
+    def model(self) -> Object:
         """
         Return the trained model.
 
@@ -105,7 +105,7 @@ Pipeline(
                          name=f"pipeline_model_{self._model.type}"))
         return artifacts
 
-    def _register_artifact(self, name: str, artifact) -> None:
+    def _register_artifact(self, name: str, artifact: Object) -> None:
         """
         Register an artifact with the given name.
 
@@ -178,7 +178,7 @@ Pipeline(
             self._metrics_results.append((metric, result))
         self._predictions = predictions
 
-    def execute(self) -> Dict[str, Any]:
+    def execute(self) -> Dict[str, Union[np.ndarray, List, Object]]:
         """
         Execute the pipeline, including training and evaluation.
 
