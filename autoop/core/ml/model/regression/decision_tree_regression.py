@@ -5,6 +5,10 @@ import pydoc  # noqa: F401
 
 
 class DecisionTreeRegression(Model):
+    """
+    Wrapper for decision tree regression
+    using scikit-learn's implementation.
+    """
     def __init__(self, max_depth: int = None) -> None:
         """
         Initialize the Decision Tree Regression model with a specified maximum
