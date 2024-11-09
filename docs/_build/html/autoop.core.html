@@ -128,16 +128,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#autoop-core-ml-dataset-module">autoop.core.ml.dataset module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#module-autoop.core.ml.feature">autoop.core.ml.feature module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature"><code class="docutils literal notranslate"><span class="pre">Feature</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.convert_to_array"><code class="docutils literal notranslate"><span class="pre">Feature.convert_to_array()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Feature.model_computed_fields</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_config"><code class="docutils literal notranslate"><span class="pre">Feature.model_config</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_fields"><code class="docutils literal notranslate"><span class="pre">Feature.model_fields</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.name"><code class="docutils literal notranslate"><span class="pre">Feature.name</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.type"><code class="docutils literal notranslate"><span class="pre">Feature.type</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.feature.Feature.values"><code class="docutils literal notranslate"><span class="pre">Feature.values</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#module-autoop.core.ml.dataset">autoop.core.ml.dataset module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.from_dataframe"><code class="docutils literal notranslate"><span class="pre">Dataset.from_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">Dataset.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_config"><code class="docutils literal notranslate"><span class="pre">Dataset.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_fields"><code class="docutils literal notranslate"><span class="pre">Dataset.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.read"><code class="docutils literal notranslate"><span class="pre">Dataset.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.save"><code class="docutils literal notranslate"><span class="pre">Dataset.save()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -156,7 +154,15 @@
 <li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.metric.get_metric"><code class="docutils literal notranslate"><span class="pre">get_metric()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#autoop-core-ml-pipeline-module">autoop.core.ml.pipeline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#module-autoop.core.ml.pipeline">autoop.core.ml.pipeline module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline"><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.artifacts"><code class="docutils literal notranslate"><span class="pre">Pipeline.artifacts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.execute"><code class="docutils literal notranslate"><span class="pre">Pipeline.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.model"><code class="docutils literal notranslate"><span class="pre">Pipeline.model</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.html#module-autoop.core.ml">Module contents</a></li>
 </ul>
 </li>
@@ -178,12 +184,10 @@ data within collections stored in memory and persisted in a specified
 storage system. It ensures data is synchronized between in-memory
 representation and external storage, supporting operations such as refresh,
 persistence, and loading.</p>
-<dl>
+<dl class="simple">
 <dt>Attributes:</dt><dd><p>_storage (Storage): The storage backend used for persisting data.
-_data (dict): The in-memory representation of collections and their</p>
-<blockquote>
-<div><p>entries.</p>
-</div></blockquote>
+_data (dict): The in-memory representation of collections and their
+entries.</p>
 </dd>
 <dt>Methods:</dt><dd><dl class="simple">
 <dt>__init__(storage: Storage) -&gt; None:</dt><dd><p>Initializes the Database instance with a storage backend and loads
@@ -200,8 +204,7 @@ data.</p>
 <dt>refresh() -&gt; None:</dt><dd><p>Reloads the in-memory database from the storage system.</p>
 </dd>
 <dt>_persist() -&gt; None:</dt><dd><p>Persists the current state of the in-memory database to the
-storage,
-and deletes obsolete entries from storage.</p>
+storage, and deletes obsolete entries from storage.</p>
 </dd>
 <dt>_load() -&gt; None:</dt><dd><p>Loads data from the storage into the in-memory database.</p>
 </dd>
@@ -211,14 +214,14 @@ and deletes obsolete entries from storage.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.database.Database.delete">
 <span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/database.html#Database.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.database.Database.delete" title="Link to this definition"></a></dt>
-<dd><p>Delete a key from the database with debug logging
-Args:</p>
-<blockquote>
-<div><p>collection (str): The collection to delete the data from
+<dd><dl class="simple">
+<dt>Delete a key from the database with debug logging</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>collection (str): The collection to delete the data from
 id (str): The id of the data</p>
-</div></blockquote>
-<dl class="simple">
+</dd>
 <dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -226,15 +229,15 @@ id (str): The id of the data</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.database.Database.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/database.html#Database.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.database.Database.get" title="Link to this definition"></a></dt>
-<dd><p>Get a key from the database
-Args:</p>
-<blockquote>
-<div><p>collection (str): The collection to get the data from
+<dd><dl class="simple">
+<dt>Get a key from the database</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>collection (str): The collection to get the data from
 id (str): The id of the data</p>
-</div></blockquote>
-<dl class="simple">
+</dd>
 <dt>Returns:</dt><dd><p>Union[dict, None]: The data that was stored,
 or None if it doesn’t exist</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -242,14 +245,14 @@ or None if it doesn’t exist</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.database.Database.list">
 <span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/autoop/core/database.html#Database.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.database.Database.list" title="Link to this definition"></a></dt>
-<dd><p>Lists all data in a collection
-Args:</p>
-<blockquote>
-<div><p>collection (str): The collection to list the data from</p>
-</div></blockquote>
-<dl class="simple">
+<dd><dl class="simple">
+<dt>Lists all data in a collection</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>collection (str): The collection to list the data from</p>
+</dd>
 <dt>Returns:</dt><dd><p>List[Tuple[str, dict]]: A list of tuples containing the id and
 data for each item in the collection</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -263,15 +266,15 @@ data for each item in the collection</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.database.Database.set">
 <span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/autoop/core/database.html#Database.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.database.Database.set" title="Link to this definition"></a></dt>
-<dd><p>Set a key in the database
-Args:</p>
-<blockquote>
-<div><p>collection (str): The collection to store the data in
+<dd><dl class="simple">
+<dt>Set a key in the database</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>collection (str): The collection to store the data in
 id (str): The id of the data
 entry (dict): The data to store</p>
-</div></blockquote>
-<dl class="simple">
+</dd>
 <dt>Returns:</dt><dd><p>dict: The data that was stored</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -291,45 +294,53 @@ system.</p>
 <dt class="sig sig-object py" id="autoop.core.storage.LocalStorage.delete">
 <span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#LocalStorage.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.LocalStorage.delete" title="Link to this definition"></a></dt>
 <dd><p>Delete data at a given path.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>path (str): The path to delete data from.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.LocalStorage.list">
 <span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#LocalStorage.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.LocalStorage.list" title="Link to this definition"></a></dt>
 <dd><p>List all paths under a given path.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>path (str): The path to list data from.</p>
 </dd>
 <dt>Returns:</dt><dd><p>list: A list of paths under the given path.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.LocalStorage.load">
 <span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#LocalStorage.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.LocalStorage.load" title="Link to this definition"></a></dt>
 <dd><p>Load data from a given path.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>path (str): The path to load data from.</p>
 </dd>
 <dt>Returns:</dt><dd><p>bytes: The data loaded from the given path.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.LocalStorage.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#LocalStorage.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.LocalStorage.save" title="Link to this definition"></a></dt>
 <dd><p>Save data to a given path.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>data (bytes): Data to be saved.
 path (str): The path where data should be saved.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -339,10 +350,12 @@ path (str): The path where data should be saved.</p>
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.storage.</span></span><span class="sig-name descname"><span class="pre">NotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/storage.html#NotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.NotFoundError" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Custom exception for handling cases where a path is not found.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>path (str): The path that was not found.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py class">
@@ -354,23 +367,25 @@ loading, deleting, and listing data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.Storage.delete">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#Storage.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.Storage.delete" title="Link to this definition"></a></dt>
-<dd><p>Delete data at a given path
-Args:</p>
-<blockquote>
-<div><p>path (str): Path to delete data</p>
-</div></blockquote>
+<dd><dl class="simple">
+<dt>Delete data at a given path</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>path (str): Path to delete data</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.Storage.list">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#Storage.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.Storage.list" title="Link to this definition"></a></dt>
-<dd><p>List all paths under a given path
-Args:</p>
-<blockquote>
-<div><p>path (str): Path to list</p>
-</div></blockquote>
-<dl class="simple">
+<dd><dl class="simple">
+<dt>List all paths under a given path</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>path (str): Path to list</p>
+</dd>
 <dt>Returns:</dt><dd><p>list: List of paths</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -378,13 +393,13 @@ Args:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.Storage.load">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#Storage.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.Storage.load" title="Link to this definition"></a></dt>
-<dd><p>Load data from a given path
-Args:</p>
-<blockquote>
-<div><p>path (str): Path to load data</p>
-</div></blockquote>
-<dl class="simple">
+<dd><dl class="simple">
+<dt>Load data from a given path</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>path (str): Path to load data</p>
+</dd>
 <dt>Returns:</dt><dd><p>bytes: Loaded data</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -392,12 +407,14 @@ Args:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.storage.Storage.save">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/storage.html#Storage.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.storage.Storage.save" title="Link to this definition"></a></dt>
-<dd><p>Save data to a given path
-Args:</p>
-<blockquote>
-<div><p>data (bytes): Data to save
+<dd><dl class="simple">
+<dt>Save data to a given path</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>data (bytes): Data to save
 path (str): Path to save data</p>
-</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

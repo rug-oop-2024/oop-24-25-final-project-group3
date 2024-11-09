@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Dict, List, Optional
 import base64
-import pydoc  # noqa: F401
 
 
 class Artifact(BaseModel):
@@ -22,7 +21,7 @@ class Artifact(BaseModel):
         metadata (Dict[str, str]): Metadata associated with the artifact.
         tags (List[str]): Tags to categorize the artifact.
         id (Optional[str]): Unique identifier generated from asset_path and
-                            version.
+        version.
 
     Methods:
         __init__(**kwargs) -> None:
@@ -87,5 +86,3 @@ class Artifact(BaseModel):
         """
         arbitrary_types_allowed = True
         populate_by_name = True
-
-# pydoc.writedoc('artifact')

@@ -5,7 +5,6 @@ from keras.optimizers import Adam
 from keras.utils import plot_model
 import numpy as np
 from typing import Dict, List, Tuple
-import pydoc  # noqa: F401
 
 
 def visualise_pipeline(input_features: List[str], X_train: np.ndarray,
@@ -18,9 +17,9 @@ def visualise_pipeline(input_features: List[str], X_train: np.ndarray,
 
     Functions:
     - visualise_pipeline: Trains a Keras model and plots training loss over
-      time.
+    time.
     - create_pipeline_model: Creates and visualizes a Keras model to show data
-      flow through the pipeline.
+    flow through the pipeline.
     - generate_training_prediction_plot: Generates a plot comparing training
     values and predictions, saving the plot to a file.
     """
@@ -71,12 +70,13 @@ def create_pipeline_model(input_features: List[str], hidden_units: int = 4
     """
     Creates a Keras model to visualize the data flow through the pipeline.
 
-    Args:
-        input_features (list): A list of input feature names.
-        hidden_units (int): Number of units in the hidden layer (default: 4).
+        Args:
+            input_features (list): A list of input feature names.
+            hidden_units (int): Number of units in the hidden layer (default:
+            4).
 
-    Returns:
-        BytesIO: A buffer containing the plot of the model as an image.
+        Returns:
+            BytesIO: A buffer containing the plot of the model as an image.
     """
     inputs = []
 
@@ -113,14 +113,14 @@ def generate_training_prediction_plot(training_values: np.ndarray,
     """
     Generate a plot comparing training values and predicted values.
 
-    Args:
-        training_values (array-like): The true training values.
-        predictions (array-like): The predicted values from the model.
-        input_data (pd.DataFrame): The input data used for predictions.
+        Args:
+            training_values (array-like): The true training values.
+            predictions (array-like): The predicted values from the model.
+            input_data (pd.DataFrame): The input data used for predictions.
 
-    Returns:
-        plt.Figure: The generated plot figure.
-        bytes: The CSV content for download.
+        Returns:
+            plt.Figure: The generated plot figure.
+            bytes: The CSV content for download.
     """
     # Plot training vs predicted values
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -139,5 +139,3 @@ def generate_training_prediction_plot(training_values: np.ndarray,
 
     # Return the path of the generated plot image
     return plot_path
-
-# pydoc.writedoc('pipeline_graphing')

@@ -1,7 +1,6 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.neighbors import KNeighborsClassifier
-import pydoc  # noqa: F401
 
 
 class KNearestNeighbors(Model):
@@ -18,15 +17,16 @@ class KNearestNeighbors(Model):
     Methods:
     - fit(X, y): Trains the KNN model on the provided dataset.
     - predict(X): Makes predictions on new data, given that the model is
-      already trained.
+    already trained.
     """
     def __init__(self, n_neighbors: int = 3) -> None:
         """
         Initialize the K-Nearest Neighbors model with the specified number
         of neighbors.
 
-        Parameters:
-        - n_neighbors (int): The number of neighbors to use. Default is 3.
+            Parameters:
+                - n_neighbors (int): The number of neighbors to use. Default
+                is 3.
         """
         super().__init__(model_type="classification")
         self.n_neighbors: int = n_neighbors
@@ -37,12 +37,13 @@ class KNearestNeighbors(Model):
         """
         Train the K-Nearest Neighbors model.
 
-        Parameters:
-        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).
-        - y (np.ndarray): Target vector with shape (n_samples,).
+            Parameters:
+            - X (np.ndarray): Feature matrix with shape (n_samples, n_features
+            ).
+            - y (np.ndarray): Target vector with shape (n_samples,).
 
-        Sets:
-        - self.trained (bool): Marks the model as trained.
+            Sets:
+            - self.trained (bool): Marks the model as trained.
         """
         self.model.fit(X, y)
         self.trained = True
@@ -51,18 +52,17 @@ class KNearestNeighbors(Model):
         """
         Make predictions using the trained model.
 
-        Parameters:
-        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+            Parameters:
+                - X (np.ndarray): Feature matrix with shape (n_samples,
+                n_features).
 
-        Returns:
-        - np.ndarray: Array of predictions with shape (n_samples,).
+            Returns:
+                - np.ndarray: Array of predictions with shape (n_samples,).
 
-        Raises:
-        - ValueError: If the model has not been trained yet.
+            Raises:
+                - ValueError: If the model has not been trained yet.
         """
         if not self.trained:
             raise ValueError("Model must be trained before making predictions."
                              )
         return self.model.predict(X)
-
-#  pydoc.write('knn')

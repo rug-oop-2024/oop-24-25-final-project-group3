@@ -2,15 +2,14 @@ from abc import ABC, abstractmethod
 import os
 from typing import List
 from glob import glob
-import pydoc  # noqa: F401
 
 
 class NotFoundError(Exception):
     """
     Custom exception for handling cases where a path is not found.
 
-    Args:
-        path (str): The path that was not found.
+        Args:
+            path (str): The path that was not found.
     """
     def __init__(self, path: str) -> None:
         """Initialises the NotFoundError class"""
@@ -26,9 +25,9 @@ class Storage(ABC):
     def save(self, data: bytes, path: str) -> None:
         """
         Save data to a given path
-        Args:
-            data (bytes): Data to save
-            path (str): Path to save data
+            Args:
+                data (bytes): Data to save
+                path (str): Path to save data
         """
         pass
 
@@ -36,10 +35,10 @@ class Storage(ABC):
     def load(self, path: str) -> bytes:
         """
         Load data from a given path
-        Args:
-            path (str): Path to load data
-        Returns:
-            bytes: Loaded data
+            Args:
+                path (str): Path to load data
+            Returns:
+                bytes: Loaded data
         """
         pass
 
@@ -47,8 +46,8 @@ class Storage(ABC):
     def delete(self, path: str) -> None:
         """
         Delete data at a given path
-        Args:
-            path (str): Path to delete data
+            Args:
+                path (str): Path to delete data
         """
         pass
 
@@ -56,10 +55,10 @@ class Storage(ABC):
     def list(self, path: str) -> list:
         """
         List all paths under a given path
-        Args:
-            path (str): Path to list
-        Returns:
-            list: List of paths
+            Args:
+                path (str): Path to list
+            Returns:
+                list: List of paths
         """
         pass
 
@@ -80,9 +79,9 @@ class LocalStorage(Storage):
         """
         Save data to a given path.
 
-        Args:
-            data (bytes): Data to be saved.
-            path (str): The path where data should be saved.
+            Args:
+                data (bytes): Data to be saved.
+                path (str): The path where data should be saved.
         """
         path = self._join_path(key)
         if not os.path.exists(path):
@@ -94,11 +93,11 @@ class LocalStorage(Storage):
         """
         Load data from a given path.
 
-        Args:
-            path (str): The path to load data from.
+            Args:
+                path (str): The path to load data from.
 
-        Returns:
-            bytes: The data loaded from the given path.
+            Returns:
+                bytes: The data loaded from the given path.
         """
         path = self._join_path(key)
         self._assert_path_exists(path)
@@ -109,8 +108,8 @@ class LocalStorage(Storage):
         """
         Delete data at a given path.
 
-        Args:
-            path (str): The path to delete data from.
+            Args:
+                path (str): The path to delete data from.
         """
         self._assert_path_exists(self._join_path(key))
         path = self._join_path(key)
@@ -120,11 +119,11 @@ class LocalStorage(Storage):
         """
         List all paths under a given path.
 
-        Args:
-            path (str): The path to list data from.
+            Args:
+                path (str): The path to list data from.
 
-        Returns:
-            list: A list of paths under the given path.
+            Returns:
+                list: A list of paths under the given path.
         """
         path = self._join_path(prefix)
         self._assert_path_exists(path)
@@ -135,8 +134,8 @@ class LocalStorage(Storage):
         """
         Check if a given path exists and raise an error if not.
 
-        Args:
-            path (str): The path to check.
+            Args:
+                path (str): The path to check.
         """
         if not os.path.exists(path):
             raise NotFoundError(path)
@@ -145,12 +144,10 @@ class LocalStorage(Storage):
         """
         Join the base path with a given path.
 
-        Args:
-            path (str): The path to join with the base path.
+            Args:
+                path (str): The path to join with the base path.
 
-        Returns:
-            str: The combined path.
+            Returns:
+                str: The combined path.
         """
         return os.path.join(self._base_path, path)
-
-# pydoc.writedoc('storage')

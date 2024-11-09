@@ -9,4 +9,4 @@ statmodels
 keras
 tensorflow
 pydot
-pydoc
+sphinx

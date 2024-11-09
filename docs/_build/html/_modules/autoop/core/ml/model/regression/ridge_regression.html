@@ -74,7 +74,6 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">autoop.core.ml.model</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
-<span class="kn">import</span> <span class="nn">pydoc</span>  <span class="c1"># noqa: F401</span>
 
 
 <div class="viewcode-block" id="RidgeRegression">
@@ -86,9 +85,9 @@
 <span class="sd">        Initialize the Ridge Regression model with a specified alpha</span>
 <span class="sd">        (regularization strength).</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - alpha (float): Regularization strength. Must be a positive float.</span>
-<span class="sd">          Default is 1.0.</span>
+<span class="sd">            Parameters:</span>
+<span class="sd">                - alpha (float): Regularization strength. Must be a positive</span>
+<span class="sd">                float. Default is 1.0.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;regression&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
@@ -99,12 +98,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Train the Ridge Regression model.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).</span>
-<span class="sd">        - y (np.ndarray): Target vector with shape (n_samples,).</span>
+<span class="sd">            Parameters:</span>
+<span class="sd">            - X (np.ndarray): Feature matrix with shape (n_samples,</span>
+<span class="sd">            n_features).</span>
+<span class="sd">            - y (np.ndarray): Target vector with shape (n_samples,).</span>
 
-<span class="sd">        Sets:</span>
-<span class="sd">        - self.trained (bool): Marks the model as trained.</span>
+<span class="sd">            Sets:</span>
+<span class="sd">                - self.trained (bool): Marks the model as trained.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trained</span> <span class="o">=</span> <span class="kc">True</span></div>
@@ -116,14 +116,16 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make predictions using the trained Ridge Regression model.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).</span>
+<span class="sd">            Parameters:</span>
+<span class="sd">                - X (np.ndarray): Feature matrix with shape (n_samples,</span>
+<span class="sd">                n_features).</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">        - np.ndarray: Array of predicted values with shape (n_samples,).</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                - np.ndarray: Array of predicted values with shape (n_samples,</span>
+<span class="sd">                ).</span>
 
-<span class="sd">        Raises:</span>
-<span class="sd">        - ValueError: If the model has not been trained yet.</span>
+<span class="sd">            Raises:</span>
+<span class="sd">                - ValueError: If the model has not been trained yet.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">trained</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model must be trained before making &quot;</span>
@@ -131,8 +133,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
 </div>
 
-
-<span class="c1">#  pydoc.writedoc(&#39;ridge_regression&#39;)</span>
 </pre></div>
 
            </div>

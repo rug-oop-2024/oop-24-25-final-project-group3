@@ -1,11 +1,12 @@
 from fpdf import FPDF
-from typing import Dict, Object
+from typing import Dict
 import os
 import io
-import pydoc  # noqa: F401
+from autoop.core.ml.pipeline import Pipeline
+from autoop.core.ml.model.model import Model
 
 
-def generate_pdf_report(selected_pipeline: Object, model: Object,
+def generate_pdf_report(selected_pipeline: Pipeline, model: Model,
                         pipeline_data: Dict[str, str],
                         training_plot_path: str,
                         pipeline_model_plot_path: str,
@@ -14,17 +15,20 @@ def generate_pdf_report(selected_pipeline: Object, model: Object,
     """
     Generates a PDF report containing model details, plots, and metrics.
 
-    Args:
-        selected_pipeline (object): The pipeline object containing metadata.
-        model (object): The trained model object.
-        pipeline_data (dict): Pipeline data containing metrics and features.
-        training_plot_path (str): Path to the training plot image.
-        pipeline_model_plot_path (str): Path to the pipeline model plot image.
-        prediction_plot_path (str): Path to the prediction plot image.
-        dataset_name (str): Name of the dataset used during training.
+        Args:
+            selected_pipeline (object): The pipeline object containing
+            metadata.
+            model (object): The trained model object.
+            pipeline_data (dict): Pipeline data containing metrics and
+            features.
+            training_plot_path (str): Path to the training plot image.
+            pipeline_model_plot_path (str): Path to the pipeline model plot
+            image.
+            prediction_plot_path (str): Path to the prediction plot image.
+            dataset_name (str): Name of the dataset used during training.
 
-    Returns:
-        io.BytesIO: A buffer containing the PDF report.
+        Returns:
+            io.BytesIO: A buffer containing the PDF report.
     """
     pdf = FPDF()
     pdf.add_page()

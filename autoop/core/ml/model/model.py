@@ -3,7 +3,6 @@ from autoop.core.ml.artifact import Artifact
 import numpy as np
 from copy import deepcopy
 from typing import Literal, Optional
-import pydoc  # noqa: F401
 
 
 class Model(ABC):
@@ -11,11 +10,11 @@ class Model(ABC):
 
     def __init__(self, model_type: Literal["regression", "classification"],
                  parameters: Optional[dict] = None) -> None:
-        """_summary_
-            Initializing Model
-        Args:
-            model_type (Literal["regression", "classification"])
-            parameters (Optional[dict], optional) Defaults to None.
+        """
+        Initializing Model
+            Args:
+                model_type (Literal["regression", "classification"])
+                parameters (Optional[dict], optional) Defaults to None.
         """
         self.type = model_type
         self.parameters = parameters if parameters is not None else {}
@@ -23,36 +22,39 @@ class Model(ABC):
 
     @abstractmethod
     def fit(self, X: np.ndarray, y: np.ndarray) -> None:
-        """Train the model on the given data.
+        """
+        Train the model on the given data.
 
-        Args:
-            X (np.ndarray): Training features.
-            y (np.ndarray): Target values.
+            Args:
+                X (np.ndarray): Training features.
+                y (np.ndarray): Target values.
         """
         self.trained = True  # Set to True when model is trained
 
     @abstractmethod
     def predict(self, X: np.ndarray) -> np.ndarray:
-        """Predict using the model on given data.
+        """
+        Predict using the model on given data.
 
-        Args:
-            X (np.ndarray): Features for prediction.
+            Args:
+                X (np.ndarray): Features for prediction.
 
-        Returns:
-            np.ndarray: Predicted values.
+            Returns:
+                np.ndarray: Predicted values.
         """
         if not self.trained:
             raise ValueError("Model must be trained before making "
                              "predictions.")
 
     def to_artifact(self, name: str) -> Artifact:
-        """Convert the model to an Artifact for storage.
+        """
+        Convert the model to an Artifact for storage.
 
-        Args:
-            name (str): Name of the artifact.
+            Args:
+                name (str): Name of the artifact.
 
-        Returns:
-            Artifact: An artifact representing the model's state.
+            Returns:
+                Artifact: An artifact representing the model's state.
         """
         # Serialize the model's parameters and type
         data = {
@@ -64,10 +66,11 @@ class Model(ABC):
                         type="model:base")
 
     def load_artifact(self, artifact: Artifact) -> None:
-        """Load model parameters from an artifact.
+        """
+        Load model parameters from an artifact.
 
-        Args:
-            artifact (Artifact): Artifact to load data from.
+            Args:
+                artifact (Artifact): Artifact to load data from.
         """
         if artifact.type.startswith("model:"):
             data = artifact.data
@@ -84,5 +87,3 @@ class Model(ABC):
         """
         return (f"Model(type={self.type}, trained={self.trained},"
                 f"parameters={self.parameters})")
-
-# pydoc.writedoc('model')

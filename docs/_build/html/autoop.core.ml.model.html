@@ -18,7 +18,9 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="autoop.core.ml.model.classification package" href="autoop.core.ml.model.classification.html" />
+    <link rel="prev" title="autoop.core.ml package" href="autoop.core.ml.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,29 +42,28 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">autoop.core.ml.model package</a><ul>
-<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model.model">autoop.core.ml.model.model module</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.fit"><code class="docutils literal notranslate"><span class="pre">Model.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.load_artifact"><code class="docutils literal notranslate"><span class="pre">Model.load_artifact()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.predict"><code class="docutils literal notranslate"><span class="pre">Model.predict()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.to_artifact"><code class="docutils literal notranslate"><span class="pre">Model.to_artifact()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="autoop.html">autoop package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="autoop.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="autoop.core.html">autoop.core package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="autoop.core.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core.database">autoop.core.database module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core.storage">autoop.core.storage module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.functional.html">autoop.functional package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.tests.html">autoop.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.html#module-autoop">Module contents</a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model">Module contents</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -77,6 +78,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="autoop.html">autoop package</a></li>
+          <li class="breadcrumb-item"><a href="autoop.core.html">autoop.core package</a></li>
+          <li class="breadcrumb-item"><a href="autoop.core.ml.html">autoop.core.ml package</a></li>
       <li class="breadcrumb-item active">autoop.core.ml.model package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/autoop.core.ml.model.rst.txt" rel="nofollow"> View page source</a>
@@ -202,45 +206,53 @@
 <dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.fit">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.fit" title="Link to this definition"></a></dt>
 <dd><p>Train the model on the given data.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>X (np.ndarray): Training features.
 y (np.ndarray): Target values.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.load_artifact">
 <span class="sig-name descname"><span class="pre">load_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artifact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact" title="autoop.core.ml.artifact.Artifact"><span class="pre">Artifact</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.load_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.load_artifact" title="Link to this definition"></a></dt>
 <dd><p>Load model parameters from an artifact.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>artifact (Artifact): Artifact to load data from.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.predict">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.predict" title="Link to this definition"></a></dt>
 <dd><p>Predict using the model on given data.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>X (np.ndarray): Features for prediction.</p>
 </dd>
 <dt>Returns:</dt><dd><p>np.ndarray: Predicted values.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.to_artifact">
 <span class="sig-name descname"><span class="pre">to_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact" title="autoop.core.ml.artifact.Artifact"><span class="pre">Artifact</span></a></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.to_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.to_artifact" title="Link to this definition"></a></dt>
 <dd><p>Convert the model to an Artifact for storage.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>name (str): Name of the artifact.</p>
 </dd>
 <dt>Returns:</dt><dd><p>Artifact: An artifact representing the model’s state.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -257,7 +269,8 @@ y (np.ndarray): Target values.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.get_model">
 <span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.</span></span><span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><span class="pre">Model</span></a></span></span><a class="reference internal" href="_modules/autoop/core/ml/model.html#get_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.get_model" title="Link to this definition"></a></dt>
 <dd><p>Factory function to get a model by name.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>model_name (str): Name of the model to retrieve.</p>
 </dd>
 <dt>Returns:</dt><dd><p>Model: An instance of the requested model.</p>
@@ -266,6 +279,7 @@ y (np.ndarray): Target values.</p>
 REGRESSION_MODELS or CLASSIFICATION_MODELS.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 </section>
@@ -274,7 +288,10 @@ REGRESSION_MODELS or CLASSIFICATION_MODELS.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autoop.core.ml.html" class="btn btn-neutral float-left" title="autoop.core.ml package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoop.core.ml.model.classification.html" class="btn btn-neutral float-right" title="autoop.core.ml.model.classification package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

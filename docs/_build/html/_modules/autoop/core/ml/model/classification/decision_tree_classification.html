@@ -74,7 +74,6 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">autoop.core.ml.model</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="kn">import</span> <span class="nn">pydoc</span>  <span class="c1"># noqa: F401</span>
 
 
 <div class="viewcode-block" id="DecisionTreeClassification">
@@ -87,22 +86,22 @@
 
 <span class="sd">    Attributes:</span>
 <span class="sd">    - model (DecisionTreeClassifier): The underlying scikit-learn Decision</span>
-<span class="sd">      Tree classifier.</span>
+<span class="sd">    Tree classifier.</span>
 <span class="sd">    - trained (bool): Boolean flag indicating if the model has been trained.</span>
 
 <span class="sd">    Methods:</span>
 <span class="sd">    - fit(X, y): Trains the Decision Tree model on the provided dataset.</span>
 <span class="sd">    - predict(X): Makes predictions on new data, given that the model is</span>
-<span class="sd">      already trained.</span>
+<span class="sd">    already trained.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Decision Tree Classification model with a specified</span>
 <span class="sd">        maximum depth.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - max_depth (int): The maximum depth of the tree. If None, nodes are</span>
-<span class="sd">          expanded until all leaves are pure.</span>
+<span class="sd">          Parameters:</span>
+<span class="sd">            - max_depth (int): The maximum depth of the tree. If None, nodes</span>
+<span class="sd">            are expanded until all leaves are pure.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
@@ -114,12 +113,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Train the Decision Tree Classification model.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).</span>
-<span class="sd">        - y (np.ndarray): Target vector with shape (n_samples,).</span>
+<span class="sd">          Parameters:</span>
+<span class="sd">            - X (np.ndarray): Feature matrix with shape (n_samples, n_features</span>
+<span class="sd">            ).</span>
+<span class="sd">            - y (np.ndarray): Target vector with shape (n_samples,).</span>
 
-<span class="sd">        Sets:</span>
-<span class="sd">        - self.trained (bool): Marks the model as trained.</span>
+<span class="sd">          Sets:</span>
+<span class="sd">             - self.trained (bool): Marks the model as trained.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trained</span> <span class="o">=</span> <span class="kc">True</span></div>
@@ -131,14 +131,15 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make predictions using the trained model.</span>
 
-<span class="sd">        Parameters:</span>
-<span class="sd">        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).</span>
+<span class="sd">            Parameters:</span>
+<span class="sd">                - X (np.ndarray): Feature matrix with shape (n_samples,</span>
+<span class="sd">                n_features).</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">        - np.ndarray: Array of predictions with shape (n_samples,).</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                - np.ndarray: Array of predictions with shape (n_samples,).</span>
 
-<span class="sd">        Raises:</span>
-<span class="sd">        - ValueError: If the model has not been trained yet.</span>
+<span class="sd">            Raises:</span>
+<span class="sd">                - ValueError: If the model has not been trained yet.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">trained</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model must be trained before making predictions.&quot;</span>
@@ -146,8 +147,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></div>
 </div>
 
-
-<span class="c1">#  pydoc.write(&#39;decision_tree_classification&#39;)</span>
 </pre></div>
 
            </div>

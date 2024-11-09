@@ -1,6 +1,5 @@
-from typing import Dict, List, Object, Union
+from typing import Dict, List, Union
 import pickle
-import pydoc  # noqa: F401
 
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.dataset import Dataset
@@ -23,13 +22,13 @@ class Pipeline():
         """
         Initialize a Pipeline instance.
 
-        Args:
-            metrics (List[Metric]): List of evaluation metrics.
-            dataset (Dataset): The dataset object.
-            model (Model): The model to be trained and evaluated.
-            input_features (List[Feature]): List of input features.
-            target_feature (Feature): The target feature.
-            split (float): Train-test split ratio (default is 0.8).
+            Args:
+                metrics (List[Metric]): List of evaluation metrics.
+                dataset (Dataset): The dataset object.
+                model (Model): The model to be trained and evaluated.
+                input_features (List[Feature]): List of input features.
+                target_feature (Feature): The target feature.
+                split (float): Train-test split ratio (default is 0.8).
         """
 
         self._dataset = dataset
@@ -51,8 +50,8 @@ class Pipeline():
         """
         Return a string representation of the pipeline.
 
-        Returns:
-            str: String representation with model and features.
+            Returns:
+                str: String representation with model and features.
         """
 
         return f"""
@@ -66,12 +65,12 @@ Pipeline(
 """
 
     @property
-    def model(self) -> Object:
+    def model(self) -> Model:
         """
         Return the trained model.
 
-        Returns:
-            Model: The model used in the pipeline.
+            Returns:
+                Model: The model used in the pipeline.
         """
         return self._model
 
@@ -80,8 +79,8 @@ Pipeline(
         """
         Collect and return artifacts generated during the pipeline.
 
-        Returns:
-            List[Artifact]: List of generated artifacts.
+            Returns:
+                List[Artifact]: List of generated artifacts.
         """
         artifacts = []
         for name, artifact in self._artifacts.items():
@@ -105,13 +104,13 @@ Pipeline(
                          name=f"pipeline_model_{self._model.type}"))
         return artifacts
 
-    def _register_artifact(self, name: str, artifact: Object) -> None:
+    def _register_artifact(self, name: str, artifact: Artifact) -> None:
         """
         Register an artifact with the given name.
 
-        Args:
-            name (str): The name of the artifact.
-            artifact: The artifact object.
+            Args:
+                name (str): The name of the artifact.
+                artifact: The artifact object.
         """
         self._artifacts[name] = artifact
 
@@ -149,11 +148,11 @@ Pipeline(
         """
         Concatenate multiple vectors into a single 2D array.
 
-        Args:
-            vectors (List[np.array]): List of feature vectors.
+            Args:
+                vectors (List[np.array]): List of feature vectors.
 
-        Returns:
-            np.array: Concatenated 2D array.
+            Returns:
+                np.array: Concatenated 2D array.
         """
         return np.concatenate(vectors, axis=1)
 
@@ -178,13 +177,13 @@ Pipeline(
             self._metrics_results.append((metric, result))
         self._predictions = predictions
 
-    def execute(self) -> Dict[str, Union[np.ndarray, List, Object]]:
+    def execute(self) -> Dict[str, Union[np.ndarray, List, Model]]:
         """
         Execute the pipeline, including training and evaluation.
 
-        Returns:
-            Dict[str, Any]: Dictionary with metrics, predictions, and
-            trained model.
+            Returns:
+                Dict[str, Any]: Dictionary with metrics, predictions, and
+                trained model.
         """
         self._preprocess_features()
         self._split_data()
@@ -219,5 +218,3 @@ Pipeline(
             "train_X": train_X,
             "train_Y": train_Y,
         }
-
-# pydoc.writedoc('pipeline')

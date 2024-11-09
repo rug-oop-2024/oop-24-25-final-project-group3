@@ -72,7 +72,6 @@
   <h1>Source code for autoop.core.database</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
-<span class="kn">import</span> <span class="nn">pydoc</span>  <span class="c1"># noqa: F401</span>
 
 <span class="kn">from</span> <span class="nn">autoop.core.storage</span> <span class="kn">import</span> <span class="n">Storage</span>
 
@@ -92,7 +91,7 @@
 <span class="sd">    Attributes:</span>
 <span class="sd">        _storage (Storage): The storage backend used for persisting data.</span>
 <span class="sd">        _data (dict): The in-memory representation of collections and their</span>
-<span class="sd">                      entries.</span>
+<span class="sd">        entries.</span>
 
 <span class="sd">    Methods:</span>
 <span class="sd">        __init__(storage: Storage) -&gt; None:</span>
@@ -116,8 +115,7 @@
 
 <span class="sd">        _persist() -&gt; None:</span>
 <span class="sd">            Persists the current state of the in-memory database to the</span>
-<span class="sd">            storage,</span>
-<span class="sd">            and deletes obsolete entries from storage.</span>
+<span class="sd">            storage, and deletes obsolete entries from storage.</span>
 
 <span class="sd">        _load() -&gt; None:</span>
 <span class="sd">            Loads data from the storage into the in-memory database.</span>
@@ -134,12 +132,12 @@
     <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entry</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set a key in the database</span>
-<span class="sd">        Args:</span>
-<span class="sd">            collection (str): The collection to store the data in</span>
-<span class="sd">            id (str): The id of the data</span>
-<span class="sd">            entry (dict): The data to store</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            dict: The data that was stored</span>
+<span class="sd">            Args:</span>
+<span class="sd">                collection (str): The collection to store the data in</span>
+<span class="sd">                id (str): The id of the data</span>
+<span class="sd">                entry (dict): The data to store</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                dict: The data that was stored</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="s2">&quot;Data must be a dictionary&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Collection must be a string&quot;</span>
@@ -156,12 +154,12 @@
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get a key from the database</span>
-<span class="sd">        Args:</span>
-<span class="sd">            collection (str): The collection to get the data from</span>
-<span class="sd">            id (str): The id of the data</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            Union[dict, None]: The data that was stored,</span>
-<span class="sd">            or None if it doesn&#39;t exist</span>
+<span class="sd">            Args:</span>
+<span class="sd">                collection (str): The collection to get the data from</span>
+<span class="sd">                id (str): The id of the data</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                Union[dict, None]: The data that was stored,</span>
+<span class="sd">                or None if it doesn&#39;t exist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -171,12 +169,13 @@
 <div class="viewcode-block" id="Database.delete">
 <a class="viewcode-back" href="../../../autoop.core.html#autoop.core.database.Database.delete">[docs]</a>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a key from the database with debug logging</span>
-<span class="sd">        Args:</span>
-<span class="sd">            collection (str): The collection to delete the data from</span>
-<span class="sd">            id (str): The id of the data</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete a key from the database with debug logging</span>
+<span class="sd">            Args:</span>
+<span class="sd">                collection (str): The collection to delete the data from</span>
+<span class="sd">                id (str): The id of the data</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">return</span>
@@ -191,11 +190,11 @@
     <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Lists all data in a collection</span>
-<span class="sd">        Args:</span>
-<span class="sd">            collection (str): The collection to list the data from</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            List[Tuple[str, dict]]: A list of tuples containing the id and</span>
-<span class="sd">            data for each item in the collection</span>
+<span class="sd">            Args:</span>
+<span class="sd">                collection (str): The collection to list the data from</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                List[Tuple[str, dict]]: A list of tuples containing the id and</span>
+<span class="sd">                data for each item in the collection</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[]</span>
@@ -237,8 +236,6 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">collection</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">collection</span><span class="p">][</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span></div>
 
-
-<span class="c1"># pydoc.writedoc(&#39;database&#39;)</span>
 </pre></div>
 
            </div>

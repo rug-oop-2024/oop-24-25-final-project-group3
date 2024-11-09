@@ -5,18 +5,18 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import pandas as pd
-import pydoc  # noqa: F401
 
 
 def preprocess_features(features: List[Feature], dataset: Dataset) -> List[
         Tuple[str, np.ndarray, dict]]:
-    """Preprocess features.
-    Args:
-        features (List[Feature]): List of features.
-        dataset (Dataset): Dataset object.
-    Returns:
-        List[str, Tuple[np.ndarray, dict]]: List of preprocessed features.
-        Each ndarray of shape (N, ...)
+    """
+    Preprocess features.
+        Args:
+            features (List[Feature]): List of features.
+            dataset (Dataset): Dataset object.
+        Returns:
+            List[str, Tuple[np.ndarray, dict]]: List of preprocessed features.
+            Each ndarray of shape (N, ...)
     """
     results = []
     raw = dataset.read()
@@ -45,14 +45,14 @@ def check_multicollinearity(data: pd.DataFrame, threshold: int = 5.0) -> bool:
     Checks for multicollinearity in the given DataFrame using Variance
     Inflation Factor (VIF).
 
-    Parameters:
-    - data: pd.DataFrame - The dataset with features to check for
-      multicollinearity.
-    - threshold: float - VIF threshold above which a feature is considered
-      highly collinear.
+        Parameters:
+            - data: pd.DataFrame - The dataset with features to check for
+            multicollinearity.
+            - threshold: float - VIF threshold above which a feature is
+            considered highly collinear.
 
-    Returns:
-    - True if there are any features with VIF exceeding the threshold.
+        Returns:
+            - True if there are any features with VIF exceeding the threshold.
     """
 
     # Ensure the data contains only numeric columns
@@ -68,5 +68,3 @@ def check_multicollinearity(data: pd.DataFrame, threshold: int = 5.0) -> bool:
     collinear_features = vif_data[vif_data["VIF"] > threshold]["feature"
                                                                ].tolist()
     return True if collinear_features else False
-
-# pydoc.writedoc('preprocessing')

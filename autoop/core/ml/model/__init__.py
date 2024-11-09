@@ -15,7 +15,6 @@ from autoop.core.ml.model.regression import (MultipleLinearRegression,
 from autoop.core.ml.model.classification import (LogisticRegression,
                                                  KNearestNeighbors,
                                                  DecisionTreeClassification)
-import pydoc  # noqa: F401
 
 REGRESSION_MODELS = ["MultipleLinearRegression", "RidgeRegression",
                      "DecisionTreeRegression"]
@@ -24,17 +23,18 @@ CLASSIFICATION_MODELS = ["LogisticRegression", "KNearestNeighbors",
 
 
 def get_model(model_name: str) -> Model:
-    """Factory function to get a model by name.
+    """
+    Factory function to get a model by name.
 
-    Args:
-        model_name (str): Name of the model to retrieve.
+        Args:
+            model_name (str): Name of the model to retrieve.
 
-    Returns:
-        Model: An instance of the requested model.
+        Returns:
+            Model: An instance of the requested model.
 
-    Raises:
-        ValueError: If the model_name is not found in either
-        REGRESSION_MODELS or CLASSIFICATION_MODELS.
+        Raises:
+            ValueError: If the model_name is not found in either
+            REGRESSION_MODELS or CLASSIFICATION_MODELS.
     """
     # Dictionary mapping model names to their classes
     model_mapping = {
@@ -55,5 +55,3 @@ def get_model(model_name: str) -> Model:
 
     # Return an instance of the requested model
     return model_mapping[model_name]()
-
-#  pydoc.writedoc('__init__')

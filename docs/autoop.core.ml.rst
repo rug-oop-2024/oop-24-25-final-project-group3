@@ -28,14 +28,6 @@ autoop.core.ml.dataset module
    :undoc-members:
    :show-inheritance:
 
-autoop.core.ml.feature module
------------------------------
-
-.. automodule:: autoop.core.ml.feature
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 autoop.core.ml.metric module
 ----------------------------
 

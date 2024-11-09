@@ -2,7 +2,7 @@ from autoop.core.storage import LocalStorage
 from autoop.core.database import Database
 from autoop.core.ml.artifact import Artifact
 from autoop.core.storage import Storage
-from typing import List, Object
+from typing import List
 
 
 class ArtifactRegistry():
@@ -16,9 +16,9 @@ class ArtifactRegistry():
         """
         Initialize the ArtifactRegistry with a database and storage system.
 
-        Args:
-            database (Database): The database for artifact metadata.
-            storage (Storage): The storage system for artifact data.
+            Args:
+                database (Database): The database for artifact metadata.
+                storage (Storage): The storage system for artifact data.
         """
         self._database = database
         self._storage = storage
@@ -27,8 +27,8 @@ class ArtifactRegistry():
         """
         Register an artifact by saving its data and metadata.
 
-        Args:
-            artifact (Artifact): The artifact to be registered.
+            Args:
+                artifact (Artifact): The artifact to be registered.
         """
         # save the artifact in the storage
         self._storage.save(artifact.data, artifact.asset_path)
@@ -47,11 +47,11 @@ class ArtifactRegistry():
         """
         List all artifacts, optionally filtering by type.
 
-        Args:
-            type (str, optional): Filter for artifact type.
+            Args:
+                type (str, optional): Filter for artifact type.
 
-        Returns:
-            List[Artifact]: A list of Artifact objects.
+            Returns:
+                List[Artifact]: A list of Artifact objects.
         """
         entries = self._database.list("artifacts")
         artifacts = []
@@ -74,19 +74,11 @@ class ArtifactRegistry():
         """
         Retrieve an artifact by its ID.
 
-        Args:
-            artifact_id (str): The ID of the artifact to retrieve.
+            Args:
+                artifact_id (str): The ID of the artifact to retrieve.
 
-        Returns:
-            Artifact: The retrieved Artifact object.
-        """        """
-        Retrieve an artifact by its ID.
-
-        Args:
-            artifact_id (str): The ID of the artifact to retrieve.
-
-        Returns:
-            Artifact: The retrieved Artifact object.
+            Returns:
+                Artifact: The retrieved Artifact object.
         """
         data = self._database.get("artifacts", artifact_id)
         return Artifact(
@@ -103,11 +95,11 @@ class ArtifactRegistry():
         """
         Delete an artifact by its ID.
 
-        Args:
-            artifact_id (str): The ID of the artifact to delete.
+            Args:
+                artifact_id (str): The ID of the artifact to delete.
 
-        Raises:
-            ValueError: If the artifact cannot be found or deleted.
+            Raises:
+                ValueError: If the artifact cannot be found or deleted.
         """
         # Retrieve artifact metadata to get the asset path
         data = self._database.get("artifacts", artifact_id)
@@ -135,21 +127,21 @@ class AutoMLSystem:
         """
         Initialize the AutoMLSystem with storage and a database.
 
-        Args:
-            storage (LocalStorage): The storage system.
-            database (Database): The database for storing metadata.
+            Args:
+                storage (LocalStorage): The storage system.
+                database (Database): The database for storing metadata.
         """
         self._storage = storage
         self._database = database
         self._registry = ArtifactRegistry(database, storage)
 
     @staticmethod
-    def get_instance() -> Object:
+    def get_instance() -> 'AutoMLSystem':
         """
         Get the singleton instance of the AutoMLSystem.
 
-        Returns:
-            AutoMLSystem: The singleton instance.
+            Returns:
+                AutoMLSystem: The singleton instance.
         """
         if AutoMLSystem._instance is None:
             AutoMLSystem._instance = AutoMLSystem(
@@ -162,11 +154,11 @@ class AutoMLSystem:
         return AutoMLSystem._instance
 
     @property
-    def registry(self) -> Object:
+    def registry(self) -> ArtifactRegistry:
         """
         Access the artifact registry.
 
-        Returns:
-            ArtifactRegistry: The artifact registry.
+            Returns:
+                ArtifactRegistry: The artifact registry.
         """
         return self._registry

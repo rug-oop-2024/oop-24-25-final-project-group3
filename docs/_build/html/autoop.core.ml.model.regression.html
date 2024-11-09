@@ -18,7 +18,9 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="autoop.functional package" href="autoop.functional.html" />
+    <link rel="prev" title="autoop.core.ml.model.classification package" href="autoop.core.ml.model.classification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,56 +42,28 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">autoop.core.ml.model.regression package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model.regression.decision_tree_regression">autoop.core.ml.model.regression.decision_tree_regression module</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.predict()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">app package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="autoop.html">autoop package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="autoop.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="autoop.core.html">autoop.core package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="autoop.core.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core.database">autoop.core.database module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core.storage">autoop.core.storage module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.html#module-autoop.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.functional.html">autoop.functional package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.tests.html">autoop.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.html#module-autoop">Module contents</a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model.regression.multiple_linear_regression">autoop.core.ml.model.regression.multiple_linear_regression module</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model.regression.ridge_regression">autoop.core.ml.model.regression.ridge_regression module</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.ridge_regression.RidgeRegression"><code class="docutils literal notranslate"><span class="pre">RidgeRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.fit"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.predict"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-autoop.core.ml.model.regression">Module contents</a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.DecisionTreeRegression"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.DecisionTreeRegression.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.DecisionTreeRegression.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.predict()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.MultipleLinearRegression"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.MultipleLinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.MultipleLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.RidgeRegression"><code class="docutils literal notranslate"><span class="pre">RidgeRegression</span></code></a><ul>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.RidgeRegression.fit"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.fit()</span></code></a></li>
-<li><a class="reference internal" href="#autoop.core.ml.model.regression.RidgeRegression.predict"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.predict()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -104,6 +78,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="autoop.html">autoop package</a></li>
+          <li class="breadcrumb-item"><a href="autoop.core.html">autoop.core package</a></li>
+          <li class="breadcrumb-item"><a href="autoop.core.ml.html">autoop.core.ml package</a></li>
+          <li class="breadcrumb-item"><a href="autoop.core.ml.model.html">autoop.core.ml.model package</a></li>
       <li class="breadcrumb-item active">autoop.core.ml.model.regression package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/autoop.core.ml.model.regression.rst.txt" rel="nofollow"> View page source</a>
@@ -142,12 +120,24 @@ using scikit-learn’s implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/decision_tree_regression.html#DecisionTreeRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape</p></li>
+</ul>
+<p>(n_samples,).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -165,23 +155,44 @@ implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/multiple_linear_regression.html#MultipleLinearRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.fit" title="Link to this definition"></a></dt>
 <dd><p>Train the Multiple Linear Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).
 - y (np.ndarray): Target vector with shape (n_samples,).</p>
-<p>Sets:
-- self.trained (bool): Marks the model as trained.</p>
+</dd>
+<dt>Sets:</dt><dd><ul class="simple">
+<li><p>self.trained (bool): Marks the model as trained.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/multiple_linear_regression.html#MultipleLinearRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape</p></li>
+</ul>
+<p>(n_samples,).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -198,23 +209,42 @@ implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.ridge_regression.RidgeRegression.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/ridge_regression.html#RidgeRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.fit" title="Link to this definition"></a></dt>
 <dd><p>Train the Ridge Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+<blockquote>
+<div><p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples,
+n_features).
 - y (np.ndarray): Target vector with shape (n_samples,).</p>
-<p>Sets:
-- self.trained (bool): Marks the model as trained.</p>
+<dl class="simple">
+<dt>Sets:</dt><dd><ul class="simple">
+<li><p>self.trained (bool): Marks the model as trained.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.ridge_regression.RidgeRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/ridge_regression.html#RidgeRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained Ridge Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape (n_samples,</p></li>
+</ul>
+<p>).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -250,12 +280,24 @@ using scikit-learn’s implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.DecisionTreeRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/decision_tree_regression.html#DecisionTreeRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.DecisionTreeRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape</p></li>
+</ul>
+<p>(n_samples,).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -270,23 +312,44 @@ implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.MultipleLinearRegression.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/multiple_linear_regression.html#MultipleLinearRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.MultipleLinearRegression.fit" title="Link to this definition"></a></dt>
 <dd><p>Train the Multiple Linear Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).
 - y (np.ndarray): Target vector with shape (n_samples,).</p>
-<p>Sets:
-- self.trained (bool): Marks the model as trained.</p>
+</dd>
+<dt>Sets:</dt><dd><ul class="simple">
+<li><p>self.trained (bool): Marks the model as trained.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.MultipleLinearRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/multiple_linear_regression.html#MultipleLinearRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.MultipleLinearRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape</p></li>
+</ul>
+<p>(n_samples,).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -300,23 +363,42 @@ implementation.</p>
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.RidgeRegression.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/ridge_regression.html#RidgeRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.RidgeRegression.fit" title="Link to this definition"></a></dt>
 <dd><p>Train the Ridge Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+<blockquote>
+<div><p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples,
+n_features).
 - y (np.ndarray): Target vector with shape (n_samples,).</p>
-<p>Sets:
-- self.trained (bool): Marks the model as trained.</p>
+<dl class="simple">
+<dt>Sets:</dt><dd><ul class="simple">
+<li><p>self.trained (bool): Marks the model as trained.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="autoop.core.ml.model.regression.RidgeRegression.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/regression/ridge_regression.html#RidgeRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.regression.RidgeRegression.predict" title="Link to this definition"></a></dt>
 <dd><p>Make predictions using the trained Ridge Regression model.</p>
-<p>Parameters:
-- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
-<p>Returns:
-- np.ndarray: Array of predicted values with shape (n_samples,).</p>
-<p>Raises:
-- ValueError: If the model has not been trained yet.</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>X (np.ndarray): Feature matrix with shape (n_samples,</p></li>
+</ul>
+<p>n_features).</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>np.ndarray: Array of predicted values with shape (n_samples,</p></li>
+</ul>
+<p>).</p>
+</dd>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>ValueError: If the model has not been trained yet.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -327,7 +409,10 @@ implementation.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autoop.core.ml.model.classification.html" class="btn btn-neutral float-left" title="autoop.core.ml.model.classification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoop.functional.html" class="btn btn-neutral float-right" title="autoop.functional package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

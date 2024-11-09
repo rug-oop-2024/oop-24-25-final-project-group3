@@ -1,7 +1,6 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.tree import DecisionTreeRegressor
-import pydoc  # noqa: F401
 
 
 class DecisionTreeRegression(Model):
@@ -40,18 +39,18 @@ class DecisionTreeRegression(Model):
         """
         Make predictions using the trained model.
 
-        Parameters:
-        - X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+            Parameters:
+                - X (np.ndarray): Feature matrix with shape (n_samples,
+                n_features).
 
-        Returns:
-        - np.ndarray: Array of predicted values with shape (n_samples,).
+            Returns:
+                - np.ndarray: Array of predicted values with shape
+                (n_samples,).
 
-        Raises:
-        - ValueError: If the model has not been trained yet.
+            Raises:
+                - ValueError: If the model has not been trained yet.
         """
         if not self.trained:
             raise ValueError("Model must be trained before making predictions."
                              )
         return self.model.predict(X)
-
-# pydoc.writedoc('decision_tree_regression')

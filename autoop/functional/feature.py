@@ -3,7 +3,6 @@ from autoop.core.ml.dataset import Dataset
 from autoop.core.ml.feature import Feature
 import pandas as pd
 from pandas.api.types import CategoricalDtype
-import pydoc  # noqa: F401
 
 
 def detect_feature_types(data: Union[Dataset, pd.DataFrame],
@@ -12,13 +11,14 @@ def detect_feature_types(data: Union[Dataset, pd.DataFrame],
     Detects feature types (categorical or numerical) in a dataset or DataFrame.
     Numeric features with limited unique values are classified as categorical.
 
-    Args:
-        data (Union[Dataset, pd.DataFrame]): The dataset/DataFrame to analyze.
-        threshold (int): Max unique values for numeric columns to be
-                         considered categorical.
+        Args:
+            data (Union[Dataset, pd.DataFrame]): The dataset/DataFrame to
+                                                analyze.
+            threshold (int): Max unique values for numeric columns to be
+                            considered categorical.
 
-    Returns:
-        List[Feature]: A list of features with detected types.
+        Returns:
+            List[Feature]: A list of features with detected types.
     """
     # Check if input is Dataset, if so, read it as DataFrame
     if isinstance(data, Dataset):
@@ -49,5 +49,3 @@ def detect_feature_types(data: Union[Dataset, pd.DataFrame],
                         values=df[column].values))
 
     return features
-
-# pydoc.writedoc('feature')

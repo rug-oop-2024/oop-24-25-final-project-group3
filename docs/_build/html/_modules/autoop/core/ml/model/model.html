@@ -76,7 +76,6 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="kn">import</span> <span class="nn">pydoc</span>  <span class="c1"># noqa: F401</span>
 
 
 <div class="viewcode-block" id="Model">
@@ -86,11 +85,11 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;regression&quot;</span><span class="p">,</span> <span class="s2">&quot;classification&quot;</span><span class="p">],</span>
                  <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
-<span class="sd">            Initializing Model</span>
-<span class="sd">        Args:</span>
-<span class="sd">            model_type (Literal[&quot;regression&quot;, &quot;classification&quot;])</span>
-<span class="sd">            parameters (Optional[dict], optional) Defaults to None.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializing Model</span>
+<span class="sd">            Args:</span>
+<span class="sd">                model_type (Literal[&quot;regression&quot;, &quot;classification&quot;])</span>
+<span class="sd">                parameters (Optional[dict], optional) Defaults to None.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">model_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span> <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}</span>
@@ -100,11 +99,12 @@
 <a class="viewcode-back" href="../../../../../autoop.core.ml.model.html#autoop.core.ml.model.model.Model.fit">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Train the model on the given data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train the model on the given data.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            X (np.ndarray): Training features.</span>
-<span class="sd">            y (np.ndarray): Target values.</span>
+<span class="sd">            Args:</span>
+<span class="sd">                X (np.ndarray): Training features.</span>
+<span class="sd">                y (np.ndarray): Target values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trained</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set to True when model is trained</span></div>
 
@@ -113,13 +113,14 @@
 <a class="viewcode-back" href="../../../../../autoop.core.ml.model.html#autoop.core.ml.model.model.Model.predict">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict using the model on given data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predict using the model on given data.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            X (np.ndarray): Features for prediction.</span>
+<span class="sd">            Args:</span>
+<span class="sd">                X (np.ndarray): Features for prediction.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            np.ndarray: Predicted values.</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                np.ndarray: Predicted values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">trained</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model must be trained before making &quot;</span>
@@ -129,13 +130,14 @@
 <div class="viewcode-block" id="Model.to_artifact">
 <a class="viewcode-back" href="../../../../../autoop.core.ml.model.html#autoop.core.ml.model.model.Model.to_artifact">[docs]</a>
     <span class="k">def</span> <span class="nf">to_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Artifact</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the model to an Artifact for storage.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the model to an Artifact for storage.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the artifact.</span>
+<span class="sd">            Args:</span>
+<span class="sd">                name (str): Name of the artifact.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            Artifact: An artifact representing the model&#39;s state.</span>
+<span class="sd">            Returns:</span>
+<span class="sd">                Artifact: An artifact representing the model&#39;s state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Serialize the model&#39;s parameters and type</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
@@ -150,10 +152,11 @@
 <div class="viewcode-block" id="Model.load_artifact">
 <a class="viewcode-back" href="../../../../../autoop.core.ml.model.html#autoop.core.ml.model.model.Model.load_artifact">[docs]</a>
     <span class="k">def</span> <span class="nf">load_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">artifact</span><span class="p">:</span> <span class="n">Artifact</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load model parameters from an artifact.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load model parameters from an artifact.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            artifact (Artifact): Artifact to load data from.</span>
+<span class="sd">            Args:</span>
+<span class="sd">                artifact (Artifact): Artifact to load data from.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">artifact</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;model:&quot;</span><span class="p">):</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">artifact</span><span class="o">.</span><span class="n">data</span>
@@ -172,8 +175,6 @@
         <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model(type=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">, trained=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">trained</span><span class="si">}</span><span class="s2">,&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;parameters=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span></div>
 
-
-<span class="c1"># pydoc.writedoc(&#39;model&#39;)</span>
 </pre></div>
 
            </div>

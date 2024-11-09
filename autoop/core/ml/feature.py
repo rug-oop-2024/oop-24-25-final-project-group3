@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field, field_validator
 from typing import Any, List, Literal, Tuple, Optional, Union
 import numpy as np
-import pydoc  # noqa: F401
 
 
 class Feature(BaseModel):
@@ -59,5 +58,3 @@ class Feature(BaseModel):
         "populate_by_name": True,
         "arbitrary_types_allowed": True,
     }
-
-# pydoc.writedoc('feature')

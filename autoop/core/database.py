@@ -1,6 +1,5 @@
 import json
 from typing import Tuple, List, Union
-import pydoc  # noqa: F401
 
 from autoop.core.storage import Storage
 
@@ -18,7 +17,7 @@ class Database():
     Attributes:
         _storage (Storage): The storage backend used for persisting data.
         _data (dict): The in-memory representation of collections and their
-                      entries.
+        entries.
 
     Methods:
         __init__(storage: Storage) -> None:
@@ -42,8 +41,7 @@ class Database():
 
         _persist() -> None:
             Persists the current state of the in-memory database to the
-            storage,
-            and deletes obsolete entries from storage.
+            storage, and deletes obsolete entries from storage.
 
         _load() -> None:
             Loads data from the storage into the in-memory database.
@@ -58,12 +56,12 @@ class Database():
     def set(self, collection: str, id: str, entry: dict) -> dict:
         """
         Set a key in the database
-        Args:
-            collection (str): The collection to store the data in
-            id (str): The id of the data
-            entry (dict): The data to store
-        Returns:
-            dict: The data that was stored
+            Args:
+                collection (str): The collection to store the data in
+                id (str): The id of the data
+                entry (dict): The data to store
+            Returns:
+                dict: The data that was stored
         """
         assert isinstance(entry, dict), "Data must be a dictionary"
         assert isinstance(collection, str), "Collection must be a string"
@@ -77,24 +75,25 @@ class Database():
     def get(self, collection: str, id: str) -> Union[dict, None]:
         """
         Get a key from the database
-        Args:
-            collection (str): The collection to get the data from
-            id (str): The id of the data
-        Returns:
-            Union[dict, None]: The data that was stored,
-            or None if it doesn't exist
+            Args:
+                collection (str): The collection to get the data from
+                id (str): The id of the data
+            Returns:
+                Union[dict, None]: The data that was stored,
+                or None if it doesn't exist
         """
         if not self._data.get(collection, None):
             return None
         return self._data[collection].get(id, None)
 
     def delete(self, collection: str, id: str) -> None:
-        """Delete a key from the database with debug logging
-        Args:
-            collection (str): The collection to delete the data from
-            id (str): The id of the data
-        Returns:
-            None
+        """
+        Delete a key from the database with debug logging
+            Args:
+                collection (str): The collection to delete the data from
+                id (str): The id of the data
+            Returns:
+                None
         """
         if not self._data.get(collection, None):
             return
@@ -106,11 +105,11 @@ class Database():
     def list(self, collection: str) -> List[Tuple[str, dict]]:
         """
         Lists all data in a collection
-        Args:
-            collection (str): The collection to list the data from
-        Returns:
-            List[Tuple[str, dict]]: A list of tuples containing the id and
-            data for each item in the collection
+            Args:
+                collection (str): The collection to list the data from
+            Returns:
+                List[Tuple[str, dict]]: A list of tuples containing the id and
+                data for each item in the collection
         """
         if not self._data.get(collection, None):
             return []
@@ -147,5 +146,3 @@ class Database():
             if collection not in self._data:
                 self._data[collection] = {}
             self._data[collection][id] = json.loads(data.decode())
-
-# pydoc.writedoc('database')

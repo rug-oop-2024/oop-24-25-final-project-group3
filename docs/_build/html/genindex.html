@@ -75,6 +75,7 @@
  <a href="#A"><strong>A</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
@@ -109,10 +110,10 @@
 </li>
       </ul></li>
       <li>
-    app.pages
+    app.core.system
 
       <ul>
-        <li><a href="app.pages.html#module-app.pages">module</a>
+        <li><a href="app.core.html#module-app.core.system">module</a>
 </li>
       </ul></li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.Config.arbitrary_types_allowed">arbitrary_types_allowed (autoop.core.ml.artifact.Artifact.Config attribute)</a>
@@ -121,7 +122,13 @@
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.Config">Artifact.Config (class in autoop.core.ml.artifact)</a>
 </li>
+      <li><a href="app.core.html#app.core.system.ArtifactRegistry">ArtifactRegistry (class in app.core.system)</a>
+</li>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.artifacts">artifacts (autoop.core.ml.pipeline.Pipeline property)</a>
+</li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.asset_path">asset_path (autoop.core.ml.artifact.Artifact attribute)</a>
+</li>
+      <li><a href="app.core.html#app.core.system.AutoMLSystem">AutoMLSystem (class in app.core.system)</a>
 </li>
       <li>
     autoop
@@ -159,10 +166,10 @@
 </li>
       </ul></li>
       <li>
-    autoop.core.ml.feature
+    autoop.core.ml.dataset
 
       <ul>
-        <li><a href="autoop.core.ml.html#module-autoop.core.ml.feature">module</a>
+        <li><a href="autoop.core.ml.html#module-autoop.core.ml.dataset">module</a>
 </li>
       </ul></li>
       <li>
@@ -186,8 +193,6 @@
         <li><a href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     autoop.core.ml.model.classification.decision_tree_classification
 
@@ -209,6 +214,8 @@
         <li><a href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification.logistic_regression">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     autoop.core.ml.model.model
 
@@ -245,6 +252,13 @@
 </li>
       </ul></li>
       <li>
+    autoop.core.ml.pipeline
+
+      <ul>
+        <li><a href="autoop.core.ml.html#module-autoop.core.ml.pipeline">module</a>
+</li>
+      </ul></li>
+      <li>
     autoop.core.storage
 
       <ul>
@@ -259,10 +273,31 @@
 </li>
       </ul></li>
       <li>
+    autoop.functional.feature
+
+      <ul>
+        <li><a href="autoop.functional.html#module-autoop.functional.feature">module</a>
+</li>
+      </ul></li>
+      <li>
     autoop.functional.pipeline_graphing
 
       <ul>
         <li><a href="autoop.functional.html#module-autoop.functional.pipeline_graphing">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoop.functional.preprocessing
+
+      <ul>
+        <li><a href="autoop.functional.html#module-autoop.functional.preprocessing">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoop.functional.report_generator
+
+      <ul>
+        <li><a href="autoop.functional.html#module-autoop.functional.report_generator">module</a>
 </li>
       </ul></li>
       <li>
@@ -273,10 +308,31 @@
 </li>
       </ul></li>
       <li>
+    autoop.tests.main
+
+      <ul>
+        <li><a href="autoop.tests.html#module-autoop.tests.main">module</a>
+</li>
+      </ul></li>
+      <li>
     autoop.tests.test_database
 
       <ul>
         <li><a href="autoop.tests.html#module-autoop.tests.test_database">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoop.tests.test_features
+
+      <ul>
+        <li><a href="autoop.tests.html#module-autoop.tests.test_features">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoop.tests.test_pipeline
+
+      <ul>
+        <li><a href="autoop.tests.html#module-autoop.tests.test_pipeline">module</a>
 </li>
       </ul></li>
       <li>
@@ -292,7 +348,7 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.convert_to_array">convert_to_array() (autoop.core.ml.feature.Feature class method)</a>
+      <li><a href="autoop.functional.html#autoop.functional.preprocessing.check_multicollinearity">check_multicollinearity() (in module autoop.functional.preprocessing)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -308,36 +364,48 @@
 </li>
       <li><a href="autoop.core.html#autoop.core.database.Database">Database (class in autoop.core.database)</a>
 </li>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset">Dataset (class in autoop.core.ml.dataset)</a>
+</li>
       <li><a href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.DecisionTreeClassification">DecisionTreeClassification (class in autoop.core.ml.model.classification)</a>
 
       <ul>
         <li><a href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification">(class in autoop.core.ml.model.classification.decision_tree_classification)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.DecisionTreeRegression">DecisionTreeRegression (class in autoop.core.ml.model.regression)</a>
 
       <ul>
         <li><a href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression">(class in autoop.core.ml.model.regression.decision_tree_regression)</a>
 </li>
       </ul></li>
-      <li><a href="autoop.core.html#autoop.core.database.Database.delete">delete() (autoop.core.database.Database method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="app.core.html#app.core.system.ArtifactRegistry.delete">delete() (app.core.system.ArtifactRegistry method)</a>
 
       <ul>
+        <li><a href="autoop.core.html#autoop.core.database.Database.delete">(autoop.core.database.Database method)</a>
+</li>
         <li><a href="autoop.core.html#autoop.core.storage.LocalStorage.delete">(autoop.core.storage.LocalStorage method)</a>
 </li>
         <li><a href="autoop.core.html#autoop.core.storage.Storage.delete">(autoop.core.storage.Storage method)</a>
 </li>
       </ul></li>
+      <li><a href="autoop.functional.html#autoop.functional.feature.detect_feature_types">detect_feature_types() (in module autoop.functional.feature)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.execute">execute() (autoop.core.ml.pipeline.Pipeline method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature">Feature (class in autoop.core.ml.feature)</a>
-</li>
       <li><a href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.fit">fit() (autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification method)</a>
 
       <ul>
@@ -367,6 +435,10 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.from_dataframe">from_dataframe() (autoop.core.ml.dataset.Dataset static method)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
@@ -374,11 +446,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.generate_id">generate_id() (autoop.core.ml.artifact.Artifact method)</a>
 </li>
+      <li><a href="autoop.functional.html#autoop.functional.report_generator.generate_pdf_report">generate_pdf_report() (in module autoop.functional.report_generator)</a>
+</li>
       <li><a href="autoop.functional.html#autoop.functional.pipeline_graphing.generate_training_prediction_plot">generate_training_prediction_plot() (in module autoop.functional.pipeline_graphing)</a>
 </li>
+      <li><a href="app.core.html#app.core.system.ArtifactRegistry.get">get() (app.core.system.ArtifactRegistry method)</a>
+
+      <ul>
+        <li><a href="autoop.core.html#autoop.core.database.Database.get">(autoop.core.database.Database method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.html#autoop.core.database.Database.get">get() (autoop.core.database.Database method)</a>
+      <li><a href="app.core.html#app.core.system.AutoMLSystem.get_instance">get_instance() (app.core.system.AutoMLSystem static method)</a>
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.metric.get_metric">get_metric() (in module autoop.core.ml.metric)</a>
 </li>
@@ -410,9 +490,11 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.html#autoop.core.database.Database.list">list() (autoop.core.database.Database method)</a>
+      <li><a href="app.core.html#app.core.system.ArtifactRegistry.list">list() (app.core.system.ArtifactRegistry method)</a>
 
       <ul>
+        <li><a href="autoop.core.html#autoop.core.database.Database.list">(autoop.core.database.Database method)</a>
+</li>
         <li><a href="autoop.core.html#autoop.core.storage.LocalStorage.list">(autoop.core.storage.LocalStorage method)</a>
 </li>
         <li><a href="autoop.core.html#autoop.core.storage.Storage.list">(autoop.core.storage.Storage method)</a>
@@ -424,10 +506,10 @@
         <li><a href="autoop.core.html#autoop.core.storage.Storage.load">(autoop.core.storage.Storage method)</a>
 </li>
       </ul></li>
-      <li><a href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model.load_artifact">load_artifact() (autoop.core.ml.model.model.Model method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model.load_artifact">load_artifact() (autoop.core.ml.model.model.Model method)</a>
+</li>
       <li><a href="autoop.core.html#autoop.core.storage.LocalStorage">LocalStorage (class in autoop.core.storage)</a>
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.metric.LogisticAccuracy">LogisticAccuracy (class in autoop.core.ml.metric)</a>
@@ -456,24 +538,26 @@
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.metric.Metric">Metric (class in autoop.core.ml.metric)</a>
 </li>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline.model">model (autoop.core.ml.pipeline.Pipeline property)</a>
+</li>
       <li><a href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model">Model (class in autoop.core.ml.model.model)</a>
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.model_computed_fields">model_computed_fields (autoop.core.ml.artifact.Artifact attribute)</a>
 
       <ul>
-        <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_computed_fields">(autoop.core.ml.feature.Feature attribute)</a>
+        <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_computed_fields">(autoop.core.ml.dataset.Dataset attribute)</a>
 </li>
       </ul></li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.model_config">model_config (autoop.core.ml.artifact.Artifact attribute)</a>
 
       <ul>
-        <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_config">(autoop.core.ml.feature.Feature attribute)</a>
+        <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_config">(autoop.core.ml.dataset.Dataset attribute)</a>
 </li>
       </ul></li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.model_fields">model_fields (autoop.core.ml.artifact.Artifact attribute)</a>
 
       <ul>
-        <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.model_fields">(autoop.core.ml.feature.Feature attribute)</a>
+        <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.model_fields">(autoop.core.ml.dataset.Dataset attribute)</a>
 </li>
       </ul></li>
       <li>
@@ -484,7 +568,7 @@
 </li>
         <li><a href="app.core.html#module-app.core">app.core</a>
 </li>
-        <li><a href="app.pages.html#module-app.pages">app.pages</a>
+        <li><a href="app.core.html#module-app.core.system">app.core.system</a>
 </li>
         <li><a href="autoop.html#module-autoop">autoop</a>
 </li>
@@ -496,7 +580,7 @@
 </li>
         <li><a href="autoop.core.ml.html#module-autoop.core.ml.artifact">autoop.core.ml.artifact</a>
 </li>
-        <li><a href="autoop.core.ml.html#module-autoop.core.ml.feature">autoop.core.ml.feature</a>
+        <li><a href="autoop.core.ml.html#module-autoop.core.ml.dataset">autoop.core.ml.dataset</a>
 </li>
         <li><a href="autoop.core.ml.html#module-autoop.core.ml.metric">autoop.core.ml.metric</a>
 </li>
@@ -520,15 +604,29 @@
 </li>
         <li><a href="autoop.core.ml.model.regression.html#module-autoop.core.ml.model.regression.ridge_regression">autoop.core.ml.model.regression.ridge_regression</a>
 </li>
+        <li><a href="autoop.core.ml.html#module-autoop.core.ml.pipeline">autoop.core.ml.pipeline</a>
+</li>
         <li><a href="autoop.core.html#module-autoop.core.storage">autoop.core.storage</a>
 </li>
         <li><a href="autoop.functional.html#module-autoop.functional">autoop.functional</a>
 </li>
+        <li><a href="autoop.functional.html#module-autoop.functional.feature">autoop.functional.feature</a>
+</li>
         <li><a href="autoop.functional.html#module-autoop.functional.pipeline_graphing">autoop.functional.pipeline_graphing</a>
+</li>
+        <li><a href="autoop.functional.html#module-autoop.functional.preprocessing">autoop.functional.preprocessing</a>
+</li>
+        <li><a href="autoop.functional.html#module-autoop.functional.report_generator">autoop.functional.report_generator</a>
 </li>
         <li><a href="autoop.tests.html#module-autoop.tests">autoop.tests</a>
 </li>
+        <li><a href="autoop.tests.html#module-autoop.tests.main">autoop.tests.main</a>
+</li>
         <li><a href="autoop.tests.html#module-autoop.tests.test_database">autoop.tests.test_database</a>
+</li>
+        <li><a href="autoop.tests.html#module-autoop.tests.test_features">autoop.tests.test_features</a>
+</li>
+        <li><a href="autoop.tests.html#module-autoop.tests.test_pipeline">autoop.tests.test_pipeline</a>
 </li>
         <li><a href="autoop.tests.html#module-autoop.tests.test_storage">autoop.tests.test_storage</a>
 </li>
@@ -548,11 +646,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.name">name (autoop.core.ml.artifact.Artifact attribute)</a>
-
-      <ul>
-        <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.name">(autoop.core.ml.feature.Feature attribute)</a>
 </li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.html#autoop.core.storage.NotFoundError">NotFoundError</a>
@@ -563,6 +657,8 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline">Pipeline (class in autoop.core.ml.pipeline)</a>
+</li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.Config.populate_by_name">populate_by_name (autoop.core.ml.artifact.Artifact.Config attribute)</a>
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.metric.Precision">Precision (class in autoop.core.ml.metric)</a>
@@ -596,19 +692,31 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.functional.html#autoop.functional.preprocessing.preprocess_features">preprocess_features() (in module autoop.functional.preprocessing)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.read">read() (autoop.core.ml.artifact.Artifact method)</a>
+
+      <ul>
+        <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.read">(autoop.core.ml.dataset.Dataset method)</a>
 </li>
+      </ul></li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.metric.Recall">Recall (class in autoop.core.ml.metric)</a>
 </li>
       <li><a href="autoop.core.html#autoop.core.database.Database.refresh">refresh() (autoop.core.database.Database method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="app.core.html#app.core.system.ArtifactRegistry.register">register() (app.core.system.ArtifactRegistry method)</a>
+</li>
+      <li><a href="app.core.html#app.core.system.AutoMLSystem.registry">registry (app.core.system.AutoMLSystem property)</a>
+</li>
       <li><a href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.RidgeRegression">RidgeRegression (class in autoop.core.ml.model.regression)</a>
 
       <ul>
@@ -626,18 +734,24 @@
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.save">save() (autoop.core.ml.artifact.Artifact method)</a>
 
       <ul>
+        <li><a href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset.save">(autoop.core.ml.dataset.Dataset method)</a>
+</li>
         <li><a href="autoop.core.html#autoop.core.storage.LocalStorage.save">(autoop.core.storage.LocalStorage method)</a>
 </li>
         <li><a href="autoop.core.html#autoop.core.storage.Storage.save">(autoop.core.storage.Storage method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.core.html#autoop.core.database.Database.set">set() (autoop.core.database.Database method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoop.tests.html#autoop.tests.test_database.TestDatabase.setUp">setUp() (autoop.tests.test_database.TestDatabase method)</a>
 
       <ul>
+        <li><a href="autoop.tests.html#autoop.tests.test_features.TestFeatures.setUp">(autoop.tests.test_features.TestFeatures method)</a>
+</li>
+        <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.setUp">(autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
         <li><a href="autoop.tests.html#autoop.tests.test_storage.TestStorage.setUp">(autoop.tests.test_storage.TestStorage method)</a>
 </li>
       </ul></li>
@@ -657,9 +771,17 @@
         <li><a href="autoop.tests.html#autoop.tests.test_storage.TestStorage.test_delete">(autoop.tests.test_storage.TestStorage method)</a>
 </li>
       </ul></li>
+      <li><a href="autoop.tests.html#autoop.tests.test_features.TestFeatures.test_detect_features_continuous">test_detect_features_continuous() (autoop.tests.test_features.TestFeatures method)</a>
+</li>
+      <li><a href="autoop.tests.html#autoop.tests.test_features.TestFeatures.test_detect_features_with_categories">test_detect_features_with_categories() (autoop.tests.test_features.TestFeatures method)</a>
+</li>
+      <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.test_evaluate">test_evaluate() (autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
       <li><a href="autoop.tests.html#autoop.tests.test_database.TestDatabase.test_init">test_init() (autoop.tests.test_database.TestDatabase method)</a>
 
       <ul>
+        <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.test_init">(autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
         <li><a href="autoop.tests.html#autoop.tests.test_storage.TestStorage.test_init">(autoop.tests.test_storage.TestStorage method)</a>
 </li>
       </ul></li>
@@ -673,36 +795,40 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.test_preprocess_features">test_preprocess_features() (autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
       <li><a href="autoop.tests.html#autoop.tests.test_database.TestDatabase.test_refresh">test_refresh() (autoop.tests.test_database.TestDatabase method)</a>
 </li>
       <li><a href="autoop.tests.html#autoop.tests.test_database.TestDatabase.test_set">test_set() (autoop.tests.test_database.TestDatabase method)</a>
 </li>
+      <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.test_split_data">test_split_data() (autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
       <li><a href="autoop.tests.html#autoop.tests.test_storage.TestStorage.test_store">test_store() (autoop.tests.test_storage.TestStorage method)</a>
 </li>
+      <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline.test_train">test_train() (autoop.tests.test_pipeline.TestPipeline method)</a>
+</li>
       <li><a href="autoop.tests.html#autoop.tests.test_database.TestDatabase">TestDatabase (class in autoop.tests.test_database)</a>
+</li>
+      <li><a href="autoop.tests.html#autoop.tests.test_features.TestFeatures">TestFeatures (class in autoop.tests.test_features)</a>
+</li>
+      <li><a href="autoop.tests.html#autoop.tests.test_pipeline.TestPipeline">TestPipeline (class in autoop.tests.test_pipeline)</a>
 </li>
       <li><a href="autoop.tests.html#autoop.tests.test_storage.TestStorage">TestStorage (class in autoop.tests.test_storage)</a>
 </li>
       <li><a href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model.to_artifact">to_artifact() (autoop.core.ml.model.model.Model method)</a>
 </li>
       <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.type">type (autoop.core.ml.artifact.Artifact attribute)</a>
-
-      <ul>
-        <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.type">(autoop.core.ml.feature.Feature attribute)</a>
 </li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.ml.html#autoop.core.ml.feature.Feature.values">values (autoop.core.ml.feature.Feature attribute)</a>
+      <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.version">version (autoop.core.ml.artifact.Artifact attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact.version">version (autoop.core.ml.artifact.Artifact attribute)</a>
-</li>
       <li><a href="autoop.functional.html#autoop.functional.pipeline_graphing.visualise_pipeline">visualise_pipeline() (in module autoop.functional.pipeline_graphing)</a>
 </li>
   </ul></td>

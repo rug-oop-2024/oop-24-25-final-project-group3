@@ -87,7 +87,6 @@
 <span class="kn">from</span> <span class="nn">autoop.core.ml.model.classification</span> <span class="kn">import</span> <span class="p">(</span><span class="n">LogisticRegression</span><span class="p">,</span>
                                                  <span class="n">KNearestNeighbors</span><span class="p">,</span>
                                                  <span class="n">DecisionTreeClassification</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">pydoc</span>  <span class="c1"># noqa: F401</span>
 
 <span class="n">REGRESSION_MODELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MultipleLinearRegression&quot;</span><span class="p">,</span> <span class="s2">&quot;RidgeRegression&quot;</span><span class="p">,</span>
                      <span class="s2">&quot;DecisionTreeRegression&quot;</span><span class="p">]</span>
@@ -98,17 +97,18 @@
 <div class="viewcode-block" id="get_model">
 <a class="viewcode-back" href="../../../../autoop.core.ml.model.html#autoop.core.ml.model.get_model">[docs]</a>
 <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Factory function to get a model by name.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Factory function to get a model by name.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        model_name (str): Name of the model to retrieve.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            model_name (str): Name of the model to retrieve.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        Model: An instance of the requested model.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Model: An instance of the requested model.</span>
 
-<span class="sd">    Raises:</span>
-<span class="sd">        ValueError: If the model_name is not found in either</span>
-<span class="sd">        REGRESSION_MODELS or CLASSIFICATION_MODELS.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the model_name is not found in either</span>
+<span class="sd">            REGRESSION_MODELS or CLASSIFICATION_MODELS.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Dictionary mapping model names to their classes</span>
     <span class="n">model_mapping</span> <span class="o">=</span> <span class="p">{</span>
@@ -130,8 +130,6 @@
     <span class="c1"># Return an instance of the requested model</span>
     <span class="k">return</span> <span class="n">model_mapping</span><span class="p">[</span><span class="n">model_name</span><span class="p">]()</span></div>
 
-
-<span class="c1">#  pydoc.writedoc(&#39;__init__&#39;)</span>
 </pre></div>
 
            </div>

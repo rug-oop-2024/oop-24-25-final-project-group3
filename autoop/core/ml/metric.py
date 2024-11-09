@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 import numpy as np
 from typing import Union
-import pydoc  # noqa: F401
 
 REGRESSION_METRICS = [
     "mean_squared_error",
@@ -29,16 +28,16 @@ def get_metric(name: str) -> Union['MeanSquaredError', 'Accuracy', 'Precision',
     """
     Factory function to get a metric instance by its name.
 
-    Args:
-        name (str): The name of the metric to retrieve.
+        Args:
+            name (str): The name of the metric to retrieve.
 
-    Returns:
-        Union[MeanSquaredError, Accuracy, Precision, Recall, LogisticAccuracy,
-        LogisticPrecision, LogisticRecall, MeanAbsoluteError, RSquared]:
-        The metric instance.
+        Returns:
+            Union[MeanSquaredError, Accuracy, Precision, Recall,
+            LogisticAccuracy, LogisticPrecision, LogisticRecall,
+            MeanAbsoluteError, RSquared]: The metric instance.
 
-    Raises:
-        ValueError: If the metric name is not implemented.
+        Raises:
+            ValueError: If the metric name is not implemented.
     """
     if name == "mean_squared_error":
         return MeanSquaredError()
@@ -69,12 +68,12 @@ class Metric(ABC):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculate the metric given ground truth and predictions.
 
-        Args:
-            y_true (np.ndarray): Ground truth values.
-            y_pred (np.ndarray): Predicted values.
+            Args:
+                y_true (np.ndarray): Ground truth values.
+                y_pred (np.ndarray): Predicted values.
 
-        Returns:
-            float: The calculated metric.
+            Returns:
+                float: The calculated metric.
         """
         pass
 
@@ -209,5 +208,3 @@ class Recall(Metric):
     def __str__(self) -> str:
         """String representation"""
         return "Recall"
-
-# pydoc.writedoc('metric')

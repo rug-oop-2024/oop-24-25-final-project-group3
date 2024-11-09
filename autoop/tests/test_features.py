@@ -3,7 +3,6 @@ from sklearn.datasets import load_iris, fetch_openml
 import pandas as pd
 import os
 import sys
-import pydoc  # noqa: F401
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -81,8 +80,6 @@ class TestFeatures(unittest.TestCase):
         for detected_feature in filter(lambda x: x.name in categorical_columns,
                                        features):
             self.assertEqual(detected_feature.type, "categorical")
-
-# pydoc.writedoc('test_features')
 
 
 if __name__ == "__main__":

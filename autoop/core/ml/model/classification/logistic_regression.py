@@ -1,6 +1,5 @@
 import numpy as np
 from autoop.core.ml.model import Model
-import pydoc  # noqa: F401
 
 from sklearn.linear_model import LogisticRegression as SkLogisticRegression
 
@@ -16,15 +15,15 @@ class LogisticRegression(Model):
         """
         Train the logistic regression model.
 
-        Args:
-            X (np.ndarray): Feature matrix for training.
-            y (np.ndarray): Target vector for training.
+            Args:
+                X (np.ndarray): Feature matrix for training.
+                y (np.ndarray): Target vector for training.
 
-        Returns:
-            None
+            Returns:
+                None
 
-        Raises:
-            ValueError: If the model cannot be trained.
+            Raises:
+                ValueError: If the model cannot be trained.
         """
         # If y is one-hot encoded, convert it to a 1D array
         # If y is one-hot encoded, convert it to binary labels (0 or 1)
@@ -37,14 +36,14 @@ class LogisticRegression(Model):
         """
         Make predictions using the trained model.
 
-        Args:
-            X (np.ndarray): Feature matrix for predictions.
+            Args:
+                X (np.ndarray): Feature matrix for predictions.
 
-        Returns:
-            np.ndarray: Predicted class labels.
+            Returns:
+                np.ndarray: Predicted class labels.
 
-        Raises:
-            ValueError: If the model is not trained before prediction.
+            Raises:
+                ValueError: If the model is not trained before prediction.
         """
         if not self.trained:
             raise ValueError("Model must be trained before making predictions."

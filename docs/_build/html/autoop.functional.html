@@ -50,10 +50,10 @@
 <li class="toctree-l3"><a class="reference internal" href="autoop.core.html">autoop.core package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">autoop.functional package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autoop-functional-feature-module">autoop.functional.feature module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-autoop.functional.feature">autoop.functional.feature module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-autoop.functional.pipeline_graphing">autoop.functional.pipeline_graphing module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autoop-functional-preprocessing-module">autoop.functional.preprocessing module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autoop-functional-report-generator-module">autoop.functional.report_generator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-autoop.functional.preprocessing">autoop.functional.preprocessing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-autoop.functional.report_generator">autoop.functional.report_generator module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-autoop.functional">Module contents</a></li>
 </ul>
 </li>
@@ -95,8 +95,28 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="autoop-functional-feature-module">
-<h2>autoop.functional.feature module<a class="headerlink" href="#autoop-functional-feature-module" title="Link to this heading"></a></h2>
+<section id="module-autoop.functional.feature">
+<span id="autoop-functional-feature-module"></span><h2>autoop.functional.feature module<a class="headerlink" href="#module-autoop.functional.feature" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="autoop.functional.feature.detect_feature_types">
+<span class="sig-prename descclassname"><span class="pre">autoop.functional.feature.</span></span><span class="sig-name descname"><span class="pre">detect_feature_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset" title="autoop.core.ml.dataset.Dataset"><span class="pre">Dataset</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Feature</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/autoop/functional/feature.html#detect_feature_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.feature.detect_feature_types" title="Link to this definition"></a></dt>
+<dd><p>Detects feature types (categorical or numerical) in a dataset or DataFrame.
+Numeric features with limited unique values are classified as categorical.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>data (Union[Dataset, pd.DataFrame]): The dataset/DataFrame to</dt><dd><p>analyze.</p>
+</dd>
+<dt>threshold (int): Max unique values for numeric columns to be</dt><dd><p>considered categorical.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>List[Feature]: A list of features with detected types.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
 </section>
 <section id="module-autoop.functional.pipeline_graphing">
 <span id="autoop-functional-pipeline-graphing-module"></span><h2>autoop.functional.pipeline_graphing module<a class="headerlink" href="#module-autoop.functional.pipeline_graphing" title="Link to this heading"></a></h2>
@@ -104,20 +124,24 @@
 <dt class="sig sig-object py" id="autoop.functional.pipeline_graphing.create_pipeline_model">
 <span class="sig-prename descclassname"><span class="pre">autoop.functional.pipeline_graphing.</span></span><span class="sig-name descname"><span class="pre">create_pipeline_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/autoop/functional/pipeline_graphing.html#create_pipeline_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.pipeline_graphing.create_pipeline_model" title="Link to this definition"></a></dt>
 <dd><p>Creates a Keras model to visualize the data flow through the pipeline.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>input_features (list): A list of input feature names.
-hidden_units (int): Number of units in the hidden layer (default: 4).</p>
+hidden_units (int): Number of units in the hidden layer (default:
+4).</p>
 </dd>
 <dt>Returns:</dt><dd><p>BytesIO: A buffer containing the plot of the model as an image.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="autoop.functional.pipeline_graphing.generate_training_prediction_plot">
 <span class="sig-prename descclassname"><span class="pre">autoop.functional.pipeline_graphing.</span></span><span class="sig-name descname"><span class="pre">generate_training_prediction_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/autoop/functional/pipeline_graphing.html#generate_training_prediction_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.pipeline_graphing.generate_training_prediction_plot" title="Link to this definition"></a></dt>
 <dd><p>Generate a plot comparing training values and predicted values.</p>
-<dl class="simple">
+<blockquote>
+<div><dl class="simple">
 <dt>Args:</dt><dd><p>training_values (array-like): The true training values.
 predictions (array-like): The predicted values from the model.
 input_data (pd.DataFrame): The input data used for predictions.</p>
@@ -126,6 +150,7 @@ input_data (pd.DataFrame): The input data used for predictions.</p>
 bytes: The CSV content for download.</p>
 </dd>
 </dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py function">
@@ -134,24 +159,81 @@ bytes: The CSV content for download.</p>
 <dd><p>This module provides functions to visualize and create Keras-based
 pipelines and training plots.</p>
 <p>Functions:
-- visualise_pipeline: Trains a Keras model and plots training loss over</p>
-<blockquote>
-<div><p>time.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>create_pipeline_model: Creates and visualizes a Keras model to show data
-flow through the pipeline.</p></li>
-<li><p>generate_training_prediction_plot: Generates a plot comparing training</p></li>
-</ul>
-<p>values and predictions, saving the plot to a file.</p>
+- visualise_pipeline: Trains a Keras model and plots training loss over
+time.
+- create_pipeline_model: Creates and visualizes a Keras model to show data
+flow through the pipeline.
+- generate_training_prediction_plot: Generates a plot comparing training
+values and predictions, saving the plot to a file.</p>
 </dd></dl>
 
 </section>
-<section id="autoop-functional-preprocessing-module">
-<h2>autoop.functional.preprocessing module<a class="headerlink" href="#autoop-functional-preprocessing-module" title="Link to this heading"></a></h2>
+<section id="module-autoop.functional.preprocessing">
+<span id="autoop-functional-preprocessing-module"></span><h2>autoop.functional.preprocessing module<a class="headerlink" href="#module-autoop.functional.preprocessing" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="autoop.functional.preprocessing.check_multicollinearity">
+<span class="sig-prename descclassname"><span class="pre">autoop.functional.preprocessing.</span></span><span class="sig-name descname"><span class="pre">check_multicollinearity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/autoop/functional/preprocessing.html#check_multicollinearity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.preprocessing.check_multicollinearity" title="Link to this definition"></a></dt>
+<dd><p>Checks for multicollinearity in the given DataFrame using Variance
+Inflation Factor (VIF).</p>
+<blockquote>
+<div><dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>data: pd.DataFrame - The dataset with features to check for</p></li>
+</ul>
+<p>multicollinearity.
+- threshold: float - VIF threshold above which a feature is
+considered highly collinear.</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>True if there are any features with VIF exceeding the threshold.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="autoop.functional.preprocessing.preprocess_features">
+<span class="sig-prename descclassname"><span class="pre">autoop.functional.preprocessing.</span></span><span class="sig-name descname"><span class="pre">preprocess_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Feature</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.dataset.Dataset" title="autoop.core.ml.dataset.Dataset"><span class="pre">Dataset</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/autoop/functional/preprocessing.html#preprocess_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.preprocessing.preprocess_features" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Preprocess features.</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>features (List[Feature]): List of features.
+dataset (Dataset): Dataset object.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[str, Tuple[np.ndarray, dict]]: List of preprocessed features.
+Each ndarray of shape (N, …)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="autoop-functional-report-generator-module">
-<h2>autoop.functional.report_generator module<a class="headerlink" href="#autoop-functional-report-generator-module" title="Link to this heading"></a></h2>
+<section id="module-autoop.functional.report_generator">
+<span id="autoop-functional-report-generator-module"></span><h2>autoop.functional.report_generator module<a class="headerlink" href="#module-autoop.functional.report_generator" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="autoop.functional.report_generator.generate_pdf_report">
+<span class="sig-prename descclassname"><span class="pre">autoop.functional.report_generator.</span></span><span class="sig-name descname"><span class="pre">generate_pdf_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_pipeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.pipeline.Pipeline" title="autoop.core.ml.pipeline.Pipeline"><span class="pre">Pipeline</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><span class="pre">Model</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_plot_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline_model_plot_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_plot_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BytesIO</span></span></span><a class="reference internal" href="_modules/autoop/functional/report_generator.html#generate_pdf_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.functional.report_generator.generate_pdf_report" title="Link to this definition"></a></dt>
+<dd><p>Generates a PDF report containing model details, plots, and metrics.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>selected_pipeline (object): The pipeline object containing
+metadata.
+model (object): The trained model object.
+pipeline_data (dict): Pipeline data containing metrics and
+features.
+training_plot_path (str): Path to the training plot image.
+pipeline_model_plot_path (str): Path to the pipeline model plot
+image.
+prediction_plot_path (str): Path to the prediction plot image.
+dataset_name (str): Name of the dataset used during training.</p>
+</dd>
+<dt>Returns:</dt><dd><p>io.BytesIO: A buffer containing the PDF report.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
 </section>
 <section id="module-autoop.functional">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-autoop.functional" title="Link to this heading"></a></h2>
