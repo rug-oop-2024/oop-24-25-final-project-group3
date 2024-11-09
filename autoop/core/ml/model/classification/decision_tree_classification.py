@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.tree import DecisionTreeClassifier
-import pydoc  # noqa: F401
+import pydoc
 
 
 class DecisionTreeClassification(Model):
@@ -65,4 +65,7 @@ class DecisionTreeClassification(Model):
                              )
         return self.model.predict(X)
 
-#  pydoc.write('decision_tree_classification')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

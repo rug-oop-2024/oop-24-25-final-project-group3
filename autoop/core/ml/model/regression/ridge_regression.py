@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import Ridge
-import pydoc  # noqa: F401
+import pydoc
 
 
 class RidgeRegression(Model):
@@ -50,4 +50,7 @@ class RidgeRegression(Model):
                              "predictions.")
         return self.model.predict(X)
 
-#  pydoc.writedoc('ridge_regression')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Dict, List, Optional
 import base64
-import pydoc  # noqa: F401
+import pydoc
 
 
 class Artifact(BaseModel):
@@ -88,4 +88,7 @@ class Artifact(BaseModel):
         arbitrary_types_allowed = True
         populate_by_name = True
 
-# pydoc.writedoc('artifact')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

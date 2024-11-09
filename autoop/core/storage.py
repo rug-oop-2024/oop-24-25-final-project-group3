@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import os
 from typing import List
 from glob import glob
-import pydoc  # noqa: F401
+import pydoc
 
 
 class NotFoundError(Exception):
@@ -153,4 +153,7 @@ class LocalStorage(Storage):
         """
         return os.path.join(self._base_path, path)
 
-# pydoc.writedoc('storage')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
+import pydoc
 
 from app.core.system import AutoMLSystem
 from autoop.core.ml.dataset import Dataset
@@ -111,3 +112,7 @@ if uploaded_file:
 if st.button("Refresh Dataset List"):
     # Set session state to trigger dataset list refresh
     st.session_state.refresh_datasets = True
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

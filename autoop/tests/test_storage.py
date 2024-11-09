@@ -4,7 +4,7 @@ import unittest
 from autoop.core.storage import LocalStorage, NotFoundError
 import random
 import tempfile
-import pydoc  # noqa: F401
+import pydoc
 
 
 class TestStorage(unittest.TestCase):
@@ -50,4 +50,7 @@ class TestStorage(unittest.TestCase):
         keys = ["/".join(key.split("/")[-2:]) for key in keys]
         self.assertEqual(set(keys), set(random_keys))
 
-# pydoc.writedoc('test_storage')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

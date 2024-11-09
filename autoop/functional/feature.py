@@ -3,7 +3,7 @@ from autoop.core.ml.dataset import Dataset
 from autoop.core.ml.feature import Feature
 import pandas as pd
 from pandas.api.types import CategoricalDtype
-import pydoc  # noqa: F401
+import pydoc
 
 
 def detect_feature_types(data: Union[Dataset, pd.DataFrame],
@@ -50,4 +50,7 @@ def detect_feature_types(data: Union[Dataset, pd.DataFrame],
 
     return features
 
-# pydoc.writedoc('feature')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

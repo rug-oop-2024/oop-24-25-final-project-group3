@@ -1,6 +1,6 @@
 import numpy as np
 from autoop.core.ml.model import Model
-import pydoc  # noqa: F401
+import pydoc
 
 from sklearn.linear_model import LogisticRegression as SkLogisticRegression
 
@@ -50,3 +50,8 @@ class LogisticRegression(Model):
             raise ValueError("Model must be trained before making predictions."
                              )
         return self.model.predict(X)
+
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

@@ -8,6 +8,7 @@ import pickle
 import io
 import os
 import numpy as np
+import pydoc
 
 # Streamlit page configuration
 st.set_page_config(page_title="Deployment", page_icon="🚀")
@@ -167,3 +168,7 @@ if pipelines:
 
 else:
     st.write("No saved pipelines available.")
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

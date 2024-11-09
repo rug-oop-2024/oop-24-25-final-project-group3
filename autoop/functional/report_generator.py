@@ -1,11 +1,13 @@
 from fpdf import FPDF
-from typing import Dict, Object
+from typing import Dict
 import os
 import io
-import pydoc  # noqa: F401
+import pydoc
+from autoop.core.ml.pipeline import Pipeline
+from autoop.core.ml.pipeline import Model
 
 
-def generate_pdf_report(selected_pipeline: Object, model: Object,
+def generate_pdf_report(selected_pipeline: 'Pipeline', model: 'Model',
                         pipeline_data: Dict[str, str],
                         training_plot_path: str,
                         pipeline_model_plot_path: str,
@@ -82,3 +84,7 @@ def generate_pdf_report(selected_pipeline: Object, model: Object,
     os.remove(prediction_plot_path)
 
     return pdf_output
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

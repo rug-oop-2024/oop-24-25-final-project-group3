@@ -1,6 +1,6 @@
-from typing import Dict, List, Object, Union
+from typing import Dict, List, Union
 import pickle
-import pydoc  # noqa: F401
+import pydoc
 
 from autoop.core.ml.artifact import Artifact
 from autoop.core.ml.dataset import Dataset
@@ -66,7 +66,7 @@ Pipeline(
 """
 
     @property
-    def model(self) -> Object:
+    def model(self) -> 'Model':
         """
         Return the trained model.
 
@@ -105,7 +105,7 @@ Pipeline(
                          name=f"pipeline_model_{self._model.type}"))
         return artifacts
 
-    def _register_artifact(self, name: str, artifact: Object) -> None:
+    def _register_artifact(self, name: str, artifact: 'Artifact') -> None:
         """
         Register an artifact with the given name.
 
@@ -178,7 +178,7 @@ Pipeline(
             self._metrics_results.append((metric, result))
         self._predictions = predictions
 
-    def execute(self) -> Dict[str, Union[np.ndarray, List, Object]]:
+    def execute(self) -> Dict[str, Union[np.ndarray, List, 'Model']]:
         """
         Execute the pipeline, including training and evaluation.
 
@@ -220,4 +220,7 @@ Pipeline(
             "train_Y": train_Y,
         }
 
-# pydoc.writedoc('pipeline')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

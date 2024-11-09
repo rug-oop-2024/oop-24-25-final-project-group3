@@ -1,6 +1,6 @@
 import json
 from typing import Tuple, List, Union
-import pydoc  # noqa: F401
+import pydoc
 
 from autoop.core.storage import Storage
 
@@ -148,4 +148,7 @@ class Database():
                 self._data[collection] = {}
             self._data[collection][id] = json.loads(data.decode())
 
-# pydoc.writedoc('database')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

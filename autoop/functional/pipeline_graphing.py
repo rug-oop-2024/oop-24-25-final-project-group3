@@ -5,7 +5,7 @@ from keras.optimizers import Adam
 from keras.utils import plot_model
 import numpy as np
 from typing import Dict, List, Tuple
-import pydoc  # noqa: F401
+import pydoc
 
 
 def visualise_pipeline(input_features: List[str], X_train: np.ndarray,
@@ -140,4 +140,7 @@ def generate_training_prediction_plot(training_values: np.ndarray,
     # Return the path of the generated plot image
     return plot_path
 
-# pydoc.writedoc('pipeline_graphing')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

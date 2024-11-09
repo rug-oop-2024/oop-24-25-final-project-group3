@@ -1,7 +1,7 @@
 import numpy as np
 from autoop.core.ml.model import Model
 from sklearn.linear_model import LinearRegression
-import pydoc  # noqa: F401
+import pydoc
 
 
 class MultipleLinearRegression(Model):
@@ -49,4 +49,7 @@ class MultipleLinearRegression(Model):
                              "predictions.")
         return self.model.predict(X)
 
-#  pydoc.writedoc('multiple_linear_regression')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

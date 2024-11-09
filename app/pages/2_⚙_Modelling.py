@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
 import io
+import pydoc
 
 from app.core.system import AutoMLSystem
 from autoop.functional.feature import detect_feature_types
@@ -322,3 +323,7 @@ if datasets:
             st.session_state.save_button_flag = False
 else:
     st.write("No datasets available.")
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

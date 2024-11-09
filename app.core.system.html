@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.core.system</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.core.html" class="white">core</a>.system</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/karbolak/Documents/Uni/OOP4AI/assignment3/oop-24-25-final-project-group3/app/core/system.py">/home/karbolak/Documents/Uni/OOP4AI/assignment3/oop-24-25-final-project-group3/app/core/system.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="app.core.system.html#ArtifactRegistry">ArtifactRegistry</a>
+</dt><dt class="heading-text"><a href="app.core.system.html#AutoMLSystem">AutoMLSystem</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ArtifactRegistry">class <strong>ArtifactRegistry</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ArtifactRegistry">ArtifactRegistry</a>(database:&nbsp;autoop.core.database.Database,&nbsp;storage:&nbsp;autoop.core.storage.Storage)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Manages&nbsp;artifact&nbsp;registration,&nbsp;retrieval,&nbsp;listing,&nbsp;and&nbsp;deletion&nbsp;by<br>
+interacting&nbsp;with&nbsp;a&nbsp;database&nbsp;and&nbsp;storage&nbsp;system.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ArtifactRegistry-__init__"><strong>__init__</strong></a>(self, database: autoop.core.database.Database, storage: autoop.core.storage.Storage) -&gt; None</dt><dd><span class="code">Initialize&nbsp;the&nbsp;<a href="#ArtifactRegistry">ArtifactRegistry</a>&nbsp;with&nbsp;a&nbsp;database&nbsp;and&nbsp;storage&nbsp;system.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;database&nbsp;(Database):&nbsp;The&nbsp;database&nbsp;for&nbsp;artifact&nbsp;metadata.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;storage&nbsp;(Storage):&nbsp;The&nbsp;storage&nbsp;system&nbsp;for&nbsp;artifact&nbsp;data.</span></dd></dl>
+
+<dl><dt><a name="ArtifactRegistry-delete"><strong>delete</strong></a>(self, artifact_id: str) -&gt; None</dt><dd><span class="code">Delete&nbsp;an&nbsp;artifact&nbsp;by&nbsp;its&nbsp;ID.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artifact_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;artifact&nbsp;to&nbsp;delete.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ValueError:&nbsp;If&nbsp;the&nbsp;artifact&nbsp;cannot&nbsp;be&nbsp;found&nbsp;or&nbsp;deleted.</span></dd></dl>
+
+<dl><dt><a name="ArtifactRegistry-get"><strong>get</strong></a>(self, artifact_id: str) -&gt; autoop.core.ml.artifact.Artifact</dt><dd><span class="code">Retrieve&nbsp;an&nbsp;artifact&nbsp;by&nbsp;its&nbsp;ID.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artifact_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;artifact&nbsp;to&nbsp;retrieve.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Artifact:&nbsp;The&nbsp;retrieved&nbsp;Artifact&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Retrieve&nbsp;an&nbsp;artifact&nbsp;by&nbsp;its&nbsp;ID.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artifact_id&nbsp;(str):&nbsp;The&nbsp;ID&nbsp;of&nbsp;the&nbsp;artifact&nbsp;to&nbsp;retrieve.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Artifact:&nbsp;The&nbsp;retrieved&nbsp;Artifact&nbsp;<a href="builtins.html#object">object</a>.</span></dd></dl>
+
+<dl><dt><a name="ArtifactRegistry-list"><strong>list</strong></a>(self, type: str = None) -&gt; List[autoop.core.ml.artifact.Artifact]</dt><dd><span class="code">List&nbsp;all&nbsp;artifacts,&nbsp;optionally&nbsp;filtering&nbsp;by&nbsp;type.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;(str,&nbsp;optional):&nbsp;Filter&nbsp;for&nbsp;artifact&nbsp;type.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List[Artifact]:&nbsp;A&nbsp;list&nbsp;of&nbsp;Artifact&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="ArtifactRegistry-register"><strong>register</strong></a>(self, artifact: autoop.core.ml.artifact.Artifact) -&gt; None</dt><dd><span class="code">Register&nbsp;an&nbsp;artifact&nbsp;by&nbsp;saving&nbsp;its&nbsp;data&nbsp;and&nbsp;metadata.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artifact&nbsp;(Artifact):&nbsp;The&nbsp;artifact&nbsp;to&nbsp;be&nbsp;registered.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="AutoMLSystem">class <strong>AutoMLSystem</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#AutoMLSystem">AutoMLSystem</a>(storage:&nbsp;autoop.core.storage.LocalStorage,&nbsp;database:&nbsp;autoop.core.database.Database)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+A&nbsp;singleton&nbsp;class&nbsp;for&nbsp;managing&nbsp;an&nbsp;AutoML&nbsp;system&nbsp;with&nbsp;storage,&nbsp;database,<br>
+and&nbsp;artifact&nbsp;registry.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="AutoMLSystem-__init__"><strong>__init__</strong></a>(self, storage: autoop.core.storage.LocalStorage, database: autoop.core.database.Database) -&gt; None</dt><dd><span class="code">Initialize&nbsp;the&nbsp;<a href="#AutoMLSystem">AutoMLSystem</a>&nbsp;with&nbsp;storage&nbsp;and&nbsp;a&nbsp;database.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;storage&nbsp;(LocalStorage):&nbsp;The&nbsp;storage&nbsp;system.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;database&nbsp;(Database):&nbsp;The&nbsp;database&nbsp;for&nbsp;storing&nbsp;metadata.</span></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="AutoMLSystem-get_instance"><strong>get_instance</strong></a>() -&gt; 'AutoMLSystem'</dt><dd><span class="code">Get&nbsp;the&nbsp;singleton&nbsp;instance&nbsp;of&nbsp;the&nbsp;<a href="#AutoMLSystem">AutoMLSystem</a>.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#AutoMLSystem">AutoMLSystem</a>:&nbsp;The&nbsp;singleton&nbsp;instance.</span></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>registry</strong></dt>
+<dd><span class="code">Access&nbsp;the&nbsp;artifact&nbsp;registry.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ArtifactRegistry:&nbsp;The&nbsp;artifact&nbsp;registry.</span></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>List</strong> = typing.List</td></tr></table>
+</body></html>

@@ -2,7 +2,8 @@ from autoop.core.storage import LocalStorage
 from autoop.core.database import Database
 from autoop.core.ml.artifact import Artifact
 from autoop.core.storage import Storage
-from typing import List, Object
+from typing import List
+import pydoc
 
 
 class ArtifactRegistry():
@@ -144,7 +145,7 @@ class AutoMLSystem:
         self._registry = ArtifactRegistry(database, storage)
 
     @staticmethod
-    def get_instance() -> Object:
+    def get_instance() -> 'AutoMLSystem':
         """
         Get the singleton instance of the AutoMLSystem.
 
@@ -162,7 +163,7 @@ class AutoMLSystem:
         return AutoMLSystem._instance
 
     @property
-    def registry(self) -> Object:
+    def registry(self) -> 'ArtifactRegistry':
         """
         Access the artifact registry.
 
@@ -170,3 +171,8 @@ class AutoMLSystem:
             ArtifactRegistry: The artifact registry.
         """
         return self._registry
+
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

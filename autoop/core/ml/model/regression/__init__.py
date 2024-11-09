@@ -13,9 +13,11 @@ models.
 from .multiple_linear_regression import MultipleLinearRegression
 from .ridge_regression import RidgeRegression
 from .decision_tree_regression import DecisionTreeRegression
-import pydoc  # noqa: F401
+import pydoc
 
 __all__ = ["MultipleLinearRegression", "RidgeRegression",
            "DecisionTreeRegression"]
 
-#  pydoc.writedoc('__init__')
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

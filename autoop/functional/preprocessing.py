@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import pandas as pd
-import pydoc  # noqa: F401
+import pydoc
 
 
 def preprocess_features(features: List[Feature], dataset: Dataset) -> List[
@@ -69,4 +69,7 @@ def check_multicollinearity(data: pd.DataFrame, threshold: int = 5.0) -> bool:
                                                                ].tolist()
     return True if collinear_features else False
 
-# pydoc.writedoc('preprocessing')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

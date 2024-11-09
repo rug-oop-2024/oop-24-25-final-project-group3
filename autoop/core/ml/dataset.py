@@ -2,7 +2,7 @@ from autoop.core.ml.artifact import Artifact
 from typing import Dict, List
 import pandas as pd
 import io
-import pydoc  # noqa: F401
+import pydoc
 
 
 class Dataset(Artifact):
@@ -41,7 +41,7 @@ class Dataset(Artifact):
             Saves a DataFrame as encoded CSV data and persists it.
     """
 
-    def __init__(self, *args, metadata: Dict[str:str] | None = None,
+    def __init__(self, *args, metadata: Dict[str, str] | None = None,
                  tags: List[str] | None = None, **kwargs) -> None:
         """initialising the Dataset class"""
         # Set default values for missing fields
@@ -74,4 +74,7 @@ class Dataset(Artifact):
         bytes = data.to_csv(index=False).encode()
         return super().save(bytes)
 
-# pydoc.writedoc('dataset')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

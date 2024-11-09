@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np
 from typing import Union
-import pydoc  # noqa: F401
+import pydoc
 
 REGRESSION_METRICS = [
     "mean_squared_error",
@@ -210,4 +210,7 @@ class Recall(Metric):
         """String representation"""
         return "Recall"
 
-# pydoc.writedoc('metric')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)

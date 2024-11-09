@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module autoop.core.ml.metric</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="autoop.html" class="white">autoop</a>.<a href="autoop.core.html" class="white">core</a>.<a href="autoop.core.ml.html" class="white">ml</a>.metric</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/karbolak/Documents/Uni/OOP4AI/assignment3/oop-24-25-final-project-group3/autoop/core/ml/metric.py">/home/karbolak/Documents/Uni/OOP4AI/assignment3/oop-24-25-final-project-group3/autoop/core/ml/metric.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="autoop.core.ml.metric.html#Metric">Metric</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="autoop.core.ml.metric.html#Accuracy">Accuracy</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#LogisticAccuracy">LogisticAccuracy</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#LogisticPrecision">LogisticPrecision</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#LogisticRecall">LogisticRecall</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#MeanAbsoluteError">MeanAbsoluteError</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#MeanSquaredError">MeanSquaredError</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#Precision">Precision</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#RSquared">RSquared</a>
+</dt><dt class="heading-text"><a href="autoop.core.ml.metric.html#Recall">Recall</a>
+</dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Accuracy">class <strong>Accuracy</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Accuracy">Accuracy</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#Accuracy">Accuracy</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Accuracy-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;accuracy.</span></dd></dl>
+
+<dl><dt><a name="Accuracy-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="LogisticAccuracy">class <strong>LogisticAccuracy</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Accuracy">Accuracy</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#LogisticAccuracy">LogisticAccuracy</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LogisticAccuracy-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;accuracy&nbsp;for&nbsp;classification.</span></dd></dl>
+
+<dl><dt><a name="LogisticAccuracy-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="LogisticPrecision">class <strong>LogisticPrecision</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Precision">Precision</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#LogisticPrecision">LogisticPrecision</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LogisticPrecision-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;precision&nbsp;for&nbsp;classification.</span></dd></dl>
+
+<dl><dt><a name="LogisticPrecision-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="LogisticRecall">class <strong>LogisticRecall</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Recall">Recall</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#LogisticRecall">LogisticRecall</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LogisticRecall-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code"><a href="#Recall">Recall</a>&nbsp;metric&nbsp;for&nbsp;logistic&nbsp;classification.</span></dd></dl>
+
+<dl><dt><a name="LogisticRecall-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MeanAbsoluteError">class <strong>MeanAbsoluteError</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Mean&nbsp;Absolute&nbsp;Error&nbsp;metric&nbsp;for&nbsp;regression.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#MeanAbsoluteError">MeanAbsoluteError</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MeanAbsoluteError-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;mean&nbsp;absolute&nbsp;error.</span></dd></dl>
+
+<dl><dt><a name="MeanAbsoluteError-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MeanSquaredError">class <strong>MeanSquaredError</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Mean&nbsp;Squared&nbsp;Error&nbsp;metric&nbsp;for&nbsp;regression.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#MeanSquaredError">MeanSquaredError</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MeanSquaredError-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;mean&nbsp;squared&nbsp;error.</span></dd></dl>
+
+<dl><dt><a name="MeanSquaredError-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Metric">class <strong>Metric</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Base&nbsp;class&nbsp;for&nbsp;all&nbsp;metrics.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Metric-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;the&nbsp;metric&nbsp;given&nbsp;ground&nbsp;truth&nbsp;and&nbsp;predictions.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_true&nbsp;(np.ndarray):&nbsp;Ground&nbsp;truth&nbsp;values.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y_pred&nbsp;(np.ndarray):&nbsp;Predicted&nbsp;values.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;The&nbsp;calculated&nbsp;metric.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'__call__'})</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Precision">class <strong>Precision</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Precision">Precision</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#Precision">Precision</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Precision-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;precision.</span></dd></dl>
+
+<dl><dt><a name="Precision-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="RSquared">class <strong>RSquared</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">R-squared&nbsp;(R²)&nbsp;metric&nbsp;for&nbsp;regression,&nbsp;measuring&nbsp;goodness&nbsp;of&nbsp;fit.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#RSquared">RSquared</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RSquared-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;R-squared.</span></dd></dl>
+
+<dl><dt><a name="RSquared-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Recall">class <strong>Recall</strong></a>(<a href="autoop.core.ml.metric.html#Metric">Metric</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Recall">Recall</a>&nbsp;metric&nbsp;for&nbsp;classification.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="autoop.core.ml.metric.html#Recall">Recall</a></dd>
+<dd><a href="autoop.core.ml.metric.html#Metric">Metric</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Recall-__call__"><strong>__call__</strong></a>(self, y_true: numpy.ndarray, y_pred: numpy.ndarray) -&gt; float</dt><dd><span class="code">Calculate&nbsp;recall.</span></dd></dl>
+
+<dl><dt><a name="Recall-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt><dd><span class="code">String&nbsp;representation</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Data descriptors inherited from <a href="autoop.core.ml.metric.html#Metric">Metric</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_metric"><strong>get_metric</strong></a>(name: str) -&gt; Union[ForwardRef('MeanSquaredError'), ForwardRef('Accuracy'), ForwardRef('Precision'), ForwardRef('Recall'), ForwardRef('LogisticAccuracy'), ForwardRef('LogisticPrecision'), ForwardRef('LogisticRecall'), ForwardRef('MeanAbsoluteError'), ForwardRef('RSquared')]</dt><dd><span class="code">Factory&nbsp;function&nbsp;to&nbsp;get&nbsp;a&nbsp;metric&nbsp;instance&nbsp;by&nbsp;its&nbsp;name.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;metric&nbsp;to&nbsp;retrieve.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Union[<a href="#MeanSquaredError">MeanSquaredError</a>,&nbsp;<a href="#Accuracy">Accuracy</a>,&nbsp;<a href="#Precision">Precision</a>,&nbsp;<a href="#Recall">Recall</a>,&nbsp;<a href="#LogisticAccuracy">LogisticAccuracy</a>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#LogisticPrecision">LogisticPrecision</a>,&nbsp;<a href="#LogisticRecall">LogisticRecall</a>,&nbsp;<a href="#MeanAbsoluteError">MeanAbsoluteError</a>,&nbsp;<a href="#RSquared">RSquared</a>]:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;metric&nbsp;instance.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ValueError:&nbsp;If&nbsp;the&nbsp;metric&nbsp;name&nbsp;is&nbsp;not&nbsp;implemented.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>CLASSIFICATION_METRICS</strong> = ['accuracy', 'precision', 'recall']<br>
+<strong>LOG_CLASSIFICATION_METRICS</strong> = ['logistic_accuracy', 'logistic_precision', 'logistic_recall']<br>
+<strong>REGRESSION_METRICS</strong> = ['mean_squared_error', 'mean_absolute_error', 'r_squared']<br>
+<strong>Union</strong> = typing.Union</td></tr></table>
+</body></html>

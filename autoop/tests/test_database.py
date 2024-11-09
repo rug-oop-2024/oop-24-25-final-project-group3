@@ -4,7 +4,7 @@ from autoop.core.database import Database
 from autoop.core.storage import LocalStorage
 import random
 import tempfile
-import pydoc  # noqa: F401
+import pydoc
 
 
 class TestDatabase(unittest.TestCase):
@@ -53,4 +53,7 @@ class TestDatabase(unittest.TestCase):
         # collection should now contain the key
         self.assertIn((key, value), self.db.list("collection"))
 
-# pydoc.writedoc('test_database')
+
+if __name__ == "__main__":
+    # Generate documentation for this module and save it as an HTML file
+    pydoc.writedoc(__name__)
