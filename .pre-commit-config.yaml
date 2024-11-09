@@ -1,0 +1,10 @@
+repos:
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0  # Use the latest stable version or specify as needed
+    hooks:
+      - id: flake8
+        name: flake8 Python 3 Style Check
+        args:
+          - --extend-ignore=E402
+          - --exclude=.github,autoop/tests
+          - --ignore=ANN101,ANN102,D100,D2,D4,ANN002,ANN003
