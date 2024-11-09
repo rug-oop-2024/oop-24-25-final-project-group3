@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>autoop.core.ml.model package &mdash; OOP-24-25-FINAL-PROJECT  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OOP-24-25-FINAL-PROJECT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">autoop.core.ml.model package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model.model">autoop.core.ml.model.model module</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.fit"><code class="docutils literal notranslate"><span class="pre">Model.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.load_artifact"><code class="docutils literal notranslate"><span class="pre">Model.load_artifact()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.predict"><code class="docutils literal notranslate"><span class="pre">Model.predict()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.model.Model.to_artifact"><code class="docutils literal notranslate"><span class="pre">Model.to_artifact()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model">Module contents</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OOP-24-25-FINAL-PROJECT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">autoop.core.ml.model package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/autoop.core.ml.model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="autoop-core-ml-model-package">
+<h1>autoop.core.ml.model package<a class="headerlink" href="#autoop-core-ml-model-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoop.core.ml.model.classification.html">autoop.core.ml.model.classification package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.classification.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification.decision_tree_classification">autoop.core.ml.model.classification.decision_tree_classification module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification.knn">autoop.core.ml.model.classification.knn module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.knn.KNearestNeighbors"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.knn.KNearestNeighbors.fit"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.knn.KNearestNeighbors.predict"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification.logistic_regression">autoop.core.ml.model.classification.logistic_regression module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.logistic_regression.LogisticRegression"><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.fit"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.predict"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.classification.html#module-autoop.core.ml.model.classification">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.DecisionTreeClassification"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.DecisionTreeClassification.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.DecisionTreeClassification.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.KNearestNeighbors"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.KNearestNeighbors.fit"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.KNearestNeighbors.predict"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.LogisticRegression"><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.LogisticRegression.fit"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.classification.html#autoop.core.ml.model.classification.LogisticRegression.predict"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoop.core.ml.model.regression.html">autoop.core.ml.model.regression package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.regression.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.regression.html#module-autoop.core.ml.model.regression.decision_tree_regression">autoop.core.ml.model.regression.decision_tree_regression module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.decision_tree_regression.DecisionTreeRegression.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.regression.html#module-autoop.core.ml.model.regression.multiple_linear_regression">autoop.core.ml.model.regression.multiple_linear_regression module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.multiple_linear_regression.MultipleLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.regression.html#module-autoop.core.ml.model.regression.ridge_regression">autoop.core.ml.model.regression.ridge_regression module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.ridge_regression.RidgeRegression"><code class="docutils literal notranslate"><span class="pre">RidgeRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.fit"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.ridge_regression.RidgeRegression.predict"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoop.core.ml.model.regression.html#module-autoop.core.ml.model.regression">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.DecisionTreeRegression"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.DecisionTreeRegression.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.DecisionTreeRegression.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeRegression.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.MultipleLinearRegression"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.MultipleLinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.MultipleLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.RidgeRegression"><code class="docutils literal notranslate"><span class="pre">RidgeRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.RidgeRegression.fit"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoop.core.ml.model.regression.html#autoop.core.ml.model.regression.RidgeRegression.predict"><code class="docutils literal notranslate"><span class="pre">RidgeRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-autoop.core.ml.model.model">
+<span id="autoop-core-ml-model-model-module"></span><h2>autoop.core.ml.model.model module<a class="headerlink" href="#module-autoop.core.ml.model.model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'regression'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'classification'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for all machine learning models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.fit">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the model on the given data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Training features.
+y (np.ndarray): Target values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.load_artifact">
+<span class="sig-name descname"><span class="pre">load_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artifact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact" title="autoop.core.ml.artifact.Artifact"><span class="pre">Artifact</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.load_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.load_artifact" title="Link to this definition"></a></dt>
+<dd><p>Load model parameters from an artifact.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>artifact (Artifact): Artifact to load data from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.predict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.predict" title="Link to this definition"></a></dt>
+<dd><p>Predict using the model on given data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Features for prediction.</p>
+</dd>
+<dt>Returns:</dt><dd><p>np.ndarray: Predicted values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.model.Model.to_artifact">
+<span class="sig-name descname"><span class="pre">to_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autoop.core.ml.html#autoop.core.ml.artifact.Artifact" title="autoop.core.ml.artifact.Artifact"><span class="pre">Artifact</span></a></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/model.html#Model.to_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.model.Model.to_artifact" title="Link to this definition"></a></dt>
+<dd><p>Convert the model to an Artifact for storage.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (str): Name of the artifact.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Artifact: An artifact representing the model’s state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-autoop.core.ml.model">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-autoop.core.ml.model" title="Link to this heading"></a></h2>
+<p>This package offers machine learning models.</p>
+<p>Modules:
+- REGRESSION_MODELS: Implements regression models.
+- CLASSIFICATION_MODELS: Implements classification models .</p>
+<p>These modules can be imported for building, training and using.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="autoop.core.ml.model.get_model">
+<span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.</span></span><span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><span class="pre">Model</span></a></span></span><a class="reference internal" href="_modules/autoop/core/ml/model.html#get_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.get_model" title="Link to this definition"></a></dt>
+<dd><p>Factory function to get a model by name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>model_name (str): Name of the model to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Model: An instance of the requested model.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the model_name is not found in either
+REGRESSION_MODELS or CLASSIFICATION_MODELS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, K. Kozikowska &amp; K. Karbowski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

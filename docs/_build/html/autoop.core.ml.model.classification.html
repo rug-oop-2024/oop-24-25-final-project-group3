@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>autoop.core.ml.model.classification package &mdash; OOP-24-25-FINAL-PROJECT  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OOP-24-25-FINAL-PROJECT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">autoop.core.ml.model.classification package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model.classification.decision_tree_classification">autoop.core.ml.model.classification.decision_tree_classification module</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model.classification.knn">autoop.core.ml.model.classification.knn module</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors.fit"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors.predict"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model.classification.logistic_regression">autoop.core.ml.model.classification.logistic_regression module</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression"><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.fit"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.predict"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-autoop.core.ml.model.classification">Module contents</a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.DecisionTreeClassification"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.DecisionTreeClassification.fit"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.DecisionTreeClassification.predict"><code class="docutils literal notranslate"><span class="pre">DecisionTreeClassification.predict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.KNearestNeighbors"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.KNearestNeighbors.fit"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.KNearestNeighbors.predict"><code class="docutils literal notranslate"><span class="pre">KNearestNeighbors.predict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.LogisticRegression"><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a><ul>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.LogisticRegression.fit"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.fit()</span></code></a></li>
+<li><a class="reference internal" href="#autoop.core.ml.model.classification.LogisticRegression.predict"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OOP-24-25-FINAL-PROJECT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">autoop.core.ml.model.classification package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/autoop.core.ml.model.classification.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="autoop-core-ml-model-classification-package">
+<h1>autoop.core.ml.model.classification package<a class="headerlink" href="#autoop-core-ml-model-classification-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-autoop.core.ml.model.classification.decision_tree_classification">
+<span id="autoop-core-ml-model-classification-decision-tree-classification-module"></span><h2>autoop.core.ml.model.classification.decision_tree_classification module<a class="headerlink" href="#module-autoop.core.ml.model.classification.decision_tree_classification" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.decision_tree_classification.</span></span><span class="sig-name descname"><span class="pre">DecisionTreeClassification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A Decision Tree classifier model that recursively splits the dataset
+based on features to maximize the purity of each resulting node, creating
+a hierarchical structure for classification tasks.</p>
+<p>Attributes:
+- model (DecisionTreeClassifier): The underlying scikit-learn Decision</p>
+<blockquote>
+<div><p>Tree classifier.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>trained (bool): Boolean flag indicating if the model has been trained.</p></li>
+</ul>
+<p>Methods:
+- fit(X, y): Trains the Decision Tree model on the provided dataset.
+- predict(X): Makes predictions on new data, given that the model is</p>
+<blockquote>
+<div><p>already trained.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the Decision Tree Classification model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+- y (np.ndarray): Target vector with shape (n_samples,).</p>
+<p>Sets:
+- self.trained (bool): Marks the model as trained.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.decision_tree_classification.DecisionTreeClassification.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
+<p>Returns:
+- np.ndarray: Array of predictions with shape (n_samples,).</p>
+<p>Raises:
+- ValueError: If the model has not been trained yet.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-autoop.core.ml.model.classification.knn">
+<span id="autoop-core-ml-model-classification-knn-module"></span><h2>autoop.core.ml.model.classification.knn module<a class="headerlink" href="#module-autoop.core.ml.model.classification.knn" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.knn.KNearestNeighbors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.knn.</span></span><span class="sig-name descname"><span class="pre">KNearestNeighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A K-Nearest Neighbors (KNN) classifier model that uses the specified
+number of nearest neighbors to classify samples based on their proximity
+to labeled data.</p>
+<p>Attributes:
+- n_neighbors (int): The number of neighbors to use for classification.
+- model (KNeighborsClassifier): The underlying scikit-learn KNN classifier.
+- trained (bool): Boolean flag indicating if the model has been trained.</p>
+<p>Methods:
+- fit(X, y): Trains the KNN model on the provided dataset.
+- predict(X): Makes predictions on new data, given that the model is</p>
+<blockquote>
+<div><p>already trained.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.knn.KNearestNeighbors.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the K-Nearest Neighbors model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+- y (np.ndarray): Target vector with shape (n_samples,).</p>
+<p>Sets:
+- self.trained (bool): Marks the model as trained.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.knn.KNearestNeighbors.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.knn.KNearestNeighbors.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
+<p>Returns:
+- np.ndarray: Array of predictions with shape (n_samples,).</p>
+<p>Raises:
+- ValueError: If the model has not been trained yet.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-autoop.core.ml.model.classification.logistic_regression">
+<span id="autoop-core-ml-model-classification-logistic-regression-module"></span><h2>autoop.core.ml.model.classification.logistic_regression module<a class="headerlink" href="#module-autoop.core.ml.model.classification.logistic_regression" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.logistic_regression.LogisticRegression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.logistic_regression.</span></span><span class="sig-name descname"><span class="pre">LogisticRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Wrapper for logistic regression using scikit-learn’s implementation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.logistic_regression.LogisticRegression.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the logistic regression model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Feature matrix for training.
+y (np.ndarray): Target vector for training.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the model cannot be trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.logistic_regression.LogisticRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.logistic_regression.LogisticRegression.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Feature matrix for predictions.</p>
+</dd>
+<dt>Returns:</dt><dd><p>np.ndarray: Predicted class labels.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the model is not trained before prediction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-autoop.core.ml.model.classification">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-autoop.core.ml.model.classification" title="Link to this heading"></a></h2>
+<p>This package offers machine learning models for classification tasks.</p>
+<p>Modules:
+- LogisticRegression: Implements logistic regression for binary classification.
+- KNearestNeighbors: A KNN classifier for multi-class classification.
+- DecisionTreeClassification: A decision tree-based classifier.</p>
+<p>These modules can be imported for building, training, and using classifiers.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.DecisionTreeClassification">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.</span></span><span class="sig-name descname"><span class="pre">DecisionTreeClassification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.DecisionTreeClassification" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A Decision Tree classifier model that recursively splits the dataset
+based on features to maximize the purity of each resulting node, creating
+a hierarchical structure for classification tasks.</p>
+<p>Attributes:
+- model (DecisionTreeClassifier): The underlying scikit-learn Decision</p>
+<blockquote>
+<div><p>Tree classifier.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>trained (bool): Boolean flag indicating if the model has been trained.</p></li>
+</ul>
+<p>Methods:
+- fit(X, y): Trains the Decision Tree model on the provided dataset.
+- predict(X): Makes predictions on new data, given that the model is</p>
+<blockquote>
+<div><p>already trained.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.DecisionTreeClassification.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.DecisionTreeClassification.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the Decision Tree Classification model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+- y (np.ndarray): Target vector with shape (n_samples,).</p>
+<p>Sets:
+- self.trained (bool): Marks the model as trained.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.DecisionTreeClassification.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/decision_tree_classification.html#DecisionTreeClassification.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.DecisionTreeClassification.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
+<p>Returns:
+- np.ndarray: Array of predictions with shape (n_samples,).</p>
+<p>Raises:
+- ValueError: If the model has not been trained yet.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.KNearestNeighbors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.</span></span><span class="sig-name descname"><span class="pre">KNearestNeighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.KNearestNeighbors" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A K-Nearest Neighbors (KNN) classifier model that uses the specified
+number of nearest neighbors to classify samples based on their proximity
+to labeled data.</p>
+<p>Attributes:
+- n_neighbors (int): The number of neighbors to use for classification.
+- model (KNeighborsClassifier): The underlying scikit-learn KNN classifier.
+- trained (bool): Boolean flag indicating if the model has been trained.</p>
+<p>Methods:
+- fit(X, y): Trains the KNN model on the provided dataset.
+- predict(X): Makes predictions on new data, given that the model is</p>
+<blockquote>
+<div><p>already trained.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.KNearestNeighbors.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.KNearestNeighbors.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the K-Nearest Neighbors model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).
+- y (np.ndarray): Target vector with shape (n_samples,).</p>
+<p>Sets:
+- self.trained (bool): Marks the model as trained.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.KNearestNeighbors.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/knn.html#KNearestNeighbors.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.KNearestNeighbors.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<p>Parameters:
+- X (np.ndarray): Feature matrix with shape (n_samples, n_features).</p>
+<p>Returns:
+- np.ndarray: Array of predictions with shape (n_samples,).</p>
+<p>Raises:
+- ValueError: If the model has not been trained yet.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.LogisticRegression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autoop.core.ml.model.classification.</span></span><span class="sig-name descname"><span class="pre">LogisticRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.LogisticRegression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="autoop.core.ml.model.html#autoop.core.ml.model.model.Model" title="autoop.core.ml.model.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Wrapper for logistic regression using scikit-learn’s implementation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.LogisticRegression.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.LogisticRegression.fit" title="Link to this definition"></a></dt>
+<dd><p>Train the logistic regression model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Feature matrix for training.
+y (np.ndarray): Target vector for training.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the model cannot be trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autoop.core.ml.model.classification.LogisticRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/autoop/core/ml/model/classification/logistic_regression.html#LogisticRegression.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#autoop.core.ml.model.classification.LogisticRegression.predict" title="Link to this definition"></a></dt>
+<dd><p>Make predictions using the trained model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>X (np.ndarray): Feature matrix for predictions.</p>
+</dd>
+<dt>Returns:</dt><dd><p>np.ndarray: Predicted class labels.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the model is not trained before prediction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, K. Kozikowska &amp; K. Karbowski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
